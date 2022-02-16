@@ -3,28 +3,22 @@ import styled from 'styled-components';
 export const NavbarCont = styled.div`
   display: flex;
   justify-content: space-between;
+  margin: 2em 2em 2em 2em;
+
+  > div {
+    display: inherit;
+    align-items: center;
+  }
 
   .left {
-    display: inherit;
-    column-gap: 5em;
-    align-items: center;
-
-    > div {
-      display: inherit;
-    }
-
-    .app-name {
-      font-size: 2.25rem;
-    }
+    column-gap: 4em;
   }
 
   .right {
-    display: inherit;
     column-gap: 2em;
-    align-items: center;
-
-    div {
-      display: inherit;
-    }
   }
+`;
+
+export const AppName = styled.div`
+  font-size: 2.25rem;
 `;

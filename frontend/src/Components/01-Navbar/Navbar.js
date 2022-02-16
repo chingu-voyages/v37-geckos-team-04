@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavbarCont } from './style';
+import { AppName, NavbarCont } from './style';
 
 export default function Navbar() {
   return (
@@ -11,7 +11,7 @@ export default function Navbar() {
         <span>Sign Up</span>
       </div> */}
       <div className="left">
-        <div className="app-name">Sleep Tracker</div>
+        <AppName>Sleep Tracker</AppName>
         <div>Features</div>
       </div>
       <div className="right">
