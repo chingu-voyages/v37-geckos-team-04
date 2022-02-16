@@ -9,7 +9,7 @@ export default function App() {
       <GlobalStyle />
       <Navbar />
       <LandingPage />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
