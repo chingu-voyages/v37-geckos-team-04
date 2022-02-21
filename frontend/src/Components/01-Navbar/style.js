@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NavbarCont = styled.div`
+export const NavbarCont = styled.nav`
   display: flex;
   justify-content: space-between;
   /* margin: 2em 2em 2em 2em; */
