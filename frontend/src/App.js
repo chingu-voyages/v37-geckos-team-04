@@ -1,5 +1,5 @@
 import { GlobalStyle } from './AppStyle';
-import LandingPage from './Components/03-LandingPage/LandingPage';
+import LandingPage from './Components/04-LandingPage/LandingPage';
 
 export default function App() {
   return (
