@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 
+export const LandingPageCont = styled.section`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
 export const MainContent = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 2em;
-  padding: 10em;
+  justify-content: center;
+  flex-grow: 1;
 
   div {
     font-size: 3rem;
@@ -16,5 +23,6 @@ export const MainContent = styled.main`
     /* width: 20%; */
     text-align: center;
     padding: 0.5em;
+    border-radius: 40px;
   }
 `;
