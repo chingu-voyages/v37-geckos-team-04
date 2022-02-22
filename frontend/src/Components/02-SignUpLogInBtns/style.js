@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const BtnsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 const Button = styled.button`
   background: none;
   font-weight: bold;
@@ -8,9 +13,9 @@ const Button = styled.button`
   font-family: inherit;
 `;
 
-export const LogInBtnCont = styled(Button)``;
+export const LogInBtn = styled(Button)``;
 
-export const SignUpBtnCont = styled(Button)`
+export const SignUpBtn = styled(Button)`
   border: thin black solid;
   border-radius: 0.875rem;
   padding: 0.5rem 0.875rem 0.5rem 0.875rem;

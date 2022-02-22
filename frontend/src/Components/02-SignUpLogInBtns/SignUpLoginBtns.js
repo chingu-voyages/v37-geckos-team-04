@@ -1,10 +1,11 @@
 import React from 'react';
-import { SignUpBtnCont, LogInBtnCont } from './style';
+import { BtnsContainer, SignUpBtn, LogInBtn } from './style';
 
-export const SignUpBtn = () => {
-  return <SignUpBtnCont>Sign Up</SignUpBtnCont>;
-};
-
-export const LogInBtn = () => {
-  return <LogInBtnCont>Log In</LogInBtnCont>;
+export const SignUpLoginBtns = () => {
+  return (
+    <BtnsContainer>
+      <SignUpBtn>Sign Up</SignUpBtn>
+      <LogInBtn>Log In</LogInBtn>
+    </BtnsContainer>
+  );
 };
