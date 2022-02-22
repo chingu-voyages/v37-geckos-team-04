@@ -6,6 +6,7 @@ export const HeaderCont = styled.header`
   justify-content: space-around;
   align-items: center;
   /* padding: 2em 2em 2em 2em; */
+  padding: 2em 0 2em 0;
   background-color: lightgray;
 
   .app-name {

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const BtnsContainer = styled.div`
   display: flex;
   flex-direction: row;
+  column-gap: 2rem;
 `;
 
 const Button = styled.button`

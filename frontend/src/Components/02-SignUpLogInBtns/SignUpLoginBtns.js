@@ -4,8 +4,8 @@ import { BtnsContainer, SignUpBtn, LogInBtn } from './style';
 export const SignUpLoginBtns = () => {
   return (
     <BtnsContainer>
-      <SignUpBtn>Sign Up</SignUpBtn>
       <LogInBtn>Log In</LogInBtn>
+      <SignUpBtn>Sign Up</SignUpBtn>
     </BtnsContainer>
   );
 };
