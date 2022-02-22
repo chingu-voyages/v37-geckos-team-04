@@ -8,7 +8,7 @@ export default function LandingPage() {
     <LandingPageCont>
       <Header />
       <MainContent>
-        <div>Call to action slogan here.</div>
+        <div>Call to action slogan here</div>
         <button>Get Started</button>
       </MainContent>
       <Footer />

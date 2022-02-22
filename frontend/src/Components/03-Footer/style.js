@@ -5,4 +5,5 @@ export const FooterCont = styled.footer`
   flex-direction: row;
   justify-content: center;
   flex-shrink: 1;
+  font-size: 0.75rem;
 `;

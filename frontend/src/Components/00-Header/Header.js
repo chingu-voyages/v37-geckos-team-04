@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppName, HeaderCont } from './style';
+import { HeaderCont } from './style';
 import Navbar from '../01-Navbar/Navbar';
 import { SignUpLoginBtns } from '../02-SignUpLogInBtns/SignUpLoginBtns';
 

@@ -20,9 +20,16 @@ export const MainContent = styled.main`
 
   button {
     font-size: 2.25rem;
-    /* width: 20%; */
     text-align: center;
-    padding: 0.5em;
+    padding: 0.25em 0.75em 0.25em 0.75em;
     border-radius: 40px;
+    border: none;
+    background-color: #96c5f7;
+    color: white;
+    /* color: #f2f4ff; */
+    /* border: 2px solid #96c5f7;
+    background-color: #f2f4ff;
+    color: #96c5f7; */
+    font-family: 'Poppins', sans-serif;
   }
 `;
