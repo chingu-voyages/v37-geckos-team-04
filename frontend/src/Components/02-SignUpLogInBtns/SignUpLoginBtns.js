@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import { BtnsContainer, SignUpBtn, LogInBtn } from './style';
 
 export const SignUpLoginBtns = () => {
@@ -11,6 +11,7 @@ export const SignUpLoginBtns = () => {
       <Link to="/signup">
         <SignUpBtn>Sign Up</SignUpBtn>
       </Link>
+      {/* <Outlet /> */}
       {/* <LogInBtn>Log In</LogInBtn>
       <SignUpBtn>Sign Up</SignUpBtn> */}
     </BtnsContainer>
