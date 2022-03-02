@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import bed from '../../Images/becca-schultz-l6BenhrIc2w-unsplash.jpeg';
-import { LogInPageCont, LogInFormCont, LogoForLogIn, LogInForm } from './style';
+import { LogInPageCont, LogInFormCont, LogInForm } from './style';
 
 export default function LogInPage() {
   return (

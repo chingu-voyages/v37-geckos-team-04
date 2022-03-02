@@ -2,12 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import nightBed from '../../Images/beazy-toX2sYnycCw-unsplash.jpeg';
-import {
-  SignUpPageCont,
-  SignUpFormCont,
-  LogoForSignUp,
-  SignUpForm,
-} from './style';
+import { SignUpPageCont, SignUpFormCont, SignUpForm } from './style';
 
 export default function SignUpPage() {
   return (
