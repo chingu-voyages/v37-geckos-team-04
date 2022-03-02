@@ -29,10 +29,48 @@ export const SignUpFormCont = styled(FormCont)``;
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  row-gap: 1rem;
+  width: 18rem;
 
-  input,
-  button {
+  input {
     font-family: inherit;
+  }
+
+  button:first-of-type {
+    font-weight: bold;
+  }
+
+  button {
+    display: flex;
+    flex-direction: row;
+    font-family: inherit;
+    border: none;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+
+    height: 2.5rem;
+    width: 14.5rem;
+
+    column-gap: 0.75rem;
+  }
+
+  .google-oauth {
+    color: #db4437;
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  .facebook-oauth {
+    svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+
+    color: #1877f2;
   }
 `;
 
