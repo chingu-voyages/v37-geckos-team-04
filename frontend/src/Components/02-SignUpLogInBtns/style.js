@@ -4,6 +4,7 @@ export const BtnsContainer = styled.div`
   display: flex;
   flex-direction: row;
   column-gap: 2rem;
+  align-items: center;
 `;
 
 const Button = styled.button`
@@ -12,6 +13,7 @@ const Button = styled.button`
   border: none;
   font-size: 1.125rem;
   font-family: inherit;
+  cursor: pointer;
 `;
 
 export const LogInBtn = styled(Button)``;
