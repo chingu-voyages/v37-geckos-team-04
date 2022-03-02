@@ -2,12 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import nightBed from '../../Images/beazy-toX2sYnycCw-unsplash.jpeg';
-import { SignUpPageCont, SignUpFormCont, SignUpForm } from './style';
+import {
+  SignUpPageCont,
+  SignUpFormCont,
+  LogoForSignUp,
+  SignUpForm,
+} from './style';
 
 export default function SignUpPage() {
   return (
     <SignUpPageCont>
       <SignUpFormCont>
+        <Link to="/" className="app-name">
+          App name
+        </Link>
         <h1>Sign Up</h1>
         <SignUpForm>
           <input placeholder="Email"></input>

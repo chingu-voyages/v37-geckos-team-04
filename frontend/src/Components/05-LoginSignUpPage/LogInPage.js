@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import bed from '../../Images/becca-schultz-l6BenhrIc2w-unsplash.jpeg';
-import { LogInPageCont, LogInFormCont, LogInForm } from './style';
+import { LogInPageCont, LogInFormCont, LogoForLogIn, LogInForm } from './style';
 
 export default function LogInPage() {
   return (
@@ -11,6 +11,9 @@ export default function LogInPage() {
         <img src={bed}></img>
       </div>
       <LogInFormCont>
+        <Link to="/" className="app-name">
+          App name
+        </Link>
         <h1>Log In</h1>
         <LogInForm>
           <input placeholder="Email"></input>

@@ -37,10 +37,31 @@ const FormCont = styled.div`
 
   justify-content: center;
   align-items: center;
+
+  .app-name {
+    position: absolute;
+    top: 2.5%;
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-style: italic;
+  }
+
+  .app-name:visited {
+    color: inherit;
+  }
 `;
 
-export const LogInFormCont = styled(FormCont)``;
-export const SignUpFormCont = styled(FormCont)``;
+export const LogInFormCont = styled(FormCont)`
+  .app-name {
+    right: 2.5%;
+  }
+`;
+
+export const SignUpFormCont = styled(FormCont)`
+  .app-name {
+    left: 2.5%;
+  }
+`;
 
 const Form = styled.form`
   display: flex;
