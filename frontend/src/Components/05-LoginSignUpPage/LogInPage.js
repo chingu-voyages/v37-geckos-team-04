@@ -5,7 +5,9 @@ import { LogInPageCont, LogInFormCont, LogInForm } from './style';
 export default function LogInPage() {
   return (
     <LogInPageCont>
-      <img src={bed}></img>
+      <div>
+        <img src={bed}></img>
+      </div>
       <LogInFormCont>
         <h1>Log In</h1>
         <LogInForm>

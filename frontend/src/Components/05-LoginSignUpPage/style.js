@@ -6,6 +6,7 @@ const Container = styled.section`
   justify-content: space-around;
 
   img {
+    display: block;
     height: 100vh;
   }
 
@@ -21,6 +22,10 @@ export const SignUpPageCont = styled(Container)``;
 const FormCont = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+
+  justify-content: center;
+  align-items: center;
 `;
 
 export const LogInFormCont = styled(FormCont)``;
@@ -30,7 +35,6 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
-  width: 18rem;
 
   input {
     font-family: inherit;

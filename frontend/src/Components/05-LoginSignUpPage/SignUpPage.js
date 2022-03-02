@@ -9,8 +9,8 @@ export default function SignUpPage() {
         <h1>Sign Up</h1>
         <SignUpForm>
           <input placeholder="Email"></input>
-          <input placeholder="First Name"></input>
-          <input placeholder="Last Name"></input>
+          <input placeholder="First Name" className="first-name"></input>
+          <input placeholder="Last Name" className="last-name"></input>
           <input placeholder="Password" type="password"></input>
           <input placeholder="Confirm Password" type="password"></input>
           <button>Sign Up</button>
@@ -49,7 +49,9 @@ export default function SignUpPage() {
           </button>
         </SignUpForm>
       </SignUpFormCont>
-      <img src={nightBed}></img>
+      <div>
+        <img src={nightBed}></img>
+      </div>
     </SignUpPageCont>
   );
 }
