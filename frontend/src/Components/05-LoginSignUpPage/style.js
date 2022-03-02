@@ -34,24 +34,36 @@ const Form = styled.form`
 
   input {
     font-family: inherit;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 16rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+
+  input:focus {
+    outline: none;
   }
 
   button:first-of-type {
     font-weight: bold;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   button {
     display: flex;
     flex-direction: row;
     font-family: inherit;
+    font-weight: 500;
+    font-size: 1rem;
     border: none;
     border-radius: 0.25rem;
-    font-weight: 500;
     justify-content: center;
     align-items: center;
 
     height: 2.5rem;
-    width: 14.5rem;
+    width: 16rem;
 
     column-gap: 0.75rem;
   }
