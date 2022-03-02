@@ -13,9 +13,9 @@ export default function SignUpPage() {
         </Link>
         <h1>Sign Up</h1>
         <SignUpForm>
-          <input placeholder="Email"></input>
           <input placeholder="First Name" className="first-name"></input>
           <input placeholder="Last Name" className="last-name"></input>
+          <input placeholder="Email"></input>
           <input placeholder="Password" type="password"></input>
           <input placeholder="Confirm Password" type="password"></input>
           <button>Sign Up</button>
