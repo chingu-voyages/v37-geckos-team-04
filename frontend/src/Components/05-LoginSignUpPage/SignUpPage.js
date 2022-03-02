@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import nightBed from '../../Images/beazy-toX2sYnycCw-unsplash.jpeg';
 import { SignUpPageCont, SignUpFormCont, SignUpForm } from './style';
 
@@ -48,6 +50,13 @@ export default function SignUpPage() {
             Sign Up with Facebook
           </button>
         </SignUpForm>
+        <div className="alternative">
+          Returning user? Log in{' '}
+          <Link to="/login" className="link">
+            here
+          </Link>
+          .
+        </div>
       </SignUpFormCont>
       <div>
         <img src={nightBed}></img>

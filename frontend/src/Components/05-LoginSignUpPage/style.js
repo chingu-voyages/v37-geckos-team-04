@@ -13,6 +13,17 @@ const Container = styled.section`
   h1 {
     font-size: 2rem;
   }
+
+  .alternative {
+    margin-top: 0.75rem;
+
+    .link,
+    .link:visited {
+      text-decoration: none;
+      color: inherit;
+      font-weight: bold;
+    }
+  }
 `;
 
 export const LogInPageCont = styled(Container)``;

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import bed from '../../Images/becca-schultz-l6BenhrIc2w-unsplash.jpeg';
 import { LogInPageCont, LogInFormCont, LogInForm } from './style';
 
@@ -48,6 +50,13 @@ export default function LogInPage() {
             Log In with Facebook
           </button>
         </LogInForm>
+        <div className="alternative">
+          New user? Sign up{' '}
+          <Link to="/signup" className="link">
+            here
+          </Link>
+          .
+        </div>
       </LogInFormCont>
     </LogInPageCont>
   );
