@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { ReactComponent } from './googleLogo.svg';
+
 export const BtnsContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -15,6 +17,8 @@ const Button = styled.button`
   font-family: inherit;
   cursor: pointer;
 `;
+
+export const GoogleLogo = styled(ReactComponent)``;
 
 export const LogInBtn = styled(Button)``;
 
