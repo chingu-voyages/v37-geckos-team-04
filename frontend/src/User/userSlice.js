@@ -9,21 +9,20 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    signUpSuccess: (state) => {
-      state.user;
-      //   need to figure out what to configure state.user to;
+    signUpSuccess: (state, action) => {
+      // Figure out what the action object is
       state.isLoggedIn = true;
     },
-    signUpFailure: (state) => {
-      //   state.isLoggedIn = false;
-    },
-    logInSuccess: (state) => {
-      state.user;
+    // signUpFailure: (state) => {
+    //   //   state.isLoggedIn = false;
+    // },
+    logInSuccess: (state, action) => {
+      // Figure out what the action object is
       state.isLoggedIn = true;
     },
-    logInFailure: (state) => {
-      //   state.isLoggedIn = false;
-    },
+    // logInFailure: (state) => {
+    //   //   state.isLoggedIn = false;
+    // },
   },
 });
 
