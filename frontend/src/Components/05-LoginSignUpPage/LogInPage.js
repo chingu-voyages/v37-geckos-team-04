@@ -1,11 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 import bed from '../../Images/becca-schultz-l6BenhrIc2w-unsplash.jpeg';
 import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
 import { LogInPageCont, LogInFormCont, LogInForm } from './style';
 
 export default function LogInPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onChangeEmail = (e) => {
+    console.log(e.target.value);
+    setEmail(e.target.value);
+  };
+
+  const onChangePassword = (e) => {
+    console.log(e.target.value);
+    setPassword(e.target.value);
+  };
+
+  const onClick = (e) => {};
+
   return (
     <LogInPageCont>
       <div>
@@ -17,9 +33,19 @@ export default function LogInPage() {
         </Link>
         <h1>Log In</h1>
         <LogInForm>
-          <input placeholder="Email"></input>
-          <input placeholder="Password" type="password"></input>
-          <button>Log In</button>
+          <input
+            placeholder="Email"
+            type="text"
+            value={email}
+            onChange={onChangeEmail}
+          ></input>
+          <input
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={onChangePassword}
+          ></input>
+          <button onClick={onClick}>Log In</button>
           <GoogleButton />
           <button className="facebook-oauth">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14222 14222">
