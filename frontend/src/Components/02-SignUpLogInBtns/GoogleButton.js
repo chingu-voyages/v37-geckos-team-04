@@ -3,6 +3,8 @@ import React from 'react';
 import GoogleLogin from 'react-google-login';
 import { GoogleLogo } from './style';
 
+import { useLocation } from 'react-router-dom';
+
 const GoogleButton = () => {
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
@@ -36,6 +38,7 @@ const GoogleButton = () => {
 
   const googleFailure = () =>
     console.log('Sign in with Google was unsuccessful. Try again later.');
+  const location = useLocation();
 
   return (
     <GoogleLogin
@@ -47,7 +50,10 @@ const GoogleButton = () => {
       render={(renderProps) => (
         <button className="google-oauth" onClick={renderProps.onClick}>
           <GoogleLogo />
-          Log In with Google
+          {/* {console.log(location.pathname)} */}
+          {location.pathname === '/signup'
+            ? 'Sign Up with Google'
+            : 'Log In with Google'}
         </button>
       )}
     />
