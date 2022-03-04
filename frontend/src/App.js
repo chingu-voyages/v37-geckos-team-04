@@ -1,4 +1,4 @@
-import { GlobalStyle } from './AppStyle';
+import { GlobalStyle } from './style';
 import { Routes, Route } from 'react-router-dom';
 import LandingPage from './Components/04-LandingPage/LandingPage';
 import LogInPage from './Components/05-LoginSignUpPage/LogInPage';
