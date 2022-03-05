@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import nightBed from '../../Images/beazy-toX2sYnycCw-unsplash.jpeg';
@@ -6,6 +6,49 @@ import { SignUpPageCont, SignUpFormCont, SignUpForm } from './style';
 import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
 
 export default function SignUpPage() {
+  const [signUpInfo, setSignUpInfo] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setSignUpInfo((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  useEffect(() => {
+    if (
+      signUpInfo.firstName &&
+      signUpInfo.lastName &&
+      signUpInfo.email &&
+      signUpInfo.password &&
+      signUpInfo.passwordConfirmation
+    ) {
+      console.log(`First name state: `, signUpInfo.firstName);
+      console.log(`Last name state: `, signUpInfo.lastName);
+      console.log(`Email state: `, signUpInfo.email);
+      console.log(`Password state: `, signUpInfo.password);
+      console.log(
+        `Password confirmation state: `,
+        signUpInfo.passwordConfirmation
+      );
+    }
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (signUpInfo.password === signUpInfo.passwordConfirmation) {
+      return null;
+    } else {
+      alert('Passwords do not match');
+      return null;
+    }
+  };
+
   return (
     <SignUpPageCont>
       <SignUpFormCont>
@@ -14,12 +57,41 @@ export default function SignUpPage() {
         </Link>
         <h1>Sign Up</h1>
         <SignUpForm>
-          <input placeholder="First Name" className="first-name"></input>
-          <input placeholder="Last Name" className="last-name"></input>
-          <input placeholder="Email"></input>
-          <input placeholder="Password" type="password"></input>
-          <input placeholder="Confirm Password" type="password"></input>
-          <button>Sign Up</button>
+          <input
+            placeholder="First Name"
+            onChange={handleChange}
+            name="firstName"
+            value={signUpInfo.firstName}
+            className="first-name"
+          ></input>
+          <input
+            placeholder="Last Name"
+            onChange={handleChange}
+            name="lastName"
+            value={signUpInfo.lastName}
+            className="last-name"
+          ></input>
+          <input
+            placeholder="Email"
+            name="email"
+            value={signUpInfo.email}
+            onChange={handleChange}
+          ></input>
+          <input
+            placeholder="Password"
+            type="password"
+            name="password"
+            value={signUpInfo.password}
+            onChange={handleChange}
+          ></input>
+          <input
+            placeholder="Confirm Password"
+            type="password"
+            name="passwordConfirmation"
+            value={signUpInfo.passwordConfirmation}
+            onChange={handleChange}
+          ></input>
+          <button onClick={handleSubmit}>Sign Up</button>
           <GoogleButton />
           <button className="facebook-oauth">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14222 14222">
