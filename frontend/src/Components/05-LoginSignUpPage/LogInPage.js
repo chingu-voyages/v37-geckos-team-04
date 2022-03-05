@@ -1,26 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
 import bed from '../../Images/becca-schultz-l6BenhrIc2w-unsplash.jpeg';
 import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
 import { LogInPageCont, LogInFormCont, LogInForm } from './style';
 
 export default function LogInPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
 
-  const onChangeEmail = (e) => {
-    console.log(e.target.value);
-    setEmail(e.target.value);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLoginInfo((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const onChangePassword = (e) => {
-    console.log(e.target.value);
-    setPassword(e.target.value);
-  };
+  useEffect(() => {
+    console.log(`Email state: `, loginInfo.email);
+    console.log(`Password state: `, loginInfo.password);
+  });
 
-  const onClick = (e) => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <LogInPageCont>
@@ -36,16 +36,20 @@ export default function LogInPage() {
           <input
             placeholder="Email"
             type="text"
-            value={email}
-            onChange={onChangeEmail}
+            value={loginInfo.email}
+            name="email"
+            // onChange={handleEmailChange}
+            onChange={handleChange}
           ></input>
           <input
             placeholder="Password"
             type="password"
-            value={password}
-            onChange={onChangePassword}
+            value={loginInfo.password}
+            name="password"
+            // onChange={handlePasswordChange}
+            onChange={handleChange}
           ></input>
-          <button onClick={onClick}>Log In</button>
+          <button onClick={handleSubmit}>Log In</button>
           <GoogleButton />
           <button className="facebook-oauth">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14222 14222">
