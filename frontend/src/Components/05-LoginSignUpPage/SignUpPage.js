@@ -20,28 +20,46 @@ export default function SignUpPage() {
   };
 
   useEffect(() => {
-    if (
-      signUpInfo.firstName &&
-      signUpInfo.lastName &&
-      signUpInfo.email &&
-      signUpInfo.password &&
+    // if (
+    //   signUpInfo.firstName &&
+    //   signUpInfo.lastName &&
+    //   signUpInfo.email &&
+    //   signUpInfo.password &&
+    //   signUpInfo.passwordConfirmation
+    // ) {
+    //   console.log(`First name state: `, signUpInfo.firstName);
+    //   console.log(`Last name state: `, signUpInfo.lastName);
+    //   console.log(`Email state: `, signUpInfo.email);
+    //   console.log(`Password state: `, signUpInfo.password);
+    //   console.log(
+    //     `Password confirmation state: `,
+    //     signUpInfo.passwordConfirmation
+    //   );
+    // }
+    console.log(`First name state: `, signUpInfo.firstName);
+    console.log(`Last name state: `, signUpInfo.lastName);
+    console.log(`Email state: `, signUpInfo.email);
+    console.log(`Password state: `, signUpInfo.password);
+    console.log(
+      `Password confirmation state: `,
       signUpInfo.passwordConfirmation
-    ) {
-      console.log(`First name state: `, signUpInfo.firstName);
-      console.log(`Last name state: `, signUpInfo.lastName);
-      console.log(`Email state: `, signUpInfo.email);
-      console.log(`Password state: `, signUpInfo.password);
-      console.log(
-        `Password confirmation state: `,
-        signUpInfo.passwordConfirmation
-      );
-    }
+    );
   });
+
+  const validatePassword = () => {
+    const passwordsMatch = true;
+    return passwordsMatch;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const inputArr = e.target.parentElement.querySelectorAll('input');
 
-    if (signUpInfo.password === signUpInfo.passwordConfirmation) {
+    if (validatePassword()) {
+      for (const input of inputArr) {
+        setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
+      }
+
       return null;
     } else {
       alert('Passwords do not match');
