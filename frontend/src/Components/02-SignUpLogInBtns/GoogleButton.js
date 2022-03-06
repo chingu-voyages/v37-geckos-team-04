@@ -5,7 +5,7 @@ import { GoogleLogo } from './style';
 
 const GoogleButton = () => {
   const googleSuccess = async (res) => {
-    const result = res?.profileObj;
+    // const result = res?.profileObj;
     const token = res?.tokenId;
 
     // This request decodes the token from google; this will be later modified to have the backend decode the token

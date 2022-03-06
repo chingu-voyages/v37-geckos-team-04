@@ -9,7 +9,7 @@ export default function LogInPage() {
   return (
     <LogInPageCont>
       <div>
-        <img src={bed}></img>
+        <img src={bed} alt="bed"></img>
       </div>
       <LogInFormCont>
         <Link to="/" className="app-name">

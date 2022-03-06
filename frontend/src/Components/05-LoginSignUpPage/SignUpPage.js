@@ -41,7 +41,7 @@ export default function SignUpPage() {
         </div>
       </SignUpFormCont>
       <div>
-        <img src={nightBed}></img>
+        <img src={nightBed} alt="night bed"></img>
       </div>
     </SignUpPageCont>
   );
