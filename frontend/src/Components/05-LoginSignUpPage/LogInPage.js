@@ -38,7 +38,6 @@ export default function LogInPage() {
             type="text"
             value={loginInfo.email}
             name="email"
-            // onChange={handleEmailChange}
             onChange={handleChange}
             required
           ></input>
@@ -47,7 +46,6 @@ export default function LogInPage() {
             type="password"
             value={loginInfo.password}
             name="password"
-            // onChange={handlePasswordChange}
             onChange={handleChange}
             required
           ></input>
