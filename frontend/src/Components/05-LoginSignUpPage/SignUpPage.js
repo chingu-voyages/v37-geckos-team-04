@@ -47,8 +47,14 @@ export default function SignUpPage() {
   });
 
   const validatePassword = () => {
-    const passwordsMatch = true;
-    return passwordsMatch;
+    let passwordsMatch = true;
+
+    // check if state password and state passwordConfirmation match
+    if (signUpInfo.password === signUpInfo.passwordConfirmation) {
+      return passwordsMatch;
+    } else {
+      return !passwordsMatch;
+    }
   };
 
   const handleSubmit = (e) => {
@@ -59,10 +65,11 @@ export default function SignUpPage() {
       for (const input of inputArr) {
         setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
       }
-      return null;
+      alert('Passwords DO match!');
+      return;
     } else {
       alert('Passwords do not match');
-      return null;
+      return;
     }
   };
 
