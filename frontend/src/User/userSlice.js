@@ -13,20 +13,25 @@ export const userSlice = createSlice({
       // Figure out what the action object is
       state.isLoggedIn = true;
     },
-    // signUpFailure: (state) => {
-    //   //   state.isLoggedIn = false;
+    // signUpFailure: (state, action) => {
+    //   // state.isLoggedIn = false;
     // },
     logInSuccess: (state, action) => {
       // Figure out what the action object is
+      state.user = action.data;
       state.isLoggedIn = true;
     },
     // logInFailure: (state) => {
     //   //   state.isLoggedIn = false;
     // },
+    logOutSuccess: (state) => {
+      state.user = null;
+      state.isLoggedIn = false;
+    },
   },
 });
 
 // export const { signUpSuccess, signUpFailure, logInSuccess, logInFailure } =
-export const { signUpSuccess, logInSuccess } = userSlice.actions;
+export const { signUpSuccess, logInSuccess, logOutSuccess } = userSlice.actions;
 
 export default userSlice.reducer;

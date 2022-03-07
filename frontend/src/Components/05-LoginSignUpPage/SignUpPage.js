@@ -66,6 +66,7 @@ export default function SignUpPage() {
         setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
       }
       alert('Passwords DO match!');
+      // dispatch isLoggedIn success here??
       return;
     } else {
       alert('Passwords do not match');
