@@ -1,14 +1,9 @@
 import styled from 'styled-components';
-import nightSky from '../../Images/night-sky.jpeg';
 
 export const LandingPageCont = styled.section`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-image: url(${nightSky});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 `;
 
 export const MainContent = styled.main`
@@ -24,7 +19,7 @@ export const MainContent = styled.main`
   }
 
   button {
-    font-size: 2rem;
+    font-size: 2.25rem;
     text-align: center;
     padding: 0.25em 0.75em 0.25em 0.75em;
     border-radius: 40px;
