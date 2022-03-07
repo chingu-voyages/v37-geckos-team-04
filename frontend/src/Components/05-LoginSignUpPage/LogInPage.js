@@ -40,6 +40,7 @@ export default function LogInPage() {
             name="email"
             // onChange={handleEmailChange}
             onChange={handleChange}
+            required
           ></input>
           <input
             placeholder="Password"
@@ -48,6 +49,7 @@ export default function LogInPage() {
             name="password"
             // onChange={handlePasswordChange}
             onChange={handleChange}
+            required
           ></input>
           <button onClick={handleSubmit}>Log In</button>
           <GoogleButton />

@@ -59,7 +59,6 @@ export default function SignUpPage() {
       for (const input of inputArr) {
         setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
       }
-
       return null;
     } else {
       alert('Passwords do not match');
@@ -81,6 +80,7 @@ export default function SignUpPage() {
             name="firstName"
             value={signUpInfo.firstName}
             className="first-name"
+            required
           ></input>
           <input
             placeholder="Last Name"
@@ -88,12 +88,14 @@ export default function SignUpPage() {
             name="lastName"
             value={signUpInfo.lastName}
             className="last-name"
+            required
           ></input>
           <input
             placeholder="Email"
             name="email"
             value={signUpInfo.email}
             onChange={handleChange}
+            required
           ></input>
           <input
             placeholder="Password"
@@ -101,6 +103,7 @@ export default function SignUpPage() {
             name="password"
             value={signUpInfo.password}
             onChange={handleChange}
+            required
           ></input>
           <input
             placeholder="Confirm Password"
@@ -108,6 +111,7 @@ export default function SignUpPage() {
             name="passwordConfirmation"
             value={signUpInfo.passwordConfirmation}
             onChange={handleChange}
+            required
           ></input>
           <button onClick={handleSubmit}>Sign Up</button>
           <GoogleButton />
