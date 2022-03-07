@@ -7,7 +7,8 @@ export const HeaderCont = styled.header`
   align-items: center;
   /* padding: 2em 2em 2em 2em; */
   padding: 2em 0 2em 0;
-  background-color: #f2f4ff;
+  /* background-color: #f2f4ff; */
+  color: white;
   flex-shrink: 1;
 
   .app-name {
