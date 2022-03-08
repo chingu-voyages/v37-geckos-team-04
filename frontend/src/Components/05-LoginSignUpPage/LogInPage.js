@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import bed from '../../Images/becca-schultz-l6BenhrIc2w-unsplash.jpeg';
+// import bed from '../../Images/becca-schultz-l6BenhrIc2w-unsplash.jpeg';
 import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
 import { LogInPageCont, LogInFormCont, LogInForm } from './style';
 
