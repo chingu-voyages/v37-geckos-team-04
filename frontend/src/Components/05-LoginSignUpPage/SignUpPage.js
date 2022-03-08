@@ -20,22 +20,6 @@ export default function SignUpPage() {
   };
 
   useEffect(() => {
-    // if (
-    //   signUpInfo.firstName &&
-    //   signUpInfo.lastName &&
-    //   signUpInfo.email &&
-    //   signUpInfo.password &&
-    //   signUpInfo.passwordConfirmation
-    // ) {
-    //   console.log(`First name state: `, signUpInfo.firstName);
-    //   console.log(`Last name state: `, signUpInfo.lastName);
-    //   console.log(`Email state: `, signUpInfo.email);
-    //   console.log(`Password state: `, signUpInfo.password);
-    //   console.log(
-    //     `Password confirmation state: `,
-    //     signUpInfo.passwordConfirmation
-    //   );
-    // }
     console.log(`First name state: `, signUpInfo.firstName);
     console.log(`Last name state: `, signUpInfo.lastName);
     console.log(`Email state: `, signUpInfo.email);
