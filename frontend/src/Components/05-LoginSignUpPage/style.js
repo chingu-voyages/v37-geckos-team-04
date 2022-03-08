@@ -4,18 +4,36 @@ const Container = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  /* background-color: black; */
+  background-color: #31263e;
 
-  img {
+  /* img {
     display: block;
     height: 100vh;
+  } */
+
+  .image-cont {
+    /* margin: 0 !important; */
+    /* background-color: #31263e; */
+  }
+
+  .image {
+    /* display: block; */
+    height: 100vh;
+    width: 60vh;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin: 0 !important;
   }
 
   h1 {
     font-size: 2rem;
+    color: #f7f4f3;
   }
 
   .alternative {
     margin-top: 0.75rem;
+    color: #f7f4f3;
 
     .link,
     .link:visited {
@@ -34,6 +52,8 @@ const FormCont = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  /* background-color: #31263e; */
+  /* background-color: #f7f4f3; */
 
   justify-content: center;
   align-items: center;
@@ -44,10 +64,12 @@ const FormCont = styled.div`
     text-decoration: none;
     font-size: 1.125rem;
     font-style: italic;
+    color: #f7f4f3;
+    font-weight: bold;
   }
 
   .app-name:visited {
-    color: inherit;
+    color: #f7f4f3;
   }
 `;
 
@@ -72,9 +94,11 @@ const Form = styled.form`
     font-family: inherit;
     border: none;
     border-bottom: 1px solid black;
-    width: 16rem;
+    width: 15rem;
     height: 2rem;
     font-size: 1rem;
+    border-radius: 0.25rem;
+    padding-left: 1rem;
   }
 
   input:focus {
