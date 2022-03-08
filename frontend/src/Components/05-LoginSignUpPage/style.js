@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
 const Container = styled.section`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  /* display: flex;
+  flex-direction: row; */
+  display: grid;
+  grid-template-areas: '. img form .';
+  grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
+  /* justify-content: space-around; */
   /* background-color: black; */
   background-color: #31263e;
 
@@ -18,17 +21,14 @@ const Container = styled.section`
   }
 
   .image {
-    /* display: block; */
+    width: 100%;
     height: 100vh;
-    width: 60vh;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    margin: 0 !important;
-  }
-
-  h1 {
-    font-size: 2rem;
-    color: #f7f4f3;
+    grid-area: img;
+    /* display: block; */
+    /* height: 100vh;
+    width: 50vh; */
+    /* padding-left: 1.5rem; */
+    /* padding-right: 1.5rem; */
   }
 
   .alternative {
@@ -49,9 +49,9 @@ export const LogInPageCont = styled(Container)``;
 export const SignUpPageCont = styled(Container)``;
 
 const FormCont = styled.div`
+  grid-area: form;
   display: flex;
   flex-direction: column;
-  width: 100%;
   /* background-color: #31263e; */
   /* background-color: #f7f4f3; */
 
@@ -69,6 +69,11 @@ const FormCont = styled.div`
   }
 
   .app-name:visited {
+    color: #f7f4f3;
+  }
+
+  h1 {
+    font-size: 2rem;
     color: #f7f4f3;
   }
 `;
@@ -94,7 +99,7 @@ const Form = styled.form`
     font-family: inherit;
     border: none;
     border-bottom: 1px solid black;
-    width: 15rem;
+    width: 16rem;
     height: 2rem;
     font-size: 1rem;
     border-radius: 0.25rem;
@@ -123,7 +128,7 @@ const Form = styled.form`
     align-items: center;
 
     height: 2.5rem;
-    width: 16rem;
+    width: 17rem;
 
     column-gap: 0.75rem;
   }
