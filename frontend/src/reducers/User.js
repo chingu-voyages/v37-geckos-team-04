@@ -1,9 +1,10 @@
 // import React from 'react';
 import { isAuthenticated } from './userSlice';
+import * as api from './api';
 
 export const logIn = (formData, history) => async (dispatch) => {
   try {
-    const { data } = await api.logIn(formData);
+    const { data } = await api.login(formData);
     dispatch(isAuthenticated({ data }));
     // change path name to dashboard, once the private route for the dashboard is set up
     history.push('/');
@@ -14,7 +15,7 @@ export const logIn = (formData, history) => async (dispatch) => {
 
 export const signUp = (formData, history) => async (dispatch) => {
   try {
-    const { data } = await api.signUp(formData);
+    const { data } = await api.signup(formData);
     dispatch(isAuthenticated({ data }));
     history.push('/');
   } catch (error) {
