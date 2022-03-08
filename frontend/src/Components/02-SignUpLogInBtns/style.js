@@ -22,11 +22,15 @@ const Button = styled.button`
 
 export const GoogleLogo = styled(ReactComponent)``;
 
-export const LogInBtn = styled(Button)``;
+export const LogInBtn = styled(Button)`
+  color: #eca72c;
+`;
 
 export const SignUpBtn = styled(Button)`
   /* border: 0.125rem solid #96c5f7; */
   border: 0.125rem solid #eca72c;
+  /* border: 0.125rem solid white; */
+  /* color: #eca72c; */
   border-radius: 1.5rem;
   padding: 0.5rem 1.125rem 0.5rem 1.125rem;
 `;
