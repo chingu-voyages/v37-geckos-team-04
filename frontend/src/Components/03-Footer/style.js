@@ -6,4 +6,5 @@ export const FooterCont = styled.footer`
   justify-content: center;
   flex-shrink: 1;
   font-size: 0.75rem;
+  color: white;
 `;

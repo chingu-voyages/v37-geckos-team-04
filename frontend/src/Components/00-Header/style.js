@@ -13,5 +13,8 @@ export const HeaderCont = styled.header`
 
   .app-name {
     font-size: 2.25rem;
+    font-weight: 800;
+    /* letter-spacing: 1px; */
+    /* color: #eca72c; */
   }
 `;

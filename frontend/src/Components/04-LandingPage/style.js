@@ -20,21 +20,25 @@ export const MainContent = styled.main`
   flex-grow: 1;
 
   div {
-    font-size: 3rem;
+    color: white;
+    font-size: 2rem;
   }
 
   button {
-    font-size: 2rem;
+    font-size: 1.75rem;
     text-align: center;
-    padding: 0.25em 0.75em 0.25em 0.75em;
+    padding: 0.5em 1.125em 0.5em 1.125em;
     border-radius: 40px;
     border: none;
-    background-color: #96c5f7;
+    /* background-color: #96c5f7; */
+    background-color: #eca72c;
     color: white;
     /* color: #f2f4ff; */
     /* border: 2px solid #96c5f7;
     background-color: #f2f4ff;
     color: #96c5f7; */
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
   }
 `;

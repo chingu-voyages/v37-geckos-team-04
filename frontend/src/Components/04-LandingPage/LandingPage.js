@@ -8,7 +8,7 @@ export default function LandingPage() {
     <LandingPageCont>
       <Header />
       <MainContent>
-        <div>Call to action slogan here</div>
+        <div>Track your sleeping pattern with 'Sleep Tracker App Name'</div>
         <button>Get Started</button>
       </MainContent>
       <Footer />
