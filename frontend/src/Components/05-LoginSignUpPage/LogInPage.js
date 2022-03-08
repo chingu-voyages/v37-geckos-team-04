@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { isAuthenticated } from '../../reducers/userSlice';
+import { useDispatch } from 'react-redux';
+import { isAuthenticated } from '../../reducers/userSlice';
 
 import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
 import { LogInPageCont, LogInFormCont, LogInForm } from './style';
 
 export default function LogInPage() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
   const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
 
   const handleChange = (e) => {
@@ -22,7 +23,7 @@ export default function LogInPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch(isAuthenticated(formData));
+    dispatch(isAuthenticated(loginInfo));
   };
 
   return (

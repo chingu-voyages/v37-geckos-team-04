@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { isAuthenticated } from '../../reducers/userSlice';
 
 import { SignUpPageCont, SignUpFormCont, SignUpForm } from './style';
 import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
 
 export default function SignUpPage() {
+  const dispatch = useDispatch();
+
   const [signUpInfo, setSignUpInfo] = useState({
     firstName: '',
     lastName: '',
@@ -49,11 +53,7 @@ export default function SignUpPage() {
         setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
       }
       alert('Passwords DO match!');
-      // dispatch isLoggedIn success here??
-      return;
-    } else {
-      alert('Passwords do not match');
-      return;
+      return dispatch(isAuthenticated(signUpInfo));
     }
   };
 
