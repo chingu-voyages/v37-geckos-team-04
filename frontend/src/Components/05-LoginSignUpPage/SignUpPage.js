@@ -33,27 +33,42 @@ export default function SignUpPage() {
     );
   });
 
-  const validatePassword = () => {
-    let passwordsMatch = true;
-
-    // check if state password and state passwordConfirmation match
-    if (signUpInfo.password === signUpInfo.passwordConfirmation) {
-      return passwordsMatch;
-    } else {
-      return !passwordsMatch;
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const inputArr = e.target.parentElement.querySelectorAll('input');
 
-    if (validatePassword()) {
+    // in case we need to reset passwordsMatch and passwordsFilled
+    // let passwordsMatch, passwordsFilled;
+
+    const passwordsMatch =
+      signUpInfo.password === signUpInfo.passwordConfirmation;
+
+    const passwordsFilled =
+      signUpInfo.password && signUpInfo.passwordConfirmation ? true : false;
+
+    if (passwordsMatch && passwordsFilled) {
       for (const input of inputArr) {
         setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
       }
       alert('Passwords DO match!');
-      return dispatch(isAuthenticated(signUpInfo));
+      // dispatch(isAuthenticated(signUpInfo));
+      // console.log(`Passwords match: `, passwordsMatch);
+      // console.log(`Passwords filled in: `, passwordsFilled);
+      // passwordsMatch = null;
+      // passwordsFilled = null;
+      // console.log(`Passwords match: `, passwordsMatch);
+      // console.log(`Passwords filled in: `, passwordsFilled);
+      return;
+    } else {
+      !passwordsMatch
+        ? alert(`Passwords do not match.`)
+        : alert(`Password field is not filled in.`);
+      // console.log(`Passwords match: `, passwordsMatch);
+      // console.log(`Passwords filled in: `, passwordsFilled);
+      // passwordsMatch = null;
+      // passwordsFilled = null;
+      // console.log(`Passwords match: `, passwordsMatch);
+      // console.log(`Passwords filled in: `, passwordsFilled);
     }
   };
 
@@ -127,7 +142,7 @@ export default function SignUpPage() {
       </SignUpFormCont>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        dataName="Layer 1"
+        data-name="Layer 1"
         width="1013.94928"
         height="503"
         viewBox="0 0 1013.94928 503"

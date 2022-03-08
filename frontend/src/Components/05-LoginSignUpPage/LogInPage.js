@@ -31,7 +31,7 @@ export default function LogInPage() {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        dataName="Layer 1"
+        data-name="Layer 1"
         width="1057.21"
         height="835.54"
         viewBox="0 0 1057.21 835.54"
