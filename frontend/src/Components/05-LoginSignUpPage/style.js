@@ -4,12 +4,11 @@ const Container = styled.section`
   /* display: flex;
   flex-direction: row; */
   display: grid;
-  grid-template-areas: '. img form .';
   grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
-  /* justify-content: space-around; */
-  /* background-color: black; */
   background-color: #31263e;
 
+  /* justify-content: space-around; */
+  /* background-color: black; */
   /* img {
     display: block;
     height: 100vh;
@@ -44,9 +43,17 @@ const Container = styled.section`
   }
 `;
 
-export const LogInPageCont = styled(Container)``;
+export const LogInPageCont = styled(Container)`
+  /* background-color: #31263e; */
+  /* background-color: #eca72c; */
+  grid-template-areas: '. img form .';
+`;
 
-export const SignUpPageCont = styled(Container)``;
+export const SignUpPageCont = styled(Container)`
+  /* background-color: #eca72c; */
+  /* background-color: #31263e; */
+  grid-template-areas: '. form img .';
+`;
 
 const FormCont = styled.div`
   grid-area: form;
