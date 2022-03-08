@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 // import { isAuthenticated } from '../../reducers/userSlice';
-import bed from '../../Images/becca-schultz-l6BenhrIc2w-unsplash.jpeg';
 
 import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
 import { LogInPageCont, LogInFormCont, LogInForm } from './style';
@@ -28,8 +27,6 @@ export default function LogInPage() {
 
   return (
     <LogInPageCont>
-      {/* <div className="image-cont"> */}
-      {/* <img src={bed}></img> */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -339,7 +336,6 @@ export default function LogInPage() {
           fill="#eca72c"
         />
       </svg>
-      {/* </div> */}
       <LogInFormCont>
         <Link to="/" className="app-name">
           App name
