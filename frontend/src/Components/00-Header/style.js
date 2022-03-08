@@ -8,7 +8,11 @@ export const HeaderCont = styled.header`
   /* padding: 2em 2em 2em 2em; */
   padding: 2em 0 2em 0;
   /* background-color: #f2f4ff; */
-  color: white;
+  /* background-color: #31263e; */
+  /* mask-image: linear-gradient(to top, transparent 5%, black 100%); */
+  /* mask-image: linear-gradient(to top, transparent 2%, black 70%); */
+  /* color: white; */
+  color: #f7f4f3;
   flex-shrink: 1;
 
   .app-name {

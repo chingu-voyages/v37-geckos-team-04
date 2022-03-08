@@ -37,7 +37,8 @@ export const MainContent = styled.main`
   grid-template-rows: 1fr 0.75fr 0.5fr 0.5fr 1fr;
 
   .call-to-action {
-    color: white;
+    /* color: white; */
+    color: #f7f4f3;
     font-size: 2rem;
     grid-area: main;
     font-weight: 500;
@@ -51,7 +52,8 @@ export const MainContent = styled.main`
     font-size: 1.75rem;
     text-align: center;
     padding: 0.5em 1.125em 0.5em 1.125em;
-    border-radius: 40px;
+    /* border-radius: 40px; */
+    border-radius: 1.5rem;
     border: none;
     width: 15rem;
     /* background-color: #96c5f7; */

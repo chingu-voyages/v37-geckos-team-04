@@ -6,5 +6,10 @@ export const FooterCont = styled.footer`
   justify-content: center;
   flex-shrink: 1;
   font-size: 0.75rem;
-  color: white;
+  /* color: white; */
+  color: #f7f4f3;
+  height: 3rem;
+  background-color: #31263e;
+  align-items: center;
+  /* mask-image: linear-gradient(to bottom, transparent 5%, #31263e 20%); */
 `;
