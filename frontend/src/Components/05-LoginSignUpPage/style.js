@@ -67,7 +67,8 @@ const FormCont = styled.div`
     position: absolute;
     top: 2.5%;
     text-decoration: none;
-    font-size: 1.125rem;
+    /* font-size: 1.125rem; */
+    font-size: 1.5rem;
     font-style: italic;
     color: #eca72c;
     font-weight: bold;
