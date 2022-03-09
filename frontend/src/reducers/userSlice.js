@@ -22,7 +22,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { isAuthenticated, logOutSuccess, passwordVerification } =
-  userSlice.actions;
+// export const { isAuthenticated, logOutSuccess, passwordVerification } =
+export const { isAuthenticated, logOutSuccess } = userSlice.actions;
 
 export default userSlice.reducer;
