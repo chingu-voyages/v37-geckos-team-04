@@ -38,40 +38,10 @@ export default function SignUpPage() {
     e.preventDefault();
     const inputArr = e.target.parentElement.querySelectorAll('input');
 
-    // in case we need to reset passwordsMatch and passwordsFilled
-    // let passwordsMatch, passwordsFilled;
-
-    const passwordsMatch =
-      signUpInfo.password === signUpInfo.passwordConfirmation;
-
-    const passwordsFilled =
-      signUpInfo.password && signUpInfo.passwordConfirmation ? true : false;
-
-    if (passwordsMatch && passwordsFilled) {
-      for (const input of inputArr) {
-        setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
-      }
-      // alert('Passwords DO match!');
-      return dispatch(signUpAsync(signUpInfo));
-      // return signUpAsync(signUpInfo);
-
-      // console.log(`Passwords match: `, passwordsMatch);
-      // console.log(`Passwords filled in: `, passwordsFilled);
-      // passwordsMatch = null;
-      // passwordsFilled = null;
-      // console.log(`Passwords match: `, passwordsMatch);
-      // console.log(`Passwords filled in: `, passwordsFilled);
-    } else {
-      return !passwordsMatch
-        ? alert(`Passwords do not match.`)
-        : alert(`Password field is not filled in.`);
-      // console.log(`Passwords match: `, passwordsMatch);
-      // console.log(`Passwords filled in: `, passwordsFilled);
-      // passwordsMatch = null;
-      // passwordsFilled = null;
-      // console.log(`Passwords match: `, passwordsMatch);
-      // console.log(`Passwords filled in: `, passwordsFilled);
+    for (const input of inputArr) {
+      setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
     }
+    return dispatch(signUpAsync(signUpInfo));
   };
 
   return (
