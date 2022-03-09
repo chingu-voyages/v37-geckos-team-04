@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 // import { isAuthenticated } from '../../reducers/userSlice';
-import { signUp } from '../../reducers/User';
+import { signUpAsync } from '../../reducers/User';
 
 import { SignUpPageCont, SignUpFormCont, SignUpForm } from './style';
 import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
@@ -52,8 +52,8 @@ export default function SignUpPage() {
         setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
       }
       // alert('Passwords DO match!');
-      // return dispatch(isAuthenticated(signUpInfo));
-      return signUp(signUpInfo);
+      return dispatch(signUpAsync(signUpInfo));
+      // return signUpAsync(signUpInfo);
 
       // console.log(`Passwords match: `, passwordsMatch);
       // console.log(`Passwords filled in: `, passwordsFilled);
