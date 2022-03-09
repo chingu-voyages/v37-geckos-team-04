@@ -23,14 +23,14 @@ export default function SignUpPage() {
   };
 
   useEffect(() => {
-    console.log(`First name state: `, signUpInfo.firstName);
-    console.log(`Last name state: `, signUpInfo.lastName);
-    console.log(`Email state: `, signUpInfo.email);
-    console.log(`Password state: `, signUpInfo.password);
-    console.log(
-      `Password confirmation state: `,
-      signUpInfo.passwordConfirmation
-    );
+    // console.log(`First name state: `, signUpInfo.firstName);
+    // console.log(`Last name state: `, signUpInfo.lastName);
+    // console.log(`Email state: `, signUpInfo.email);
+    // console.log(`Password state: `, signUpInfo.password);
+    // console.log(
+    //   `Password confirmation state: `,
+    //   signUpInfo.passwordConfirmation
+    // );
   });
 
   const handleSubmit = (e) => {
@@ -50,17 +50,16 @@ export default function SignUpPage() {
       for (const input of inputArr) {
         setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
       }
-      alert('Passwords DO match!');
-      // dispatch(isAuthenticated(signUpInfo));
+      // alert('Passwords DO match!');
+      return dispatch(isAuthenticated(signUpInfo));
       // console.log(`Passwords match: `, passwordsMatch);
       // console.log(`Passwords filled in: `, passwordsFilled);
       // passwordsMatch = null;
       // passwordsFilled = null;
       // console.log(`Passwords match: `, passwordsMatch);
       // console.log(`Passwords filled in: `, passwordsFilled);
-      return;
     } else {
-      !passwordsMatch
+      return !passwordsMatch
         ? alert(`Passwords do not match.`)
         : alert(`Password field is not filled in.`);
       // console.log(`Passwords match: `, passwordsMatch);
