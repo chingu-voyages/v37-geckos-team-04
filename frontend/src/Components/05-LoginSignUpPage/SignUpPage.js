@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { isAuthenticated } from '../../reducers/userSlice';
+// import { isAuthenticated } from '../../reducers/userSlice';
+import { signUp } from '../../reducers/User';
 
 import { SignUpPageCont, SignUpFormCont, SignUpForm } from './style';
 import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
@@ -22,16 +23,16 @@ export default function SignUpPage() {
     setSignUpInfo((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  useEffect(() => {
-    // console.log(`First name state: `, signUpInfo.firstName);
-    // console.log(`Last name state: `, signUpInfo.lastName);
-    // console.log(`Email state: `, signUpInfo.email);
-    // console.log(`Password state: `, signUpInfo.password);
-    // console.log(
-    //   `Password confirmation state: `,
-    //   signUpInfo.passwordConfirmation
-    // );
-  });
+  // useEffect(() => {
+  //   console.log(`First name state: `, signUpInfo.firstName);
+  //   console.log(`Last name state: `, signUpInfo.lastName);
+  //   console.log(`Email state: `, signUpInfo.email);
+  //   console.log(`Password state: `, signUpInfo.password);
+  //   console.log(
+  //     `Password confirmation state: `,
+  //     signUpInfo.passwordConfirmation
+  //   );
+  // });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +52,9 @@ export default function SignUpPage() {
         setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
       }
       // alert('Passwords DO match!');
-      return dispatch(isAuthenticated(signUpInfo));
+      // return dispatch(isAuthenticated(signUpInfo));
+      return signUp(signUpInfo);
+
       // console.log(`Passwords match: `, passwordsMatch);
       // console.log(`Passwords filled in: `, passwordsFilled);
       // passwordsMatch = null;

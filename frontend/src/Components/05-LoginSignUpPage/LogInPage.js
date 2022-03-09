@@ -16,14 +16,14 @@ export default function LogInPage() {
     setLoginInfo((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  useEffect(() => {
-    console.log(`Email state: `, loginInfo.email);
-    console.log(`Password state: `, loginInfo.password);
-  });
+  // useEffect(() => {
+  //   console.log(`Email state: `, loginInfo.email);
+  //   console.log(`Password state: `, loginInfo.password);
+  // });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(isAuthenticated(loginInfo));
+    return dispatch(isAuthenticated(loginInfo));
   };
 
   return (
