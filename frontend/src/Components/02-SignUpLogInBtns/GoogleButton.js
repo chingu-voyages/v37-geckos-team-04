@@ -46,14 +46,10 @@ const GoogleButton = () => {
       onSuccess={googleSuccess}
       onFailure={googleFailure}
       cookiePolicy={'single_host_origin'}
-      isSignedIn={true}
       render={(renderProps) => (
         <button className="google-oauth" onClick={renderProps.onClick}>
           <GoogleLogo />
-          {/* {console.log(location.pathname)} */}
-          {location.pathname === '/signup'
-            ? 'Sign Up with Google'
-            : 'Log In with Google'}
+          Log In with Google
         </button>
       )}
     />
