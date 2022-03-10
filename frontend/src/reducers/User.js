@@ -29,10 +29,7 @@ export const signUpAsync = (formData) => async (dispatch) => {
   // console.log(formData);
   // debugger;
   try {
-    // const { data } = await api.signup(formData);
-    const data = await api.signup(formData);
-    console.log(data);
-    debugger;
+    const { data } = await api.signup(formData);
     dispatch(isAuthenticated({ data }));
     // history.push('/dashboard');
     window.history.push('/dashboard');
