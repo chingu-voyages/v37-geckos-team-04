@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // import { isAuthenticated } from '../../reducers/userSlice';
 import { signUpAsync } from '../../reducers/User';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +11,7 @@ import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
 export default function SignUpPage() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
+  const authenticated = useSelector((state) => state.user.authData);
 
   const [signUpInfo, setSignUpInfo] = useState({
     firstName: '',
@@ -34,7 +35,7 @@ export default function SignUpPage() {
     }
     // return dispatch(signUpAsync(signUpInfo));
     dispatch(signUpAsync(signUpInfo));
-    navigate('/dashboard');
+    if (authenticated) navigate('/dashboard');
   };
 
   return (

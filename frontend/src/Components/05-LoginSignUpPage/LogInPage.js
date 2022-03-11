@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { logInAsync } from '../../reducers/User';
@@ -11,6 +11,7 @@ import { LogInPageCont, LogInFormCont, LogInForm } from './style';
 export default function LogInPage() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
+  const authenticated = useSelector((state) => state.user.authData);
 
   const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
 
@@ -28,7 +29,7 @@ export default function LogInPage() {
     }
 
     dispatch(logInAsync(loginInfo));
-    navigate('/dashboard');
+    if (authenticated) navigate('/dashboard');
   };
 
   return (
