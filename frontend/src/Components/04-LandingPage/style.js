@@ -46,27 +46,25 @@ export const MainContent = styled.main`
     padding-bottom: 2rem;
   }
 
-  button {
+  .get-started {
     grid-area: button;
     align-self: flex-start;
-    font-size: 1.75rem;
     text-align: center;
-    padding: 0.5em 1.125em 0.5em 1.125em;
-    /* border-radius: 40px; */
     border-radius: 1.5rem;
     border: none;
-    width: 15rem;
-    /* background-color: #96c5f7; */
+    width: 14rem;
     background-color: #eca72c;
-    color: white;
     cursor: pointer;
-    /* color: #f2f4ff; */
-    /* border: 2px solid #96c5f7;
-    background-color: #f2f4ff;
-    color: #96c5f7; */
-    /* font-famil: 'Roboto', sans-serif; */
-    /* margin-top: 2rem; */
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+
+    button {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      border: none;
+      background-color: inherit;
+      color: white;
+      vertical-align: middle;
+      font-size: 1.75rem;
+      padding: 0.625rem 0 0.625rem 0;
+    }
   }
 `;
