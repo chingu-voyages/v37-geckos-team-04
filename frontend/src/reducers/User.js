@@ -1,6 +1,5 @@
 // import React from 'react';
 import * as api from '../api/Api';
-// import { useNavigate } from 'react-router-dom';
 import { isAuthenticated } from './userSlice';
 
 // export const logInAsync = (formData, history) => async (dispatch) => {
@@ -26,13 +25,13 @@ export const logInAsync = (formData) => async (dispatch) => {
 // console.log(formData, history);
 export const signUpAsync = (formData) => async (dispatch) => {
   // let navigate = useNavigate();
-  // console.log(formData);
   // debugger;
   try {
     const { data } = await api.signup(formData);
     dispatch(isAuthenticated({ data }));
     // history.push('/dashboard');
-    window.history.push('/dashboard');
+    // window.history.push('/dashboard');
+    // navigate(`/dashboard`);
   } catch (error) {
     // More specific error handling for signing up.
     // alert(`Email or password is incorrect. Please try again.`);

@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 // import { isAuthenticated } from '../../reducers/userSlice';
 import { signUpAsync } from '../../reducers/User';
+import { useNavigate } from 'react-router-dom';
 
 import { SignUpPageCont, SignUpFormCont, SignUpForm } from './style';
 import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
 
 export default function SignUpPage() {
   const dispatch = useDispatch();
+  let navigate = useNavigate();
 
   const [signUpInfo, setSignUpInfo] = useState({
     firstName: '',
@@ -41,7 +43,9 @@ export default function SignUpPage() {
     for (const input of inputArr) {
       setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
     }
-    return dispatch(signUpAsync(signUpInfo));
+    // return dispatch(signUpAsync(signUpInfo));
+    dispatch(signUpAsync(signUpInfo));
+    navigate('/dashboard');
   };
 
   return (
