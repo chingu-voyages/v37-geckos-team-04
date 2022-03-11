@@ -4,8 +4,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
-import userRoutes from './routes/user.js';
-
 const app = express();
 dotenv.config();
 
@@ -13,11 +11,9 @@ app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use(cors());
 
-app.use('/users', userRoutes);
-
 app.use('/', (req, res) => res.send('Welcome to the Sleep Tracker API.'));
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 mongoose
   .connect(process.env.CONNECTION_URL, {

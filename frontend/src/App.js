@@ -7,7 +7,7 @@ import LogInPage from './Components/05-LoginSignUpPage/LogInPage';
 import SignUpPage from './Components/05-LoginSignUpPage/SignUpPage';
 import Dashboard from './Components/06-Dashboard/Dashboard';
 
-export default function App() {
+function App() {
   return (
     <div className="App">
       <GlobalStyle />
