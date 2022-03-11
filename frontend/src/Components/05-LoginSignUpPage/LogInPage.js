@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { isAuthenticated } from '../../reducers/userSlice';
+import { useNavigate } from 'react-router-dom';
+
+import { logInAsync } from '../../reducers/User';
 
 import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
 import { LogInPageCont, LogInFormCont, LogInForm } from './style';
 
 export default function LogInPage() {
   const dispatch = useDispatch();
+  let navigate = useNavigate();
 
   const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
 
@@ -16,14 +19,16 @@ export default function LogInPage() {
     setLoginInfo((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  // useEffect(() => {
-  //   console.log(`Email state: `, loginInfo.email);
-  //   console.log(`Password state: `, loginInfo.password);
-  // });
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    return dispatch(isAuthenticated(loginInfo));
+    const inputArr = e.target.parentElement.querySelectorAll('input');
+
+    for (const input of inputArr) {
+      setLoginInfo((prevState) => ({ ...prevState, [input.name]: '' }));
+    }
+
+    dispatch(logInAsync(loginInfo));
+    navigate('/dashboard');
   };
 
   return (
@@ -46,9 +51,9 @@ export default function LogInPage() {
             y2="388.67"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0" stop-color="gray" stop-opacity="0.25" />
-            <stop offset="0.54" stop-color="gray" stop-opacity="0.12" />
-            <stop offset="1" stop-color="gray" stop-opacity="0.1" />
+            <stop offset="0" stopColor="gray" stopOpacity="0.25" />
+            <stop offset="0.54" stopColor="gray" stopOpacity="0.12" />
+            <stop offset="1" stopColor="gray" stopOpacity="0.1" />
           </linearGradient>
         </defs>
         <title>sleep analysis</title>
@@ -97,15 +102,15 @@ export default function LogInPage() {
           transform="translate(-71.39 -32.23)"
           fill="none"
           stroke="#535461"
-          stroke-miterlimit="10"
+          strokeMiterlimit="10"
         />
         <path
           d="M198.7,665.26s-53.44-69.06-48.56-137.14c2-28.57-4.71-57.11-20.21-81.21a222.5,222.5,0,0,0-25.11-32"
           transform="translate(-71.39 -32.23)"
           fill="none"
           stroke="#535461"
-          stroke-miterlimit="10"
-          stroke-width="2"
+          strokeMiterlimit="10"
+          strokeWidth="2"
         />
         <path
           d="M107.62,372c3.73,9.56-2.76,44.05-2.76,44.05S76.73,395.06,73,385.5A18.59,18.59,0,1,1,107.62,372Z"

@@ -25,17 +25,6 @@ export default function SignUpPage() {
     setSignUpInfo((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  // useEffect(() => {
-  //   console.log(`First name state: `, signUpInfo.firstName);
-  //   console.log(`Last name state: `, signUpInfo.lastName);
-  //   console.log(`Email state: `, signUpInfo.email);
-  //   console.log(`Password state: `, signUpInfo.password);
-  //   console.log(
-  //     `Password confirmation state: `,
-  //     signUpInfo.passwordConfirmation
-  //   );
-  // });
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const inputArr = e.target.parentElement.querySelectorAll('input');

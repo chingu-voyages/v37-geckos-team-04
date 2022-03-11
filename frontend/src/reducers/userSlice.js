@@ -8,7 +8,7 @@ export const userSlice = createSlice({
   },
   reducers: {
     isAuthenticated: (state, action) => {
-      console.log('signed up!');
+      console.log('signed up/logged in!');
       // Local storage is to maintain user's session and check if the token is saved in there
       localStorage.setItem('profile', JSON.stringify({ ...action.payload }));
       state.authData = { ...action.payload };
