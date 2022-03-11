@@ -149,15 +149,6 @@ const Form = styled.form`
       height: 1.5rem;
     }
   }
-
-  .facebook-oauth {
-    svg {
-      width: 1.75rem;
-      height: 1.75rem;
-    }
-
-    color: #1877f2;
-  }
 `;
 
 export const LogInForm = styled(Form)``;
