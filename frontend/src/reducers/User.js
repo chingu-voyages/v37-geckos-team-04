@@ -17,6 +17,8 @@ export const signUpAsync = (formData) => async (dispatch) => {
     const { data } = await api.signup(formData);
     dispatch(isAuthenticated({ data }));
   } catch (error) {
+    console.log(error);
+    console.log(error.message);
     // More specific error handling for signing up.
     // alert(`Email or password is incorrect. Please try again.`);
   }
