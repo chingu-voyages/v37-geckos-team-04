@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -12,9 +12,12 @@ export default function LogInPage() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
   const authenticated = useSelector((state) => state.user.authData);
-  // console.log(authenticated);
 
   const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
+
+  useEffect(() => {
+    if (authenticated) navigate('/dashboard');
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,15 +32,7 @@ export default function LogInPage() {
       setLoginInfo((prevState) => ({ ...prevState, [input.name]: '' }));
     }
 
-    // const response = dispatch(logInAsync(loginInfo));
     dispatch(logInAsync(loginInfo));
-    if (authenticated) navigate('/dashboard');
-    // if (authenticated) console.log('authenticated');
-
-    // console.log(response);
-    // debugger;
-    // console.log(authenticated);
-    // debugger;
   };
 
   return (

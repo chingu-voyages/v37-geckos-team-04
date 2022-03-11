@@ -24,16 +24,6 @@ export default function App() {
 }
 
 function PrivateRoute() {
-  // const authenticated = useSelector((state) => state.user.authData);
-
-  const auth = useAuth();
-
-  // return authenticated ? <Outlet /> : <Navigate to="/login" />;
-  return auth ? <Outlet /> : <Navigate to="/login" />;
-}
-
-function useAuth() {
-  // For now
-
-  return true;
+  const authenticated = useSelector((state) => state.user.authData);
+  return authenticated ? <Outlet /> : <Navigate to="/login" />;
 }

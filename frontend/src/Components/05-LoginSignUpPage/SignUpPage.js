@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-// import { isAuthenticated } from '../../reducers/userSlice';
 import { signUpAsync } from '../../reducers/User';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,6 +20,10 @@ export default function SignUpPage() {
     passwordConfirmation: '',
   });
 
+  useEffect(() => {
+    if (authenticated) navigate('/dashboard');
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSignUpInfo((prevState) => ({ ...prevState, [name]: value }));
@@ -33,9 +36,7 @@ export default function SignUpPage() {
     for (const input of inputArr) {
       setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
     }
-    // return dispatch(signUpAsync(signUpInfo));
     dispatch(signUpAsync(signUpInfo));
-    if (authenticated) navigate('/dashboard');
   };
 
   return (
