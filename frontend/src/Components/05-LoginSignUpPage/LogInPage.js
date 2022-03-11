@@ -12,6 +12,7 @@ export default function LogInPage() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
   const authenticated = useSelector((state) => state.user.authData);
+  // console.log(authenticated);
 
   const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
 
@@ -28,8 +29,15 @@ export default function LogInPage() {
       setLoginInfo((prevState) => ({ ...prevState, [input.name]: '' }));
     }
 
+    // const response = dispatch(logInAsync(loginInfo));
     dispatch(logInAsync(loginInfo));
     if (authenticated) navigate('/dashboard');
+    // if (authenticated) console.log('authenticated');
+
+    // console.log(response);
+    // debugger;
+    // console.log(authenticated);
+    // debugger;
   };
 
   return (

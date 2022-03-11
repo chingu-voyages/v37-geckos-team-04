@@ -6,6 +6,7 @@ export const logInAsync = (formData) => async (dispatch) => {
   try {
     const { data } = await api.login(formData);
     dispatch(isAuthenticated({ data }));
+    // debugger;
   } catch (error) {
     alert(`Email or password is incorrect. Please try again.`);
   }

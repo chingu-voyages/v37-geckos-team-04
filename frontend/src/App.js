@@ -1,5 +1,6 @@
 import { GlobalStyle } from './style';
 import { Routes, Route, Outlet, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import LandingPage from './Components/04-LandingPage/LandingPage';
 import LogInPage from './Components/05-LoginSignUpPage/LogInPage';
@@ -23,11 +24,16 @@ export default function App() {
 }
 
 function PrivateRoute() {
+  // const authenticated = useSelector((state) => state.user.authData);
+
   const auth = useAuth();
+
+  // return authenticated ? <Outlet /> : <Navigate to="/login" />;
   return auth ? <Outlet /> : <Navigate to="/login" />;
 }
 
 function useAuth() {
   // For now
+
   return true;
 }
