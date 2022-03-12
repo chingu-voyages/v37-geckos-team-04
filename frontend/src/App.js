@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import LandingPage from './Components/04-LandingPage/LandingPage';
 import LogInPage from './Components/05-LoginSignUpPage/LogInPage';
 import SignUpPage from './Components/05-LoginSignUpPage/SignUpPage';
+import Modal from './Components/06-Dashboard/Modal';
+import "antd/dist/antd.css";
 
 export default function App() {
   return (
@@ -12,10 +14,8 @@ export default function App() {
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/login" element={<LogInPage />}></Route>
         <Route path="/signup" element={<SignUpPage />}></Route>
+        <Route path="/modal" element={<Modal />} />
       </Routes>
-      {/* <LandingPage />
-      <LogInPage />
-      <SignUpPage /> */}
     </div>
   );
 }
