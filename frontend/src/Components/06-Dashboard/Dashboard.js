@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, Button, Space } from 'antd';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu } from 'antd';
 import {
   DesktopOutlined,
   PieChartOutlined,
@@ -29,46 +28,34 @@ export default function Dashboard() {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={collapsed => setCollapsed(collapsed)}>
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1" icon={<PieChartOutlined />}>
-              Dashboard
-            </Menu.Item>
-            <SubMenu key="sub1" icon={<DesktopOutlined />} title="Preferences">
-              <Menu.Item key="2" icon={<DashboardOutlined />}>Sleep Goal</Menu.Item>
-              <Menu.Item key="3" icon={<EyeInvisibleOutlined />}>Bed-Time</Menu.Item>
-              <Menu.Item key="4" icon={<EyeOutlined />}>Wake-Time</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="5" icon={<HistoryOutlined />}>
-              History
-            </Menu.Item>
-            <Menu.Item key="6" icon={<ArrowRightOutlined />}>
-              Log Out
-            </Menu.Item>
-          </Menu>
-        </Sider>
-      {/* <Space style={{float: "right", padding: '15px'}}>
-        <Button type="primary" onClick={showDrawer} shape="round" icon={<UserOutlined />} size="large" style={{ marginLeft: "auto" }}></Button>
-          
-        <Drawer
-          title="Drawer with extra actions"
-          placement={"left"}
-          width={500}
-          onClose={onClose}
-          visible={visible}
-          extra={
-            <Space>
-              <Button onClick={onClose}>Cancel</Button>
-              <Button type="primary" onClick={onClose}>
-                OK
-              </Button>
-            </Space>
-          }
-        >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </Drawer>
-      </Space> */}
+        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+          <Menu.Item key="1" icon={<PieChartOutlined />}>
+            Dashboard
+          </Menu.Item>
+          <SubMenu key="sub1" icon={<DesktopOutlined />} title="Preferences">
+            <Menu.Item key="2" icon={<DashboardOutlined />}>Sleep Goal</Menu.Item>
+            <Menu.Item key="3" icon={<EyeInvisibleOutlined />}>Bed-Time</Menu.Item>
+            <Menu.Item key="4" icon={<EyeOutlined />}>Wake-Time</Menu.Item>
+          </SubMenu>
+          <Menu.Item key="5" icon={<HistoryOutlined />}>
+            History
+          </Menu.Item>
+          <Menu.Item key="6" icon={<ArrowRightOutlined />}>
+            Log Out
+          </Menu.Item>
+        </Menu>
+      </Sider>
+      <Layout className="site-layout">
+        <Header className="site-layout-background" style={{ padding: 0, float: "right", color:"white", textAlign:"center" }}> 
+          Header content goes here.
+        </Header>
+        <Content style={{ margin: '0 16px' }}>
+          <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+            Content goes here.
+          </div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>Sleep Tracker ©2022 Created at Chingu!</Footer>
+      </Layout>
     </Layout>
   )
 } 
