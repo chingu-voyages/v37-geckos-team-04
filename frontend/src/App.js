@@ -4,6 +4,7 @@ import LandingPage from './Components/04-LandingPage/LandingPage';
 import LogInPage from './Components/05-LoginSignUpPage/LogInPage';
 import SignUpPage from './Components/05-LoginSignUpPage/SignUpPage';
 import Dashboard from './Components/06-Dashboard/Dashboard';
+import Modal from './Components/07-Dashboard/Modal';
 import "antd/dist/antd.css";
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/login" element={<LogInPage />}></Route>
         <Route path="/signup" element={<SignUpPage />}></Route>
+        <Route path="/modal" element={<Modal />} />
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="" element={<Dashboard />} />
         </Route>
@@ -31,4 +33,8 @@ function PrivateRoute() {
 function useAuth() {
   // For now
   return true;
+        <Route path="/modal" element={<Modal />} />
+      </Routes>
+    </div>
+  );
 }
