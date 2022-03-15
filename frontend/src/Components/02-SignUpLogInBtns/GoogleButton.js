@@ -3,7 +3,7 @@ import React from 'react';
 import GoogleLogin from 'react-google-login';
 import { GoogleLogo } from './style';
 
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 
 const GoogleButton = () => {
   const googleSuccess = async (res) => {
