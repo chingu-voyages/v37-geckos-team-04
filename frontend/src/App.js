@@ -5,7 +5,7 @@ import LogInPage from './Components/05-LoginSignUpPage/LogInPage';
 import SignUpPage from './Components/05-LoginSignUpPage/SignUpPage';
 import Dashboard from './Components/06-Dashboard/Dashboard';
 import Modal from './Components/07-Modal/Modal';
-import "antd/dist/antd.css";
+import 'antd/dist/antd.css';
 
 export default function App() {
   return (
@@ -26,15 +26,15 @@ export default function App() {
 
 function PrivateRoute() {
   // const auth = useAuth();
-  const auth =  true;
+  const auth = true;
   return auth ? <Outlet /> : <Navigate to="/login" />;
 }
 
-function useAuth() {
-  // For now
-  return true;
-        <Route path="/modal" element={<Modal />} />
-      </Routes>
-    </div>
-  );
-}
+// function useAuth() {
+//   // For now
+//   return true;
+//         <Route path="/modal" element={<Modal />} />
+//       </Routes>
+//     </div>
+//   );
+// }
