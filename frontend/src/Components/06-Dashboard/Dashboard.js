@@ -21,16 +21,16 @@ export default function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [visible, setVisible] = useState(false);
+  // const [visible, setVisible] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
 
-  const showDrawer = () => {
-    setVisible(true);
-  };
+  // const showDrawer = () => {
+  //   setVisible(true);
+  // };
 
-  const onClose = () => {
-    setVisible(false);
-  };
+  // const onClose = () => {
+  //   setVisible(false);
+  // };
 
   const logOutUser = () => {
     dispatch(logOutSuccess());

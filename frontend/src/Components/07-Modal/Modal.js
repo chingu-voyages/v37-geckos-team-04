@@ -22,7 +22,7 @@ export default function Dashboard() {
   const [visible, setVisible] = React.useState(false);
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const [selectedTime, setSelectedTime] = useState('00:00');
-
+  console.log(selectedTime);
   const showModal = () => {
     setVisible(true);
   };
