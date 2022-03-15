@@ -7,7 +7,7 @@ import LogInPage from './Components/05-LoginSignUpPage/LogInPage';
 import SignUpPage from './Components/05-LoginSignUpPage/SignUpPage';
 import Dashboard from './Components/06-Dashboard/Dashboard';
 import Modal from './Components/07-Modal/Modal';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
 
 export default function App() {
   return (
