@@ -1,16 +1,13 @@
 import mongoose from 'mongoose';
 
-// sleepStart/sleepEnd should just store the time
-// creator is the id of the person's profile id creating the sleep instance
-
 const sleepDataSchema = mongoose.Schema({
-  creator: String,
-  sleepStart: { type: Date, default: Date.now() },
-  sleepEnd: { type: Date, default: null },
-  date: { type: Date, default: Date.now() },
-  moodStart: Number,
+  creator: { type: String, required: true },
+  sleepStart: { type: String, required: true },
+  sleepEnd: String,
+  date: { type: String, required: true },
+  moodStart: { type: Number, required: true },
   moodWake: Number,
-  sleepGoal: Number,
+  sleepGoal: { type: Number, required: true },
   notes: [String],
 });
 
