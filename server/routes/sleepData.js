@@ -9,7 +9,7 @@ import {
 
 const router = express.Router();
 
-router.get('/', getSleep);
+router.get('/:userId', getSleep);
 router.post('/', createSleep);
 router.patch('/:id', updateSleep);
 router.delete('/:id', deleteSleep);
