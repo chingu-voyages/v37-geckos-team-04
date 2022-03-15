@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 
 const GoogleButton = () => {
   const googleSuccess = async (res) => {
-    const result = res?.profileObj;
+    // const result = res?.profileObj;
     const token = res?.tokenId;
 
     // This request decodes the token from google; this will be later modified to have the backend decode the token
@@ -38,7 +38,7 @@ const GoogleButton = () => {
 
   const googleFailure = () =>
     console.log('Sign in with Google was unsuccessful. Try again later.');
-  const location = useLocation();
+  // const location = useLocation();
 
   return (
     <GoogleLogin
