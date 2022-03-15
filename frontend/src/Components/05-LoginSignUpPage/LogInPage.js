@@ -16,7 +16,7 @@ export default function LogInPage() {
 
   useEffect(() => {
     if (authenticated) navigate('/dashboard');
-  }, [authenticated]);
+  }, [authenticated, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
