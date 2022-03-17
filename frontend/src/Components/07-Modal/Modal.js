@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TimePicker, Button, Modal, message, Space, DatePicker, Input, Dropdown, Menu } from "antd";
+import { TimePicker, Button, Modal, message, Space, DatePicker, Input, Radio, Menu } from "antd";
 import moment from "moment"; 
 
 export default function Dashboard() {
@@ -10,6 +10,8 @@ export default function Dashboard() {
   const [visible, setVisible] = React.useState(false);
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const [selectedTime, setSelectedTime] = useState("00:00");
+
+  const [mood, setMood] = useState(5);
 
   const showModal = () => {
     setVisible(true);
@@ -48,6 +50,10 @@ export default function Dashboard() {
     message.warning("Data not recorded!", 2);
   };
 
+  const onMoodChange = e => {
+    setMood(e.target.value);
+  };
+
   const emotions = (
     <Menu>
       <Menu.Item>
@@ -74,32 +80,46 @@ export default function Dashboard() {
         {buttonText}
       </Button>
       <Modal
+        title={buttonText}
         visible={visible}
         onOk={handleOk}
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
       >
         <Space direction='vertical'>
-          <DatePicker 
-            defaultValue={moment()}
-          />
-          <TimePicker 
-            autoFocus={true}
-            format="HH:mm"
-            defaultValue={moment()}
-            onSelect={(value) => {
-              const timeString = moment(value).format("HH:mm");
-              setSelectedTime(timeString);
-              console.log(timeString);
-            }}
-            onChange={success}
-            minuteStep={5}
-          />
-          <Space>
-            <Dropdown overlay={emotions} placement="bottomLeft">
-              <Button>Mood</Button>  
-            </Dropdown>
+
+          <Space direction='horizontal'>
+            Today's Date
+            <DatePicker defaultValue={moment()} />
           </Space>
+          
+          <Space direction='horizontal'>
+              {buttonText}Time
+              <TimePicker 
+                autoFocus={true}
+                format="HH:mm"
+                defaultValue={moment()}
+                onSelect={(value) => {
+                  const timeString = moment(value).format("HH:mm");
+                  setSelectedTime(timeString);
+                  console.log(timeString);
+                }}
+                onChange={success}
+                minuteStep={5}
+              />
+          </Space>
+          
+          <Space direction='horizontal'>
+            Select Mood
+            <Radio.Group onMoodChange={onMoodChange}>
+              <Radio value={5}>😇</Radio>
+              <Radio value={4}>😀</Radio>
+              <Radio value={3}>🙂</Radio>
+              <Radio value={2}>🙁</Radio>
+              <Radio value={1}>😖</Radio>
+            </Radio.Group>
+          </Space>
+          
           <Input placeholder="Additional notes" />
         </Space>
       </Modal>

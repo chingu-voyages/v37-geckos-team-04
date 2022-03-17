@@ -5,6 +5,7 @@ import LogInPage from './Components/05-LoginSignUpPage/LogInPage';
 import SignUpPage from './Components/05-LoginSignUpPage/SignUpPage';
 import Dashboard from './Components/06-Dashboard/Dashboard';
 import Modal from './Components/07-Modal/Modal';
+import { useSelector } from 'react-redux';
 import "antd/dist/antd.css";
 
 export default function App() {
@@ -16,25 +17,13 @@ export default function App() {
         <Route path="/login" element={<LogInPage />}></Route>
         <Route path="/signup" element={<SignUpPage />}></Route>
         <Route path="/modal" element={<Modal />} />
-        <Route path="/dashboard" element={<PrivateRoute />}>
-          <Route path="" element={<Dashboard />} />
-        </Route>
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </div>
   );
 }
 
 function PrivateRoute() {
-  // const auth = useAuth();
-  const auth =  true;
-  return auth ? <Outlet /> : <Navigate to="/login" />;
-}
-
-function useAuth() {
-  // For now
-  return true;
-        <Route path="/modal" element={<Modal />} />
-      </Routes>
-    </div>
-  );
+  const authenticated = useSelector((state) => state.user.authData);
+  return authenticated ? <Outlet /> : <Navigate to="/login" />;
 }
