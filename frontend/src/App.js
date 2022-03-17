@@ -1,6 +1,11 @@
+import React, { useEffect } from 'react';
+
 import { GlobalStyle } from './style';
 import { Routes, Route, Outlet, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { logInAsync } from './reducers/User';
+import { fetchCurrentUser } from './reducers/userSlice';
 
 import LandingPage from './Components/04-LandingPage/LandingPage';
 import LogInPage from './Components/05-LoginSignUpPage/LogInPage';
@@ -10,6 +15,15 @@ import Modal from './Components/07-Modal/Modal';
 import 'antd/dist/antd.min.css';
 
 export default function App() {
+  const dispatch = useDispatch();
+  const profile = localStorage.profile ? localStorage.profile : null;
+
+  useEffect(() => {
+    if (profile) {
+      dispatch(fetchCurrentUser(profile));
+    }
+  });
+
   return (
     <div className="App">
       <GlobalStyle />
@@ -27,6 +41,8 @@ export default function App() {
 }
 
 function PrivateRoute() {
-  const authenticated = useSelector((state) => state.user.authData);
+  const authenticated = useSelector((state) => {
+    return state.user.authData;
+  });
   return authenticated ? <Outlet /> : <Navigate to="/login" />;
 }
