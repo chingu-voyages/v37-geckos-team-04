@@ -5,11 +5,13 @@ import moment from "moment";
 export default function Dashboard() {
   const [isSleeping, setIsSleeping] = React.useState(false);
   const [buttonText, setButtonText] = React.useState('Start Sleep');
-  const [successMessage, setSuccessMessage] = React.useState("Sleep Session Started!");
+  const [successMessage, setSuccessMessage] = React.useState(
+    'Sleep Session Started!'
+  );
 
   const [visible, setVisible] = React.useState(false);
   const [confirmLoading, setConfirmLoading] = React.useState(false);
-  const [selectedTime, setSelectedTime] = useState("00:00");
+  const [selectedTime, setSelectedTime] = useState('00:00');
 
   const [mood, setMood] = useState(5);
 
@@ -22,16 +24,16 @@ export default function Dashboard() {
     setTimeout(() => {
       setVisible(false);
       setConfirmLoading(false);
-      
+
       if (isSleeping) {
-        setSuccessMessage("Sleep Session Started!")
+        setSuccessMessage('Sleep Session Started!');
         success(successMessage);
-        setIsSleeping(false)
+        setIsSleeping(false);
         setButtonText('Start Sleep');
       } else {
-        setSuccessMessage("Sleep Session Successfully Recorded!")
+        setSuccessMessage('Sleep Session Successfully Recorded!');
         success(successMessage);
-        setIsSleeping(true)
+        setIsSleeping(true);
         setButtonText('Stop Sleep');
       }
     }, 1000);
@@ -39,7 +41,7 @@ export default function Dashboard() {
 
   const handleCancel = () => {
     setVisible(false);
-    failure()
+    failure();
   };
 
   const success = (text) => {
@@ -47,7 +49,7 @@ export default function Dashboard() {
   };
 
   const failure = () => {
-    message.warning("Data not recorded!", 2);
+    message.warning('Data not recorded!', 2);
   };
 
   const onMoodChange = e => {
@@ -56,27 +58,23 @@ export default function Dashboard() {
 
   const emotions = (
     <Menu>
-      <Menu.Item>
-        😇
-      </Menu.Item>
-      <Menu.Item>
-        😀
-      </Menu.Item>
-      <Menu.Item>
-        🙂
-      </Menu.Item>
-      <Menu.Item>
-        🙁
-      </Menu.Item>
-      <Menu.Item>
-        😖
-      </Menu.Item>
+      <Menu.Item key={5}>😇</Menu.Item>
+      <Menu.Item key={4}>😀</Menu.Item>
+      <Menu.Item key={3}>🙂</Menu.Item>
+      <Menu.Item key={2}>🙁</Menu.Item>
+      <Menu.Item key={1}>😖</Menu.Item>
     </Menu>
   );
 
   return (
-    <div style={{textAlign:"right", backgroundColor: isSleeping === true? "#31263E": "#F7F4F3", height:"100vh"}}>
-      <Button type="primary" onClick={showModal} size={"large"} shape={"round"}>
+    <div
+      style={{
+        textAlign: 'right',
+        backgroundColor: isSleeping === true ? '#31263E' : '#F7F4F3',
+        height: '100vh',
+      }}
+    >
+      <Button type="primary" onClick={showModal} size={'large'} shape={'round'}>
         {buttonText}
       </Button>
       <Modal
@@ -124,5 +122,5 @@ export default function Dashboard() {
         </Space>
       </Modal>
     </div>
-  )
-} 
+  );
+}
