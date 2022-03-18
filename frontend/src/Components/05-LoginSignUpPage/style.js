@@ -123,6 +123,7 @@ const Form = styled.form`
     font-weight: bold;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
+    cursor: pointer;
   }
 
   button {
