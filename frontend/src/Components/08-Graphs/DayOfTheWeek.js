@@ -36,7 +36,9 @@ export default function DayOfTheWeek() {
 
   return (
     <DayOfTheWeekCont>
-      <div className="title">Which day of the week you get the most sleep</div>
+      <div className="title">
+        Which day of the week you get the most sleep on average
+      </div>
       <ComposedChart width={750} height={400} data={data}>
         <CartesianGrid stroke="#f5f5f5" />
         <XAxis dataKey="name" scale="band" />
