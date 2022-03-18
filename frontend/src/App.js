@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { GlobalStyle } from './style';
-import { Routes, Route, Outlet, Navigate } from 'react-router-dom';
+import { Routes, Route, Outlet, Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { logInAsync } from './reducers/User';
@@ -16,13 +16,15 @@ import 'antd/dist/antd.min.css';
 
 export default function App() {
   const dispatch = useDispatch();
+  let navigate = useNavigate();
   const profile = localStorage.profile ? localStorage.profile : null;
 
   useEffect(() => {
     if (profile) {
       dispatch(fetchCurrentUser(profile));
+      navigate('/dashboard');
     }
-  });
+  }, [profile, navigate]);
 
   return (
     <div className="App">
