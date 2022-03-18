@@ -10,6 +10,7 @@ import {
   ArrowRightOutlined,
 } from '@ant-design/icons';
 
+import Graphs from './Graphs';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logOutSuccess } from '../../reducers/userSlice';
@@ -84,7 +85,8 @@ export default function Dashboard() {
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}
           >
-            Content goes here.
+            {/* Content goes here. */}
+            <Graphs />
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
