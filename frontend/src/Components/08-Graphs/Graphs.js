@@ -1,12 +1,14 @@
 import React from 'react';
 
 import DayOfTheWeek from './DayOfTheWeek';
-import { GraphsCont } from './style';
+// import { GraphsCont } from './style';
 
 export default function Graphs() {
   return (
-    <GraphsCont>
+    // <GraphsCont>
+    <section>
       <DayOfTheWeek />
-    </GraphsCont>
+    </section>
+    // </GraphsCont>
   );
 }

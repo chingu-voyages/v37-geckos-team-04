@@ -8,6 +8,7 @@ import {
   CartesianGrid,
   Tooltip,
 } from 'recharts';
+import GraphTemplate from './GraphTemplate';
 
 import { DayOfTheWeekCont } from './style';
 
@@ -35,8 +36,16 @@ export default function DayOfTheWeek() {
   };
 
   return (
-    <DayOfTheWeekCont>
-      <div className="title">
+    // <DayOfTheWeekCont>
+    <div>
+      <GraphTemplate
+        width={750}
+        height={400}
+        title={'Which day of the week you get the most sleep on average'}
+        data={data}
+        customTooltip={CustomToolTip}
+      />
+      {/* <div className="title">
         Which day of the week you get the most sleep on average
       </div>
       <ComposedChart width={750} height={400} data={data}>
@@ -46,7 +55,8 @@ export default function DayOfTheWeek() {
         <Tooltip content={<CustomToolTip />} />
         <Bar dataKey="uv" barSize={70} fill="#cdcdcd" />
         <Line type="monotone" dataKey="uv" stroke="#413ea0" strokeWidth={2} />
-      </ComposedChart>
-    </DayOfTheWeekCont>
+      </ComposedChart> */}
+    </div>
+    // </DayOfTheWeekCont>
   );
 }
