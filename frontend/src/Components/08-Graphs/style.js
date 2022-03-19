@@ -1,20 +1,19 @@
 import styled from 'styled-components';
 
-// export const GraphsCont = styled.section`
-export const GraphsCont = styled.div`
+export const GraphsCont = styled.section`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+`;
+
+export const EachGraphCont = styled.div`
   /* .day-of-the-week {
   } */
+
   width: fit-content;
 
   .title {
     font-size: 1.125rem;
     text-align: center;
-  }
-
-  .y-axis-label {
-    /* writing-mode: vertical-rl;
-    text-orientation: sideways-right; */
-    /* font-size: 5em; */
   }
 `;
 
