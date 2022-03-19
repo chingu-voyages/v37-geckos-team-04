@@ -10,6 +10,12 @@ export const GraphsCont = styled.div`
     font-size: 1.125rem;
     text-align: center;
   }
+
+  .y-axis-label {
+    /* writing-mode: vertical-rl;
+    text-orientation: sideways-right; */
+    /* font-size: 5em; */
+  }
 `;
 
 // const EachGraphCont = styled.div`

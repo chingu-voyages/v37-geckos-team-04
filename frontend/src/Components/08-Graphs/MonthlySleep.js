@@ -17,7 +17,8 @@ export default function MonthlySleep() {
       return (
         <div className="custom-tooltip">
           <div className="label">
-            <b>{label}</b>: {payload[0].value} hours
+            {/* <b>{label}</b>: {payload[0].value} hours */}
+            {payload[0].value} hours
           </div>
         </div>
       );
@@ -31,6 +32,7 @@ export default function MonthlySleep() {
         height={400}
         title={'Monthly average daily sleep duration'}
         data={data}
+        yAxis={'Hours on average'}
         customTooltip={CustomToolTip}
       />
     </>

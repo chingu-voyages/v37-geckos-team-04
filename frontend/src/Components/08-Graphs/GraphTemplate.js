@@ -12,7 +12,7 @@ import {
 import { GraphsCont } from './style';
 
 export default function GraphTemplate(props) {
-  const { width, height, title, data, customTooltip } = props;
+  const { width, height, title, data, yAxis, customTooltip } = props;
   // console.log(width);
   // console.log(height);
   // console.log(title);
@@ -27,7 +27,10 @@ export default function GraphTemplate(props) {
       <ComposedChart width={width} height={height} data={data}>
         <CartesianGrid stroke="#f5f5f5" />
         <XAxis dataKey="name" scale="band" />
-        <YAxis />
+        <YAxis
+          label={{ value: yAxis, angle: -90 }}
+          // label={<customYAxisLabel />}
+        />
         {/* <Tooltip content={<CustomToolTip />} /> */}
         <Tooltip content={customTooltip} />
         {/* <Tooltip /> */}
