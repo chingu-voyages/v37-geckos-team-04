@@ -4,7 +4,7 @@ import { MonthlySleepCont } from './style';
 
 export default function MonthlySleep() {
   // data should be fetched from the user's sleep data from the past month
-  // 'uv' should be fetched from the backend, just for those past 7 days
+  // 'uv' should be fetched from the backend, just for those past 30 days
   // 'pv' isn't necessary for our needs here
 
   const data = [
@@ -15,6 +15,7 @@ export default function MonthlySleep() {
     { name: 'Thursdays', uv: 7.3, pv: 0, amt: 24 },
     { name: 'Fridays', uv: 6.2, pv: 0, amt: 24 },
     { name: 'Saturdays', uv: 9.4, pv: 0, amt: 24 },
+    // {name: `Week 1`, uv: }
   ];
 
   const CustomToolTip = ({ active, payload, label }) => {
