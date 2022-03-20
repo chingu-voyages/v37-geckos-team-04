@@ -4,8 +4,11 @@ export const GraphsCont = styled.section`
   display: grid;
   /* grid-template-columns: repeat(2, 1fr); */
   grid-template-areas:
-    'weekly weekly weekly streak'
-    'monthly monthly dayOfTheWeek dayOfTheWeek';
+    /* 'weekly weekly streak streak' */
+    'weekly weekly'
+    'monthly dayOfTheWeek';
+
+  justify-items: center;
 `;
 
 export const GraphTemplateCont = styled.div`
@@ -25,6 +28,7 @@ const EachGraphCont = styled.div``;
 
 export const WeeklySleepCont = styled(EachGraphCont)`
   grid-area: weekly;
+  /* justify-self: center; */
 `;
 
 export const MonthlySleepCont = styled(EachGraphCont)`
@@ -35,9 +39,6 @@ export const DayOfTheWeekCont = styled(EachGraphCont)`
   grid-area: dayOfTheWeek;
 `;
 
-export const StreakCont = styled(EachGraphCont)`
-  grid-area: streak;
-`;
 // const EachGraphCont = styled.div`
 //   width: fit-content;
 
