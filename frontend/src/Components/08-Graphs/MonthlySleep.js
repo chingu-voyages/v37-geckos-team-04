@@ -1,5 +1,6 @@
 import React from 'react';
 import GraphTemplate from './GraphTemplate';
+import { MonthlySleepCont } from './style';
 
 export default function MonthlySleep() {
   const data = [
@@ -26,7 +27,7 @@ export default function MonthlySleep() {
   };
 
   return (
-    <>
+    <MonthlySleepCont>
       <GraphTemplate
         width={750}
         height={400}
@@ -35,6 +36,6 @@ export default function MonthlySleep() {
         yAxis={'Hours on average'}
         customTooltip={CustomToolTip}
       />
-    </>
+    </MonthlySleepCont>
   );
 }

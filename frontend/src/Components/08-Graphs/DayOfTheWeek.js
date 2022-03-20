@@ -37,8 +37,7 @@ export default function DayOfTheWeek() {
   };
 
   return (
-    // <DayOfTheWeekCont>
-    <>
+    <DayOfTheWeekCont>
       <GraphTemplate
         width={750}
         height={400}
@@ -58,7 +57,6 @@ export default function DayOfTheWeek() {
         <Bar dataKey="uv" barSize={70} fill="#cdcdcd" />
         <Line type="monotone" dataKey="uv" stroke="#413ea0" strokeWidth={2} />
       </ComposedChart> */}
-    </>
-    // </DayOfTheWeekCont>
+    </DayOfTheWeekCont>
   );
 }

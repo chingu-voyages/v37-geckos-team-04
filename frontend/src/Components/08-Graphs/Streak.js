@@ -1,5 +1,6 @@
 import React from 'react';
+import { StreakCont } from './style';
 
 export default function Streak() {
-  return <div>Streak</div>;
+  return <StreakCont>Streak</StreakCont>;
 }
