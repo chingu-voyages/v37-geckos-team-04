@@ -3,9 +3,7 @@ import styled from 'styled-components';
 export const GraphsCont = styled.section`
   box-sizing: border-box;
   display: grid;
-  /* grid-template-columns: repeat(2, 1fr); */
   grid-template-areas:
-    /* 'weekly weekly streak streak' */
     'weekly weekly'
     'monthly dayOfTheWeek';
 

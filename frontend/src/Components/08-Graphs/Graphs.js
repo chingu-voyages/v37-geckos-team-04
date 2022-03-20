@@ -8,11 +8,9 @@ import { GraphsCont } from './style';
 export default function Graphs() {
   return (
     <GraphsCont>
-      {/* // <section> */}
       <WeeklySleep />
       <MonthlySleep />
       <DayOfTheWeek />
-      {/* // </section> */}
     </GraphsCont>
   );
 }
