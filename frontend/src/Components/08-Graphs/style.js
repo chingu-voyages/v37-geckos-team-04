@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const GraphsCont = styled.section`
+  box-sizing: border-box;
   display: grid;
   /* grid-template-columns: repeat(2, 1fr); */
   grid-template-areas:
@@ -9,15 +10,12 @@ export const GraphsCont = styled.section`
     'monthly dayOfTheWeek';
 
   justify-items: center;
+  width: 100%;
+  row-gap: 4rem;
+  column-gap: 4rem;
 `;
 
 export const GraphTemplateCont = styled.div`
-  /* .day-of-the-week {
-  } */
-
-  /* width: fit-content; */
-  /* width: max-content; */
-
   .title {
     font-size: 1.125rem;
     text-align: center;
@@ -27,32 +25,16 @@ export const GraphTemplateCont = styled.div`
 const EachGraphCont = styled.div``;
 
 export const WeeklySleepCont = styled(EachGraphCont)`
+  width: 100%;
   grid-area: weekly;
-  /* justify-self: center; */
 `;
 
 export const MonthlySleepCont = styled(EachGraphCont)`
+  width: 100%;
   grid-area: monthly;
 `;
 
 export const DayOfTheWeekCont = styled(EachGraphCont)`
+  width: 100%;
   grid-area: dayOfTheWeek;
 `;
-
-// const EachGraphCont = styled.div`
-//   width: fit-content;
-
-//   .title {
-//     font-size: 1.125rem;
-//     text-align: center;
-//   }
-// `;
-
-// export const DayOfTheWeekCont = styled(EachGraphCont)`
-//   /* width: fit-content;
-
-//   .title {
-//     font-size: 1.125rem;
-//     text-align: center;
-//   } */
-// `;

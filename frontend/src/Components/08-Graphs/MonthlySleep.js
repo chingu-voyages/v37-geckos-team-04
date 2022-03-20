@@ -29,7 +29,7 @@ export default function MonthlySleep() {
   return (
     <MonthlySleepCont>
       <GraphTemplate
-        width={750}
+        // width={750}
         height={400}
         title={'Monthly average daily sleep duration'}
         data={data}

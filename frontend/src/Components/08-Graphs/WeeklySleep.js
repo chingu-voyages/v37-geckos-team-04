@@ -29,7 +29,7 @@ export default function WeeklySleep() {
   return (
     <WeeklySleepCont>
       <GraphTemplate
-        width={750}
+        // width={750}
         height={400}
         title={'Weekly average daily sleep duration'}
         data={data}
