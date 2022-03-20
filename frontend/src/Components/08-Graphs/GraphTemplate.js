@@ -9,7 +9,7 @@ import {
   Tooltip,
 } from 'recharts';
 
-import { EachGraphCont } from './style';
+import { GraphTemplateCont } from './style';
 
 export default function GraphTemplate(props) {
   const { width, height, title, data, yAxis, customTooltip } = props;
@@ -22,7 +22,7 @@ export default function GraphTemplate(props) {
   // debugger;
 
   return (
-    <EachGraphCont>
+    <GraphTemplateCont>
       <div className="title">{title}</div>
       <ComposedChart width={width} height={height} data={data}>
         <CartesianGrid stroke="#f5f5f5" />
@@ -38,6 +38,6 @@ export default function GraphTemplate(props) {
         <Line type="monotone" dataKey="uv" stroke="#413ea0" strokeWidth={2} />
         {/* <GraphTemplate /> */}
       </ComposedChart>
-    </EachGraphCont>
+    </GraphTemplateCont>
   );
 }
