@@ -4,6 +4,11 @@ import GraphTemplate from './GraphTemplate';
 import { DayOfTheWeekCont } from './style';
 
 export default function DayOfTheWeek() {
+  // 'uv' should be calculated like so:
+  // (1) gather all the data from all sundays, mondays, tuesdays, etc.
+  // (2) for each of those days, calculate the average of that day's sleep duration--that average should be 'uv'
+  // 'pv' isn't necessary for our needs here
+
   const data = [
     { name: 'Sundays', uv: 8.7, pv: 0, amt: 24 },
     { name: 'Mondays', uv: 7.4, pv: 0, amt: 24 },

@@ -3,6 +3,10 @@ import GraphTemplate from './GraphTemplate';
 import { MonthlySleepCont } from './style';
 
 export default function MonthlySleep() {
+  // data should be fetched from the user's sleep data from the past month
+  // 'uv' should be fetched from the backend, just for those past 7 days
+  // 'pv' isn't necessary for our needs here
+
   const data = [
     { name: 'Sundays', uv: 8.7, pv: 0, amt: 24 },
     { name: 'Mondays', uv: 7.4, pv: 0, amt: 24 },

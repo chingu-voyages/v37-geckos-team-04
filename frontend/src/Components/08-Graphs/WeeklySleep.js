@@ -3,6 +3,10 @@ import GraphTemplate from './GraphTemplate';
 import { WeeklySleepCont } from './style';
 
 export default function WeeklySleep() {
+  // data should be fetched from the user's sleep data from the past week
+  //'uv' should be fetched from the backend, just for those past 30 days
+  // 'pv' isn't necessary for our needs here
+
   const data = [
     { name: 'Sundays', uv: 8.7, pv: 0, amt: 24 },
     { name: 'Mondays', uv: 7.4, pv: 0, amt: 24 },
