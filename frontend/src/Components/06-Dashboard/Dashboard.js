@@ -53,7 +53,7 @@ export default function Dashboard() {
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          {/* <Modal /> */}
+          <Modal />
           <Content style={{ margin: '25px 35px' }}>
               <Outlet />  
           </Content>

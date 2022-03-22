@@ -71,7 +71,6 @@ export default function Dashboard() {
       style={{
         textAlign: 'right',
         backgroundColor: isSleeping === true ? '#31263E' : '#F7F4F3',
-        height: '100vh',
       }}
     >
       <Button type="primary" onClick={showModal} size={'large'} shape={'round'}>
