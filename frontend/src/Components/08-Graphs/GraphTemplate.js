@@ -31,4 +31,8 @@ export default function GraphTemplate(props) {
       </ResponsiveContainer>
     </GraphTemplateCont>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> feature/graphs

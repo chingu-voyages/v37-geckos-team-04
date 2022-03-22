@@ -11,9 +11,6 @@ export const SignUpLoginBtns = () => {
       <Link to="/signup">
         <SignUpBtn>Sign Up</SignUpBtn>
       </Link>
-      {/* <Outlet /> */}
-      {/* <LogInBtn>Log In</LogInBtn>
-      <SignUpBtn>Sign Up</SignUpBtn> */}
     </BtnsContainer>
   );
 };

@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
 import userRoutes from './routes/user.js';
+import sleepRoutes from './routes/sleepData.js';
 
 const app = express();
 dotenv.config();
@@ -13,6 +14,7 @@ app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use(cors());
 
+app.use('/users/sleepData', sleepRoutes);
 app.use('/users', userRoutes);
 
 app.use('/', (req, res) => res.send('Welcome to the Sleep Tracker API.'));

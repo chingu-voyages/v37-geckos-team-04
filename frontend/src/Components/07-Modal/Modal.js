@@ -3,18 +3,22 @@ import { TimePicker, Button, Modal, message, Space, DatePicker, Input, Radio, Me
 import moment from "moment"; 
 
 export default function Dashboard() {
-  const [isSleeping, setIsSleeping] = React.useState(false);
-  const [buttonText, setButtonText] = React.useState('Start Sleep');
-  const [successMessage, setSuccessMessage] = React.useState(
+  const [isSleeping, setIsSleeping] = useState(false);
+  const [buttonText, setButtonText] = useState('Start Sleep');
+  const [successMessage, setSuccessMessage] = useState(
     'Sleep Session Started!'
   );
 
-  const [visible, setVisible] = React.useState(false);
-  const [confirmLoading, setConfirmLoading] = React.useState(false);
+  const [visible, setVisible] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
   const [selectedTime, setSelectedTime] = useState('00:00');
+<<<<<<< HEAD
 
   const [mood, setMood] = useState(5);
 
+=======
+  console.log(selectedTime);
+>>>>>>> feature/graphs
   const showModal = () => {
     setVisible(true);
   };

@@ -1,9 +1,14 @@
 import mongoose from 'mongoose';
 
 const sleepDataSchema = mongoose.Schema({
-  start: Date,
-  end: Date,
-  duration: Number,
+  creator: { type: String, required: true },
+  sleepStart: { type: String, required: true },
+  sleepEnd: String,
+  date: { type: String, required: true },
+  moodStart: { type: Number, required: true },
+  moodWake: Number,
+  sleepGoal: { type: Number, required: true },
+  notes: [String],
 });
 
-export default sleepDataSchema;
+export default mongoose.model('SleepData', sleepDataSchema);

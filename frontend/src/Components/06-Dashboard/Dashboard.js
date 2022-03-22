@@ -7,7 +7,7 @@ import {
   HistoryOutlined,
   EyeOutlined,
   EyeInvisibleOutlined,
-  ArrowRightOutlined
+  ArrowRightOutlined,
 } from '@ant-design/icons';
 import { Link, Outlet } from 'react-router-dom';
 
@@ -15,19 +15,32 @@ import Modal from '../07-Modal/Modal';
 import History from '../09-History/History';
 import Temp from '../08-Graphs/Temp';
 
+import Graphs from '../08-Graphs/Graphs';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logOutSuccess } from '../../reducers/userSlice';
+
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 export default function Dashboard() {
-  const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // const [visible, setVisible] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
 
-  const showDrawer = () => {
-    setVisible(true);
-  };
-  
-  const onClose = () => {
-    setVisible(false);
+  // const showDrawer = () => {
+  //   setVisible(true);
+  // };
+
+  // const onClose = () => {
+  //   setVisible(false);
+  // };
+
+  const logOutUser = () => {
+    dispatch(logOutSuccess());
+    navigate('/');
   };
 
   return (
