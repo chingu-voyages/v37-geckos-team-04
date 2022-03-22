@@ -10,16 +10,15 @@ export const sleepSlice = createSlice({
     create: (state, action) => {
       state.data.push(action.payload);
     },
-    update: (state, action) => {
-      let sleepInstance = state.data.find(
-        (sleep) => sleep._id === action.payload._id
-      );
-      if (sleepInstance) {
-        return { ...state, ...action.payload };
-      }
+    update(state, action) {
+      state.data.find((sleep) => {
+        if (sleep._id === action.payload._id) {
+          Object.assign(sleep, { ...action.payload });
+        }
+      });
     },
     remove: (state, action) => {
-      state.data.filter((sleep) => sleep._id === action.payload._id);
+      state.data = state.data.filter((sleep) => sleep._id !== action.payload);
     },
   },
 });
