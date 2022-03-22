@@ -12,13 +12,8 @@ export default function Dashboard() {
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [selectedTime, setSelectedTime] = useState('00:00');
-<<<<<<< HEAD
-
   const [mood, setMood] = useState(5);
 
-=======
-  console.log(selectedTime);
->>>>>>> feature/graphs
   const showModal = () => {
     setVisible(true);
   };

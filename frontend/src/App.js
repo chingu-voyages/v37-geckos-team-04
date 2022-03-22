@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { logInAsync } from './reducers/User';
 import { fetchCurrentUser } from './reducers/userSlice';
-
 import LandingPage from './Components/04-LandingPage/LandingPage';
 import LogInPage from './Components/05-LoginSignUpPage/LogInPage';
 import SignUpPage from './Components/05-LoginSignUpPage/SignUpPage';

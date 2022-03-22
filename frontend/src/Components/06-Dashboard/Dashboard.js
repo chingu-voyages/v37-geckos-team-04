@@ -26,17 +26,8 @@ const { SubMenu } = Menu;
 export default function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   // const [visible, setVisible] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
-
-  // const showDrawer = () => {
-  //   setVisible(true);
-  // };
-
-  // const onClose = () => {
-  //   setVisible(false);
-  // };
 
   const logOutUser = () => {
     dispatch(logOutSuccess());
@@ -70,7 +61,6 @@ export default function Dashboard() {
           <Content style={{ margin: '25px 35px' }}>
               <Outlet />  
           </Content>
-          {/* <Footer style={{ textAlign: 'center' }}>Sleep Tracker ©2022 Created at Chingu!</Footer> */}
         </Layout>
       </Layout>
   )
