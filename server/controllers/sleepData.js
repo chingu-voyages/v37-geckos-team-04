@@ -1,18 +1,8 @@
 import SleepData from '../models/sleepData.js';
-import User from '../models/user.js';
-// Import the user schema and use the person's id to find all sleep instances
-// created by that user.
 
 export const getSleep = async (req, res) => {
   const { userId } = req.params;
   try {
-    // Query and return all sleep instances created by a person using their user id
-    // all sleep instances will have 2 id fields (_id = sleep instance's id, creator = user id)
-    // simply enter the user's profile id as a route param.
-    // localhost:4000/users/sleepData/:userId
-    // The query should be SleepData.findBy({ creator: userId })
-    const user = await User.findById({ _id: userId });
-    if (!user) return res.status(400).send('No user found with that id.');
     const data = await SleepData.find({ creator: userId });
     res.status(200).json(data);
   } catch (error) {
@@ -22,7 +12,6 @@ export const getSleep = async (req, res) => {
 
 export const createSleep = async (req, res) => {
   const sleepData = req.body;
-
   const newSleep = new SleepData({ ...sleepData });
 
   try {
@@ -36,8 +25,6 @@ export const createSleep = async (req, res) => {
 export const updateSleep = async (req, res) => {
   const sleepData = req.body;
   const { id } = req.params;
-  // an update operation should replace ALL current data with incoming data
-  // if there's time, possibly concat notes??
   try {
     const sleepInstance = await SleepData.findByIdAndUpdate(
       { _id: id },
