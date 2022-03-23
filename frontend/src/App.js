@@ -4,8 +4,8 @@ import { GlobalStyle } from './style';
 import { Routes, Route, Outlet, Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { logInAsync } from './reducers/User';
-import { fetchCurrentUser } from './reducers/userSlice';
+// import { logInAsync } from './reducers/User';
+// import { fetchCurrentUser } from './reducers/userSlice';
 import LandingPage from './Components/04-LandingPage/LandingPage';
 import LogInPage from './Components/05-LoginSignUpPage/LogInPage';
 import SignUpPage from './Components/05-LoginSignUpPage/SignUpPage';
@@ -17,16 +17,16 @@ import GraphContainer from './Components/08-Graphs/GraphContainer';
 import 'antd/dist/antd.min.css';
 
 export default function App() {
-  const dispatch = useDispatch();
-  let navigate = useNavigate();
-  const profile = localStorage.profile ? localStorage.profile : null;
+  // const dispatch = useDispatch();
+  // let navigate = useNavigate();
+  // const profile = localStorage.profile ? localStorage.profile : null;
 
-  useEffect(() => {
-    if (profile) {
-      dispatch(fetchCurrentUser(profile));
-      navigate('/dashboard');
-    }
-  }, [profile, navigate]);
+  // useEffect(() => {
+  //   if (profile) {
+  //     dispatch(fetchCurrentUser(profile));
+  //     navigate('/dashboard');
+  //   }
+  // }, [profile, navigate]);
 
   return (
     <div className="App">
@@ -39,7 +39,7 @@ export default function App() {
           <Route path="graphs" element={<GraphContainer />} />
           <Route path="history" element={<History />} />
         </Route>
-        <Route path='*' element={<NotFoundPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );
