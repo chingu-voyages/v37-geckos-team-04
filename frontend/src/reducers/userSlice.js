@@ -4,9 +4,12 @@ export const userSlice = createSlice({
   name: 'user',
   initialState: {
     authData: null,
-    // passwordVerification: { match: null, filled: null },
   },
   reducers: {
+    fetchCurrentUser: (state, action) => {
+      const profile = JSON.parse(action.payload);
+      state.authData = { ...profile };
+    },
     isAuthenticated: (state, action) => {
       console.log('signed up/logged in!');
       // Local storage is to maintain user's session and check if the token is saved in there
@@ -18,13 +21,10 @@ export const userSlice = createSlice({
       state.authData = null;
       localStorage.clear();
     },
-    // passwordVerification: (state, action) => {
-    //   state.passwordVerification = action;
-    // },
   },
 });
 
-// export const { isAuthenticated, logOutSuccess, passwordVerification } =
-export const { isAuthenticated, logOutSuccess } = userSlice.actions;
+export const { fetchCurrentUser, isAuthenticated, logOutSuccess } =
+  userSlice.actions;
 
 export default userSlice.reducer;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Input, Card, Row, Col } from 'antd';
 import {
   DesktopOutlined,
   PieChartOutlined,
@@ -9,7 +9,13 @@ import {
   EyeInvisibleOutlined,
   ArrowRightOutlined,
 } from '@ant-design/icons';
+import { Link, Outlet } from 'react-router-dom';
 
+import Modal from '../07-Modal/Modal';
+import History from '../09-History/History';
+import Temp from '../08-Graphs/Temp';
+
+import Graphs from '../08-Graphs/Graphs';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logOutSuccess } from '../../reducers/userSlice';
@@ -20,17 +26,8 @@ const { SubMenu } = Menu;
 export default function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   // const [visible, setVisible] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
-
-  // const showDrawer = () => {
-  //   setVisible(true);
-  // };
-
-  // const onClose = () => {
-  //   setVisible(false);
-  // };
 
   const logOutUser = () => {
     dispatch(logOutSuccess());
@@ -44,23 +41,19 @@ export default function Dashboard() {
         collapsed={collapsed}
         onCollapse={(collapsed) => setCollapsed(collapsed)}
       >
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
-            Dashboard
+        <Menu theme="dark" defaultSelectedKeys={['graphs']} mode="inline">
+          <Menu.Item key="graphs" icon={<PieChartOutlined />}>
+            <Link to="graphs">Dashboard</Link>
           </Menu.Item>
           <SubMenu key="sub1" icon={<DesktopOutlined />} title="Preferences">
             <Menu.Item key="2" icon={<DashboardOutlined />}>
-              Sleep Goal
+              SleepGoal <Input min={4} max={12} defaultValue={8}></Input>
             </Menu.Item>
-            <Menu.Item key="3" icon={<EyeInvisibleOutlined />}>
-              Bed-Time
-            </Menu.Item>
-            <Menu.Item key="4" icon={<EyeOutlined />}>
-              Wake-Time
-            </Menu.Item>
+            {/* <Menu.Item key="3" icon={<EyeInvisibleOutlined />}>Bed-Time</Menu.Item>
+              <Menu.Item key="4" icon={<EyeOutlined />}>Wake-Time</Menu.Item> */}
           </SubMenu>
-          <Menu.Item key="5" icon={<HistoryOutlined />}>
-            History
+          <Menu.Item key="history" icon={<HistoryOutlined />}>
+            <Link to="history">History</Link>
           </Menu.Item>
           <Menu.Item key="6" icon={<ArrowRightOutlined />} onClick={logOutUser}>
             Log Out
@@ -68,28 +61,10 @@ export default function Dashboard() {
         </Menu>
       </Sider>
       <Layout className="site-layout">
-        <Header
-          className="site-layout-background"
-          style={{
-            padding: 0,
-            float: 'right',
-            color: 'white',
-            textAlign: 'center',
-          }}
-        >
-          Header content goes here.
-        </Header>
-        <Content style={{ margin: '0 16px' }}>
-          <div
-            className="site-layout-background"
-            style={{ padding: 24, minHeight: 360 }}
-          >
-            Content goes here.
-          </div>
+        <Modal />
+        <Content style={{ margin: '25px 35px' }}>
+          <Outlet />
         </Content>
-        <Footer style={{ textAlign: 'center' }}>
-          Sleep Tracker ©2022 Created at Chingu!
-        </Footer>
       </Layout>
     </Layout>
   );

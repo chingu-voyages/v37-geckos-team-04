@@ -107,7 +107,7 @@ const Form = styled.form`
     font-family: inherit;
     border: none;
     border-bottom: 1px solid black;
-    width: 16rem;
+    width: 17rem;
     height: 2.125rem;
     font-size: 1rem;
     /* border-radius: 0.25rem; */
@@ -123,6 +123,7 @@ const Form = styled.form`
     font-weight: bold;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
+    cursor: pointer;
   }
 
   button {
