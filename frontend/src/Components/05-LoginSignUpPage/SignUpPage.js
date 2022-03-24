@@ -21,7 +21,7 @@ export default function SignUpPage() {
   });
 
   useEffect(() => {
-    if (authenticated) navigate('/dashboard');
+    if (authenticated) navigate('/dashboard/graphs');
   });
 
   const handleChange = (e) => {

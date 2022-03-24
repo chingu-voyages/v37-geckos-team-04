@@ -15,7 +15,7 @@ export default function LogInPage() {
   const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
 
   useEffect(() => {
-    if (authenticated) navigate('/dashboard');
+    if (authenticated) navigate('/dashboard/graphs');
   }, [authenticated, navigate]);
 
   const handleChange = (e) => {
