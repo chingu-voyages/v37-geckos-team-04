@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 import User from '../models/user.js';
 
@@ -23,7 +24,15 @@ export const logIn = async (req, res) => {
     if (!validPassword)
       return res.status(400).json({ message: 'Invalid Password.' });
 
-    res.status(200).json({ result: user });
+    const token = jwt.sign(
+      { email: user.email, id: user._id },
+      process.env.TOKEN_SECRET,
+      {
+        expiresIn: '1h',
+      }
+    );
+
+    res.status(200).json({ result: user, token });
   } catch (error) {
     res.status(500).json({ message: 'Something went wrong.' });
   }
@@ -52,7 +61,15 @@ export const signUp = async (req, res) => {
       lastName,
     });
 
-    res.status(200).json({ result });
+    const token = jwt.sign(
+      { email: result.email, id: result._id },
+      process.env.TOKEN_SECRET,
+      {
+        expiresIn: '1h',
+      }
+    );
+
+    res.status(200).json({ result, token });
   } catch (error) {
     res.status(500).json({ message: 'Something went wrong.' });
   }
