@@ -6,12 +6,13 @@ import {
   updateSleep,
   deleteSleep,
 } from '../controllers/sleepData.js';
+import authMiddleWare from '../middleware/auth.js';
 
 const router = express.Router();
 
 router.get('/:userId', getSleep);
-router.post('/', createSleep);
-router.patch('/:id', updateSleep);
-router.delete('/:id', deleteSleep);
+router.post('/', authMiddleWare, createSleep);
+router.patch('/:id', authMiddleWare, updateSleep);
+router.delete('/:id', authMiddleWare, deleteSleep);
 
 export default router;
