@@ -46,7 +46,7 @@ export default function SignUpPage() {
           App name
         </Link>
         <h1>Sign Up</h1>
-        <SignUpForm>
+        <SignUpForm onSubmit={handleSubmit}>
           <input
             placeholder="First Name"
             onChange={handleChange}
@@ -54,7 +54,7 @@ export default function SignUpPage() {
             value={signUpInfo.firstName}
             className="first-name"
             required
-          ></input>
+          />
           <input
             placeholder="Last Name"
             onChange={handleChange}
@@ -62,14 +62,15 @@ export default function SignUpPage() {
             value={signUpInfo.lastName}
             className="last-name"
             required
-          ></input>
+          />
           <input
             placeholder="Email"
             name="email"
             value={signUpInfo.email}
             onChange={handleChange}
             required
-          ></input>
+            type="email"
+          />
           <input
             placeholder="Password"
             type="password"
@@ -77,7 +78,7 @@ export default function SignUpPage() {
             value={signUpInfo.password}
             onChange={handleChange}
             required
-          ></input>
+          />
           <input
             placeholder="Confirm Password"
             type="password"
@@ -85,8 +86,8 @@ export default function SignUpPage() {
             value={signUpInfo.passwordConfirmation}
             onChange={handleChange}
             required
-          ></input>
-          <button onClick={handleSubmit}>Sign Up</button>
+          />
+          <button type="submit">Sign Up</button>
           <GoogleButton />
         </SignUpForm>
         <div className="alternative">

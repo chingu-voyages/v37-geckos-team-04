@@ -350,7 +350,7 @@ export default function LogInPage() {
           App name
         </Link>
         <h1>Log In</h1>
-        <LogInForm>
+        <LogInForm onSubmit={handleSubmit}>
           <input
             placeholder="Email"
             type="text"
@@ -358,7 +358,7 @@ export default function LogInPage() {
             name="email"
             onChange={handleChange}
             required
-          ></input>
+          />
           <input
             placeholder="Password"
             type="password"
@@ -366,8 +366,8 @@ export default function LogInPage() {
             name="password"
             onChange={handleChange}
             required
-          ></input>
-          <button onClick={handleSubmit}>Log In</button>
+          />
+          <button type="submit">Log In</button>
           <GoogleButton />
         </LogInForm>
         <div className="alternative">
