@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signUpAsync } from '../../reducers/User';
 import { useNavigate } from 'react-router-dom';
-
+import { Modal } from 'antd';
+import { isError } from '../../reducers/userSlice';
 import { SignUpPageCont, SignUpFormCont, SignUpForm } from './style';
 import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
 
@@ -11,6 +12,7 @@ export default function SignUpPage() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
   const authenticated = useSelector((state) => state.user.authData);
+  const error = useSelector((state) => state.user.isError);
 
   const [signUpInfo, setSignUpInfo] = useState({
     firstName: '',
@@ -21,8 +23,20 @@ export default function SignUpPage() {
   });
 
   useEffect(() => {
+    if (error) renderError();
+  }, [error]);
+
+  const renderError = () =>
+    Modal.error({
+      title: error,
+      onOk() {
+        dispatch(isError(null));
+      },
+    });
+
+  useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');
-  });
+  }, [authenticated]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,11 +45,6 @@ export default function SignUpPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const inputArr = e.target.parentElement.querySelectorAll('input');
-
-    for (const input of inputArr) {
-      setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
-    }
     dispatch(signUpAsync(signUpInfo));
   };
 
@@ -46,6 +55,7 @@ export default function SignUpPage() {
           App name
         </Link>
         <h1>Sign Up</h1>
+        {renderError}
         <SignUpForm onSubmit={handleSubmit}>
           <input
             placeholder="First Name"
