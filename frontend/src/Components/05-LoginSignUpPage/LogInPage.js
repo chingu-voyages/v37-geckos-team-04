@@ -6,17 +6,33 @@ import { logInAsync } from '../../reducers/User';
 
 import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
 import { LogInPageCont, LogInFormCont, LogInForm } from './style';
+import { Modal } from 'antd';
+import { isError } from '../../reducers/userSlice';
 
 export default function LogInPage() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
   const authenticated = useSelector((state) => state.user.authData);
+  const error = useSelector((state) => state.user.isError);
 
   const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
 
   useEffect(() => {
+    if (error) renderError();
+  }, [error]);
+
+  const renderError = () => {
+    Modal.error({
+      title: error,
+      onOk() {
+        dispatch(isError(null));
+      },
+    });
+  };
+
+  useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');
-  }, [authenticated, navigate]);
+  }, [authenticated]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,12 +41,6 @@ export default function LogInPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const inputArr = e.target.parentElement.querySelectorAll('input');
-
-    for (const input of inputArr) {
-      setLoginInfo((prevState) => ({ ...prevState, [input.name]: '' }));
-    }
-
     dispatch(logInAsync(loginInfo));
   };
 
@@ -378,6 +388,7 @@ export default function LogInPage() {
           .
         </div>
       </LogInFormCont>
+      {renderError}
     </LogInPageCont>
   );
 }
