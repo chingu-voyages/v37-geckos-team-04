@@ -52,7 +52,7 @@ export default function SignUpPage() {
     <SignUpPageCont>
       <SignUpFormCont>
         <Link to="/" className="app-name">
-          App name
+          SleepTracker
         </Link>
         <h1>Sign Up</h1>
         {renderError}
