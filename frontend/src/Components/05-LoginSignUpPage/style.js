@@ -110,13 +110,16 @@ const Form = styled.form`
     width: 17rem;
     height: 2.125rem;
     font-size: 1rem;
-    /* border-radius: 0.25rem; */
     border-radius: 0.25rem;
     padding-left: 1rem;
   }
 
   input:focus {
     outline: none;
+  }
+
+  input:invalid {
+    border: 1px solid red;
   }
 
   button:first-of-type {

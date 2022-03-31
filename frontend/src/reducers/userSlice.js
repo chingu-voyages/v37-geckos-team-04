@@ -4,11 +4,15 @@ export const userSlice = createSlice({
   name: 'user',
   initialState: {
     authData: null,
+    isError: null,
   },
   reducers: {
     fetchCurrentUser: (state, action) => {
       const profile = JSON.parse(action.payload);
       state.authData = { ...profile };
+    },
+    isError: (state, action) => {
+      state.isError = !action.payload ? action.payload : action.payload.message;
     },
     isAuthenticated: (state, action) => {
       console.log('signed up/logged in!');
@@ -24,7 +28,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { fetchCurrentUser, isAuthenticated, logOutSuccess } =
+export const { fetchCurrentUser, isAuthenticated, logOutSuccess, isError } =
   userSlice.actions;
 
 export default userSlice.reducer;
