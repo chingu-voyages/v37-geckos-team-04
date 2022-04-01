@@ -32,7 +32,7 @@ export default function SignUpPage() {
 
   useEffect(() => {
     if (error) renderError();
-  }, [error, renderError]);
+  }, [error]);
 
   useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');

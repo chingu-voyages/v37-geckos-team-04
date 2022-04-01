@@ -28,7 +28,7 @@ export default function LogInPage() {
 
   useEffect(() => {
     if (error) renderError();
-  }, [error, renderError]);
+  }, [error]);
   
   useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');
