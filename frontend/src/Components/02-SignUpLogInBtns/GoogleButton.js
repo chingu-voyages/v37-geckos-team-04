@@ -11,7 +11,7 @@ const GoogleButton = () => {
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
-    dispatch(isAuthenticated({ data: result, token }));
+    dispatch(isAuthenticated({ data: { result, token } }));
   };
 
   const googleFailure = () =>

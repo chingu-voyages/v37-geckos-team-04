@@ -1,13 +1,29 @@
 import axios from 'axios';
 
-const url = 'http://localhost:4000/users';
+// const API = axios.create({ baseURL: 'http://localhost:4000/users' });
+const API = axios.create({
+  baseURL: 'https://chingu-sleeptracker.herokuapp.com/users',
+});
 
-export const login = (formData) => axios.post(`${url}/login`, formData);
-export const signup = (formData) => axios.post(`${url}/signup`, formData);
+// simply calling localStorage.clear() does not destroy the token; need to fix this
 
-export const getSleepData = (id) => axios.get(`${url}/sleepData/${id}`);
+API.interceptors.request.use((config) => {
+  if (localStorage.getItem('profile')) {
+    const token = JSON.parse(localStorage.getItem('profile')).data.token;
+    config.headers = {
+      Authorization: `Bearer ${token}`,
+    };
+  }
+
+  return config;
+});
+
+export const login = (formData) => API.post(`/login`, formData);
+export const signup = (formData) => API.post(`/signup`, formData);
+
+export const getSleepData = (id) => API.get(`/sleepData/${id}`);
 // prettier-ignore
-export const createSleep = (formData) => axios.post(`${url}/sleepData`, formData);
+export const createSleep = (formData) => API.post(`/sleepData`, formData);
 // prettier-ignore
-export const updateSleep = (id, formData) => axios.patch(`${url}/sleepData/${id}`, formData);
-export const removeSleep = (id) => axios.delete(`${url}/sleepData/${id}`);
+export const updateSleep = (id, formData) => API.patch(`/sleepData/${id}`, formData);
+export const removeSleep = (id) => API.delete(`/sleepData/${id}`);

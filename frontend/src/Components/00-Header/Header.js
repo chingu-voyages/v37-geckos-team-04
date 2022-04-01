@@ -6,7 +6,7 @@ import { SignUpLoginBtns } from '../02-SignUpLogInBtns/SignUpLoginBtns';
 export default function Header() {
   return (
     <HeaderCont>
-      <div className="app-name">Sleep Tracker App Name</div>
+      <div className="app-name">SleepTracker</div>
       <Navbar />
       <SignUpLoginBtns />
     </HeaderCont>

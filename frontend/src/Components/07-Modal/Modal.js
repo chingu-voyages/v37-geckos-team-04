@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
-import { TimePicker, Button, Modal, message, Space, DatePicker, Input, Radio, Menu } from "antd";
-import moment from "moment"; 
+import {
+  TimePicker,
+  Button,
+  Modal,
+  message,
+  Space,
+  DatePicker,
+  Input,
+  Radio,
+  Menu,
+} from 'antd';
+import moment from 'moment';
 
 export default function Dashboard() {
   const [isSleeping, setIsSleeping] = useState(false);
@@ -51,7 +61,7 @@ export default function Dashboard() {
     message.warning('Data not recorded!', 2);
   };
 
-  const onMoodChange = e => {
+  const onMoodChange = (e) => {
     setMood(e.target.value);
   };
 
@@ -82,32 +92,31 @@ export default function Dashboard() {
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
       >
-        <Space direction='vertical'>
-
-          <Space direction='horizontal'>
+        <Space direction="vertical">
+          <Space direction="horizontal">
             Today's Date
             <DatePicker defaultValue={moment()} />
           </Space>
-          
-          <Space direction='horizontal'>
-              {buttonText}Time
-              <TimePicker 
-                autoFocus={true}
-                format="HH:mm"
-                defaultValue={moment()}
-                onSelect={(value) => {
-                  const timeString = moment(value).format("HH:mm");
-                  setSelectedTime(timeString);
-                  console.log(timeString);
-                }}
-                onChange={success}
-                minuteStep={5}
-              />
+
+          <Space direction="horizontal">
+            {buttonText}Time
+            <TimePicker
+              autoFocus={true}
+              format="HH:mm"
+              defaultValue={moment()}
+              onSelect={(value) => {
+                const timeString = moment(value).format('HH:mm');
+                setSelectedTime(timeString);
+                console.log(timeString);
+              }}
+              onChange={success}
+              minuteStep={5}
+            />
           </Space>
-          
-          <Space direction='horizontal'>
+
+          <Space direction="horizontal">
             Select Mood
-            <Radio.Group onMoodChange={onMoodChange}>
+            <Radio.Group onChange={onMoodChange}>
               <Radio value={5}>😇</Radio>
               <Radio value={4}>😀</Radio>
               <Radio value={3}>🙂</Radio>
@@ -115,7 +124,7 @@ export default function Dashboard() {
               <Radio value={1}>😖</Radio>
             </Radio.Group>
           </Space>
-          
+
           <Input placeholder="Additional notes" />
         </Space>
       </Modal>

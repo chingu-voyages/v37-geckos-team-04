@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signUpAsync } from '../../reducers/User';
 import { useNavigate } from 'react-router-dom';
-
+import { Modal } from 'antd';
+import { isError } from '../../reducers/userSlice';
 import { SignUpPageCont, SignUpFormCont, SignUpForm } from './style';
 import GoogleButton from '../02-SignUpLogInBtns/GoogleButton';
 
@@ -11,6 +12,7 @@ export default function SignUpPage() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
   const authenticated = useSelector((state) => state.user.authData);
+  const error = useSelector((state) => state.user.isError);
 
   const [signUpInfo, setSignUpInfo] = useState({
     firstName: '',
@@ -21,8 +23,20 @@ export default function SignUpPage() {
   });
 
   useEffect(() => {
+    if (error) renderError();
+  }, [error]);
+
+  const renderError = () =>
+    Modal.error({
+      title: error,
+      onOk() {
+        dispatch(isError(null));
+      },
+    });
+
+  useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');
-  });
+  }, [authenticated]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,11 +45,6 @@ export default function SignUpPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const inputArr = e.target.parentElement.querySelectorAll('input');
-
-    for (const input of inputArr) {
-      setSignUpInfo((prevState) => ({ ...prevState, [input.name]: '' }));
-    }
     dispatch(signUpAsync(signUpInfo));
   };
 
@@ -43,10 +52,11 @@ export default function SignUpPage() {
     <SignUpPageCont>
       <SignUpFormCont>
         <Link to="/" className="app-name">
-          App name
+          SleepTracker
         </Link>
         <h1>Sign Up</h1>
-        <SignUpForm>
+        {renderError}
+        <SignUpForm onSubmit={handleSubmit}>
           <input
             placeholder="First Name"
             onChange={handleChange}
@@ -54,7 +64,7 @@ export default function SignUpPage() {
             value={signUpInfo.firstName}
             className="first-name"
             required
-          ></input>
+          />
           <input
             placeholder="Last Name"
             onChange={handleChange}
@@ -62,14 +72,15 @@ export default function SignUpPage() {
             value={signUpInfo.lastName}
             className="last-name"
             required
-          ></input>
+          />
           <input
             placeholder="Email"
             name="email"
             value={signUpInfo.email}
             onChange={handleChange}
             required
-          ></input>
+            type="email"
+          />
           <input
             placeholder="Password"
             type="password"
@@ -77,7 +88,7 @@ export default function SignUpPage() {
             value={signUpInfo.password}
             onChange={handleChange}
             required
-          ></input>
+          />
           <input
             placeholder="Confirm Password"
             type="password"
@@ -85,8 +96,8 @@ export default function SignUpPage() {
             value={signUpInfo.passwordConfirmation}
             onChange={handleChange}
             required
-          ></input>
-          <button onClick={handleSubmit}>Sign Up</button>
+          />
+          <button type="submit">Sign Up</button>
           <GoogleButton />
         </SignUpForm>
         <div className="alternative">

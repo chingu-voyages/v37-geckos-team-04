@@ -8,6 +8,7 @@ const sleepDataSchema = mongoose.Schema({
   moodStart: { type: Number, required: true },
   moodWake: Number,
   sleepGoal: { type: Number, required: true },
+  sleepDuration: Number,
   notes: [String],
 });
 

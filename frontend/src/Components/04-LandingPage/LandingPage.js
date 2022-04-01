@@ -11,7 +11,7 @@ export default function LandingPage() {
       <MainContentCont>
         <MainContent>
           <div className="call-to-action">
-            Track your sleeping pattern with 'Sleep Tracker App Name'
+            Track your sleeping pattern with SleepTracker
           </div>
           <Link to="/signup" className="get-started">
             <button>Get Started</button>
