@@ -8,7 +8,7 @@ import {
   DatePicker,
   Input,
   Radio,
-  // Menu,
+  Menu,
 } from 'antd';
 import moment from 'moment';
 
@@ -23,7 +23,7 @@ export default function Dashboard() {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [selectedTime, setSelectedTime] = useState('00:00');
   const [mood, setMood] = useState(5);
-  console.log(selectedTime, mood)
+
   const showModal = () => {
     setVisible(true);
   };
@@ -65,15 +65,15 @@ export default function Dashboard() {
     setMood(e.target.value);
   };
 
-  // const emotions = (
-  //   <Menu>
-  //     <Menu.Item key={5}>😇</Menu.Item>
-  //     <Menu.Item key={4}>😀</Menu.Item>
-  //     <Menu.Item key={3}>🙂</Menu.Item>
-  //     <Menu.Item key={2}>🙁</Menu.Item>
-  //     <Menu.Item key={1}>😖</Menu.Item>
-  //   </Menu>
-  // );
+  const emotions = (
+    <Menu>
+      <Menu.Item key={5}>😇</Menu.Item>
+      <Menu.Item key={4}>😀</Menu.Item>
+      <Menu.Item key={3}>🙂</Menu.Item>
+      <Menu.Item key={2}>🙁</Menu.Item>
+      <Menu.Item key={1}>😖</Menu.Item>
+    </Menu>
+  );
 
   return (
     <div

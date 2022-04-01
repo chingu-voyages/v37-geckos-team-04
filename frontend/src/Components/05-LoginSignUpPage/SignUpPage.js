@@ -22,21 +22,21 @@ export default function SignUpPage() {
     passwordConfirmation: '',
   });
 
-  const renderError = () =>
-    Modal.error({
-      title: error,
-      onOk() {
-      dispatch(isError(null));
-    },
-  });
-
   useEffect(() => {
     if (error) renderError();
   }, [error]);
 
+  const renderError = () =>
+    Modal.error({
+      title: error,
+      onOk() {
+        dispatch(isError(null));
+      },
+    });
+
   useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');
-  }, [authenticated, navigate]);
+  }, [authenticated]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
