@@ -11,11 +11,12 @@ export const sleepSlice = createSlice({
       state.data.push(action.payload);
     },
     update(state, action) {
-      return state.data.find((sleep) => {
+      const sleepInst = state.data.find((sleep) => {
         if (sleep._id === action.payload._id) {
-          return Object.assign(sleep, { ...action.payload });
+          return sleep;
         }
       });
+      Object.assign(sleepInst, { ...action.payload });
     },
     remove: (state, action) => {
       state.data = state.data.filter((sleep) => sleep._id !== action.payload);
