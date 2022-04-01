@@ -1,4 +1,4 @@
-import { Table, Radio, Divider } from 'antd';
+import { Table, } from 'antd';
 import React, { useState } from 'react';
 
 const columns = [
@@ -114,8 +114,8 @@ const rowSelection = {
 };
 
 export default function History() {
-    const [selectionType, setSelectionType] = useState('checkbox');
-
+    // const [selectionType, setSelectionType] = useState('checkbox');
+    
     return (
         <Table
             rowSelection={{
