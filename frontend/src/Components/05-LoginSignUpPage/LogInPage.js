@@ -29,20 +29,7 @@ export default function LogInPage() {
   useEffect(() => {
     if (error) renderError();
   }, [error, renderError]);
-
-  useEffect(() => {
-    if (error) renderError();
-  }, [error]);
-
-  const renderError = () => {
-    Modal.error({
-      title: error,
-      onOk() {
-        dispatch(isError(null));
-      },
-    });
-  };
-
+  
   useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');
   }, [authenticated]);
