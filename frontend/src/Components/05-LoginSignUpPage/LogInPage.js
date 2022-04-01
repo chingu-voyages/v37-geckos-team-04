@@ -17,19 +17,19 @@ export default function LogInPage() {
 
   const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
 
+  const renderError = () => {
+      Modal.error({
+        title: error,
+        onOk() {
+          dispatch(isError(null));
+        },
+      });
+    };
+
   useEffect(() => {
     if (error) renderError();
   }, [error]);
-
-  const renderError = () => {
-    Modal.error({
-      title: error,
-      onOk() {
-        dispatch(isError(null));
-      },
-    });
-  };
-
+  
   useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');
   }, [authenticated]);

@@ -7,7 +7,7 @@ class NotFoundPage extends React.Component{
             <p style={{textAlign:"center"}}>
                 <h1>Oops! You followed a wrong link!</h1>
             </p>
-            <img src={not_found} width="50%" height="50%" />
+            <img alt="not found component" src={not_found} width="50%" height="50%" />
             <Link to="/">Go Home </Link>
           </div>;
     }
