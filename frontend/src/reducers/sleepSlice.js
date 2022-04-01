@@ -13,10 +13,10 @@ export const sleepSlice = createSlice({
     update(state, action) {
       const sleepInst = state.data.find((sleep) => {
         if (sleep._id === action.payload._id) {
-          return sleep;
+          return Object.assign(sleep, { ...action.payload });
         }
       });
-      Object.assign(sleepInst, { ...action.payload });
+      
       return sleepInst;
     },
     remove: (state, action) => {
