@@ -22,27 +22,27 @@ export default function SignUpPage() {
     passwordConfirmation: '',
   });
 
-  // const renderError = () =>
-  //   Modal.error({
-  //     title: error,
-  //     onOk() {
-  //     dispatch(isError(null));
-  //   },
-  // });
+  const renderError = () =>
+    Modal.error({
+      title: error,
+      onOk() {
+      dispatch(isError(null));
+    },
+  });
 
-  let renderError;
+  // let renderError;
 
-  useEffect(() => {
-    if (error) {
-      renderError = Modal.error({
-        title: error,
-        onOk() {
-          dispatch(isError(null));
-        }
-      })
-    }
-  }, [error]);
-  
+  // useEffect(() => {
+  //   if (error) {
+  //     renderError = Modal.error({
+  //       title: error,
+  //       onOk() {
+  //         dispatch(isError(null));
+  //       }
+  //     })
+  //   }
+  // }, [error]);
+
   useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');
   }, [authenticated, navigate]);
@@ -64,7 +64,7 @@ export default function SignUpPage() {
           SleepTracker
         </Link>
         <h1>Sign Up</h1>
-        {renderError}
+        {error && renderError}
         <SignUpForm onSubmit={handleSubmit}>
           <input
             placeholder="First Name"

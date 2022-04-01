@@ -17,27 +17,27 @@ export default function LogInPage() {
 
   const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
 
-  // const renderError = () => {
-  //     Modal.error({
-  //       title: error,
-  //       onOk() {
-  //         dispatch(isError(null));
-  //       },
-  //     });
-  //   };
-
-  let renderError;
-
-  useEffect(() => {
-    if (error) {
-      renderError = Modal.error({
+  const renderError = () => {
+      Modal.error({
         title: error,
         onOk() {
           dispatch(isError(null));
-        }
-      })
-    }
-  }, [error]);
+        },
+      });
+    };
+
+  // let renderError;
+
+  // useEffect(() => {
+  //   if (error) {
+  //     renderError = Modal.error({
+  //       title: error,
+  //       onOk() {
+  //         dispatch(isError(null));
+  //       }
+  //     })
+  //   }
+  // }, [error]);
   
   useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');
@@ -397,7 +397,7 @@ export default function LogInPage() {
           .
         </div>
       </LogInFormCont>
-      {renderError}
+      {error && renderError}
     </LogInPageCont>
   );
 }
