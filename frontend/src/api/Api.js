@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:4000/users' });
+// const API = axios.create({ baseURL: 'http://localhost:4000/users' });
+const API = axios.create({
+  baseURL: 'https://chingu-sleeptracker.herokuapp.com/',
+});
 
 // simply calling localStorage.clear() does not destroy the token; need to fix this
 
