@@ -10,7 +10,7 @@ Our goal behind this project is to emulate the teamwork in developing profession
 
 ## Features
 
-- See a graphic visualizations of your sleeping habits
+- See graphic visualizations of your sleeping habits
 - See how your mood changes as your sleeping habits change
 - View a history of all your sleep data in table
 

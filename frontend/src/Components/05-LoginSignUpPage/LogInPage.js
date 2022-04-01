@@ -357,7 +357,7 @@ export default function LogInPage() {
       </svg>
       <LogInFormCont>
         <Link to="/" className="app-name">
-          App name
+          SleepTracker
         </Link>
         <h1>Log In</h1>
         <LogInForm onSubmit={handleSubmit}>

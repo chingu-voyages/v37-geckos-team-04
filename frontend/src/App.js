@@ -17,17 +17,6 @@ import GraphContainer from './Components/08-Graphs/GraphContainer';
 import 'antd/dist/antd.min.css';
 
 export default function App() {
-  // const dispatch = useDispatch();
-  // let navigate = useNavigate();
-  // const profile = localStorage.profile ? localStorage.profile : null;
-
-  // useEffect(() => {
-  //   if (profile) {
-  //     dispatch(fetchCurrentUser(profile));
-  //     navigate('/dashboard');
-  //   }
-  // }, [profile, navigate]);
-
   return (
     <div className="App">
       <GlobalStyle />
