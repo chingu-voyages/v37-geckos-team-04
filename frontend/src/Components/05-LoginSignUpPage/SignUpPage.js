@@ -22,18 +22,27 @@ export default function SignUpPage() {
     passwordConfirmation: '',
   });
 
-  const renderError = () =>
-    Modal.error({
-      title: error,
-      onOk() {
-      dispatch(isError(null));
-    },
-  });
+  // const renderError = () =>
+  //   Modal.error({
+  //     title: error,
+  //     onOk() {
+  //     dispatch(isError(null));
+  //   },
+  // });
+
+  let renderError;
 
   useEffect(() => {
-    if (error) renderError();
+    if (error) {
+      renderError = Modal.error({
+        title: error,
+        onOk() {
+          dispatch(isError(null));
+        }
+      })
+    }
   }, [error]);
-
+  
   useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');
   }, [authenticated, navigate]);

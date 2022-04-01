@@ -11,9 +11,9 @@ export const sleepSlice = createSlice({
       state.data.push(action.payload);
     },
     update(state, action) {
-      return state.data.find((sleep) => {
+      state.data.find((sleep) => {
         if (sleep._id === action.payload._id) {
-          Object.assign(sleep, { ...action.payload });
+          return Object.assign(sleep, { ...action.payload });
         }
       });
     },
