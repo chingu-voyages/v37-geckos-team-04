@@ -31,7 +31,7 @@ export default function SignUpPage() {
         }
       })
     }
-  }, [error]);
+  }, [error, dispatch]);
 
   useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');

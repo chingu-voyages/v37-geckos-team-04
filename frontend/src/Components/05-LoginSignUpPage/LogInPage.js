@@ -26,7 +26,7 @@ export default function LogInPage() {
         }
       })
     }
-  }, [error]);
+  }, [error, dispatch]);
   
   useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');
