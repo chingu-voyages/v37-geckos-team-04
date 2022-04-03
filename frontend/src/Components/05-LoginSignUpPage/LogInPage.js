@@ -29,7 +29,10 @@ export default function LogInPage() {
   }, [error, dispatch]);
   
   useEffect(() => {
-    if (authenticated) navigate('/dashboard/graphs');
+    if (authenticated) {
+      navigate('/dashboard/graphs');
+      sessionStorage.setItem('', '')
+    }
   }, [authenticated, navigate]);
 
   const handleChange = (e) => {

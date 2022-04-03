@@ -12,7 +12,44 @@ import {
 } from 'antd';
 import moment from 'moment';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logOutSuccess } from '../../reducers/userSlice';
+import {
+  getSleepData,
+  createSleep,
+  updateSleep,
+  removeSleep,
+} from '../../reducers/Sleep';
+
 export default function Dashboard() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user.authData);
+  const sleepData = useSelector((state) => state.sleepData.data);
+  // console.log('sleepData: ', sleepData);
+
+  const initialState = {
+    creator: '',
+    date: "1970/01/01",
+    sleepStart: '00:00',
+    sleepEnd: '00:00',
+    moodStart: 0,
+    moodWake: 0,
+    sleepGoal: 8,
+    notes: notesFull
+  };
+
+  const [currSleep, setCurrSleep] = useState(initialState);
+  function clear () {
+    setCurrSleep(initialState);
+  }
+  function submit () {
+    dispatch(createSleep(currSleep));
+  }
+
+  const id = JSON.parse(localStorage.getItem("profile")).data.result._id
+
   const [isSleeping, setIsSleeping] = useState(false);
   const [buttonText, setButtonText] = useState('Start Sleep');
   const [successMessage, setSuccessMessage] = useState(
@@ -21,9 +58,31 @@ export default function Dashboard() {
 
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const [selectedTime, setSelectedTime] = useState('00:00');
-  const [mood, setMood] = useState(5);
-  console.log(selectedTime, mood)
+
+  const [date, setDate] = useState(moment().format("YYYY/MM/DD"));
+
+  const [sleepStart, setSleepStart] = useState(moment().format('HH:mm'));
+  const [sleepEnd, setSleepEnd] = useState('00:00');
+
+  const [moodStart, setMoodStart] = useState(5);
+  const [moodEnd, setMoodEnd] = useState(5);
+
+  const [notesStart, setNotesStart] = useState("");
+  const [notesEnd, setNotesEnd] = useState("");
+  
+  var notesFull = [notesStart, notesEnd]
+
+  const data = {
+    creator: id,
+    date: date,
+    sleepStart: sleepStart,
+    sleepEnd: sleepEnd,
+    moodStart: moodStart,
+    moodWake: moodEnd,
+    sleepGoal: 8,
+    notes: notesFull
+  }
+
   const showModal = () => {
     setVisible(true);
   };
@@ -33,6 +92,7 @@ export default function Dashboard() {
     setTimeout(() => {
       setVisible(false);
       setConfirmLoading(false);
+      setCurrSleep(data)
 
       if (isSleeping) {
         setSuccessMessage('Sleep Session Started!');
@@ -44,12 +104,16 @@ export default function Dashboard() {
         success(successMessage);
         setIsSleeping(true);
         setButtonText('Stop Sleep');
+        submit()
       }
+
+      console.log(data)
     }, 1000);
   };
 
   const handleCancel = () => {
     setVisible(false);
+    clear();
     failure();
   };
 
@@ -62,18 +126,22 @@ export default function Dashboard() {
   };
 
   const onMoodChange = (e) => {
-    setMood(e.target.value);
+    if(isSleeping) {
+      setMoodEnd(e.target.value);
+    } else {
+      setMoodStart(e.target.value);
+    }
+    setCurrSleep(data)
   };
 
-  // const emotions = (
-  //   <Menu>
-  //     <Menu.Item key={5}>😇</Menu.Item>
-  //     <Menu.Item key={4}>😀</Menu.Item>
-  //     <Menu.Item key={3}>🙂</Menu.Item>
-  //     <Menu.Item key={2}>🙁</Menu.Item>
-  //     <Menu.Item key={1}>😖</Menu.Item>
-  //   </Menu>
-  // );
+  const onNotesChange = (e) => {
+    if(isSleeping) {
+      setNotesEnd(e.target.value);
+    } else {
+      setNotesStart(e.target.value);
+    }
+    setCurrSleep(data)
+  };
 
   return (
     <div
@@ -95,7 +163,14 @@ export default function Dashboard() {
         <Space direction="vertical">
           <Space direction="horizontal">
             Today's Date
-            <DatePicker defaultValue={moment()} />
+            <DatePicker 
+              defaultValue={moment()} 
+              onSelect={(value) => {
+                const dateString = moment(value).format('YYYY/MM/DD')
+                setDate(dateString)
+                console.log(dateString);
+              }}
+            />
           </Space>
 
           <Space direction="horizontal">
@@ -106,7 +181,12 @@ export default function Dashboard() {
               defaultValue={moment()}
               onSelect={(value) => {
                 const timeString = moment(value).format('HH:mm');
-                setSelectedTime(timeString);
+                if (isSleeping) {
+                  setSleepEnd(timeString);
+                } else {
+                  setSleepStart(timeString);
+                }
+                setCurrSleep(data)
                 console.log(timeString);
               }}
               onChange={success}
@@ -125,7 +205,10 @@ export default function Dashboard() {
             </Radio.Group>
           </Space>
 
-          <Input placeholder="Additional notes" />
+          <Input 
+            placeholder="Additional notes" 
+            onChange={onNotesChange}
+          />
         </Space>
       </Modal>
     </div>

@@ -6,10 +6,10 @@ const sleepDataSchema = mongoose.Schema({
   sleepEnd: String,
   date: { type: String, required: true },
   moodStart: { type: Number, required: true },
-  moodWake: Number,
+  moodEnd: Number,
   sleepGoal: { type: Number, required: true },
   sleepDuration: Number,
-  notes: [String],
+  notes: [String]
 });
 
 export default mongoose.model('SleepData', sleepDataSchema);
