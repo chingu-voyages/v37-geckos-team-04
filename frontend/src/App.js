@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 import { GlobalStyle } from './style';
-import { Routes, Route, Outlet, Navigate, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-
-// import { logInAsync } from './reducers/User';
-// import { fetchCurrentUser } from './reducers/userSlice';
 import LandingPage from './Components/04-LandingPage/LandingPage';
 import LogInPage from './Components/05-LoginSignUpPage/LogInPage';
 import SignUpPage from './Components/05-LoginSignUpPage/SignUpPage';
 import Dashboard from './Components/06-Dashboard/Dashboard';
-import Modal from './Components/07-Modal/Modal';
 import History from './Components/09-History/History';
 import NotFoundPage from './Components/NotFound404';
 import GraphContainer from './Components/08-Graphs/GraphContainer';
@@ -34,9 +29,9 @@ export default function App() {
   );
 }
 
-function PrivateRoute() {
-  const authenticated = useSelector((state) => {
-    return state.user.authData;
-  });
-  return authenticated ? <Outlet /> : <Navigate to="/login" />;
-}
+// function PrivateRoute() {
+//   const authenticated = useSelector((state) => {
+//     return state.user.authData;
+//   });
+//   return authenticated ? <Outlet /> : <Navigate to="/login" />;
+// }

@@ -15,6 +15,7 @@ export const sleepSlice = createSlice({
         if (sleep._id === action.payload._id) {
           Object.assign(sleep, { ...action.payload });
         }
+        return false;
       });
     },
     remove: (state, action) => {
