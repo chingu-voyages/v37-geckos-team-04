@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
-import { Layout, Menu, Input, Card, Row, Col } from 'antd';
+import { Layout, Menu, Input } from 'antd';
 import {
   DesktopOutlined,
   PieChartOutlined,
   DashboardOutlined,
   HistoryOutlined,
-  EyeOutlined,
-  EyeInvisibleOutlined,
+  // EyeOutlined,
+  // EyeInvisibleOutlined,
   ArrowRightOutlined,
 } from '@ant-design/icons';
 import { Link, Outlet } from 'react-router-dom';
 
 import Modal from '../07-Modal/Modal';
-import History from '../09-History/History';
-import Temp from '../08-Graphs/Temp';
+// import History from '../09-History/History';
+// import Temp from '../08-Graphs/Temp';
 
-import Graphs from '../08-Graphs/Graphs';
+// import Graphs from '../08-Graphs/Graphs';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logOutSuccess } from '../../reducers/userSlice';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
 
 export default function Dashboard() {
