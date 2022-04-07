@@ -35,7 +35,7 @@ export default function SignUpPage() {
 
   useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');
-  }, [authenticated]);
+  }, [authenticated, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
