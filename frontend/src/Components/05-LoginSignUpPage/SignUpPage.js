@@ -23,16 +23,15 @@ export default function SignUpPage() {
   });
 
   useEffect(() => {
-    if (error) renderError();
-  }, [error]);
-
-  const renderError = () =>
-    Modal.error({
-      title: error,
-      onOk() {
-        dispatch(isError(null));
-      },
-    });
+    if (error) {
+      Modal.error({
+        title: error,
+        onOk() {
+          dispatch(isError(null));
+        },
+      });
+    }
+  }, [error, dispatch]);
 
   useEffect(() => {
     if (authenticated) navigate('/dashboard/graphs');
@@ -55,7 +54,6 @@ export default function SignUpPage() {
           SleepTracker
         </Link>
         <h1>Sign Up</h1>
-        {renderError}
         <SignUpForm onSubmit={handleSubmit}>
           <input
             placeholder="First Name"
