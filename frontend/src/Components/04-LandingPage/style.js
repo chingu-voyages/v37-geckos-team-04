@@ -30,11 +30,20 @@ export const MainContent = styled.main`
   grid-template-areas:
     '. . . .'
     '. main . .'
-    '. button . .'
-    '. . . .'
+    '. description . .'
+    '. . button .'
     '. . . .';
   grid-template-columns: 0.5fr 1.5fr 1fr 0.5fr;
-  grid-template-rows: 1fr 0.75fr 0.5fr 0.5fr 1fr;
+  // grid-template-rows: 1fr 0.75fr 0.5fr 0.5fr 1fr;
+
+  .description {
+    grid-area: description;
+    color: #f7f4f3;
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 500;
+    margin-left: 0.5em;
+  }
 
   .call-to-action {
     /* color: white; */
@@ -43,7 +52,7 @@ export const MainContent = styled.main`
     grid-area: main;
     font-weight: 500;
     align-self: end;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
   }
 
   .get-started {
