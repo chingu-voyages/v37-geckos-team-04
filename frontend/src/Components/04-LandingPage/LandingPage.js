@@ -10,8 +10,20 @@ export default function LandingPage() {
       <Header />
       <MainContentCont>
         <MainContent>
-          <div className="call-to-action">
+          <h1 className="call-to-action">
             Track your sleeping pattern with SleepTracker
+          </h1>
+          <div className="description">
+            <p>
+              Irregular sleeping patterns are a common problem. Research has
+              shown that sleeping and getting up at a certain time is a good
+              sleeping practice and can improve mood quality.
+            </p>
+            <p>
+              With SleepTracker, you simply record when you go to sleep and wake
+              up, and see how your mood changes according to your sleeping
+              habits.
+            </p>
           </div>
           <Link to="/signup" className="get-started">
             <button>Get Started</button>
