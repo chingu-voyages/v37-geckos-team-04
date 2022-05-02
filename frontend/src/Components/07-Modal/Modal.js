@@ -1,132 +1,175 @@
-import React, { useState } from 'react';
-import {
-  TimePicker,
-  Button,
-  Modal,
-  message,
-  Space,
-  DatePicker,
-  Input,
-  Radio,
-  // Menu,
-} from 'antd';
-import moment from 'moment';
+import React, { useEffect, useState } from 'react';
+import { Button, Modal, message, Input, InputNumber, Radio, Form } from 'antd';
 
-export default function Dashboard() {
-  const [isSleeping, setIsSleeping] = useState(false);
-  const [buttonText, setButtonText] = useState('Start Sleep');
-  const [successMessage, setSuccessMessage] = useState(
-    'Sleep Session Started!'
+import { useDispatch, useSelector } from 'react-redux';
+import { createSleep, updateSleep, getSleepData } from '../../reducers/Sleep';
+
+export default function SleepModal() {
+  const dispatch = useDispatch();
+  // [form] allows validation and other things like resetting fields to default
+  const [form] = Form.useForm();
+  const id =
+    JSON.parse(localStorage.getItem('profile')).data.result._id ||
+    JSON.parse(localStorage.getItem('profile')).data.result.googleId;
+
+  useEffect(() => {
+    dispatch(getSleepData(id));
+  }, [id, dispatch]);
+
+  // mongo adds data like push() => currSleep = latest sleep session
+  const currSleep = useSelector(
+    (state) => state.sleepData.data[state.sleepData.data.length - 1]
   );
 
+  useEffect(() => {
+    // restore active sleep session if user logs out
+    if (currSleep) {
+      if (currSleep.sleepStart && !currSleep.sleepEnd) {
+        setData((prev) => Object.assign(prev, currSleep));
+        setIsSleeping(true);
+      }
+    }
+    // ensure !isSleeping when switching from user with active sleep session
+    else {
+      setIsSleeping(false);
+    }
+  }, [currSleep]);
+
+  const initialState = {
+    creator: id,
+    date: null,
+    sleepStart: null,
+    sleepEnd: null,
+    moodStart: null,
+    moodWake: null,
+    sleepGoal: null,
+    sleepDuration: null,
+    notesSleep: '',
+    notesWake: '',
+  };
+
+  const [isSleeping, setIsSleeping] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
-  const [selectedTime, setSelectedTime] = useState('00:00');
-  const [mood, setMood] = useState(5);
-  console.log(selectedTime, mood);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [data, setData] = useState(initialState);
+
   const showModal = () => {
     setVisible(true);
   };
 
-  const handleOk = () => {
-    setConfirmLoading(true);
+  // calculate sleepDuration
+  function msToTime(duration) {
+    let minutes = Math.floor((duration / (1000 * 60)) % 60),
+      hours = Math.floor((duration / (1000 * 60 * 60)) % 24),
+      seconds = Math.floor((duration / 1000) % 60);
+
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+
+    return hours + ':' + minutes + ':' + seconds;
+  }
+
+  const handleOk = (vals) => {
+    setIsLoading(true);
+
     setTimeout(() => {
       setVisible(false);
-      setConfirmLoading(false);
+      setIsLoading(false);
 
       if (isSleeping) {
-        setSuccessMessage('Sleep Session Started!');
-        success(successMessage);
+        setData((prev) => {
+          const date = new Date();
+          // sleepStart entered as Date type but Mongo stores as BSON type
+          prev.sleepDuration = msToTime(
+            Math.abs(new Date(prev.sleepStart) - date)
+          );
+          prev.sleepEnd = date; //.toLocaleTimeString();
+          return Object.assign(prev, vals);
+        });
+
+        message.success('Sleep Session Successfully Recorded!');
         setIsSleeping(false);
-        setButtonText('Start Sleep');
+        dispatch(updateSleep(currSleep._id, data));
+        setData(initialState);
       } else {
-        setSuccessMessage('Sleep Session Successfully Recorded!');
-        success(successMessage);
+        setData((prev) => {
+          const date = new Date();
+
+          prev.sleepStart = date; //.toLocaleTimeString();
+          prev.date = date;
+          return Object.assign(prev, vals);
+        });
+
+        message.success('Sleep Session Started!');
         setIsSleeping(true);
-        setButtonText('Stop Sleep');
+        dispatch(createSleep(data));
       }
     }, 1000);
   };
 
   const handleCancel = () => {
     setVisible(false);
-    failure();
-  };
-
-  const success = (text) => {
-    message.success(text);
-  };
-
-  const failure = () => {
+    setData(initialState);
     message.warning('Data not recorded!', 2);
   };
-
-  const onMoodChange = (e) => {
-    setMood(e.target.value);
-  };
-
-  // const emotions = (
-  //   <Menu>
-  //     <Menu.Item key={5}>😇</Menu.Item>
-  //     <Menu.Item key={4}>😀</Menu.Item>
-  //     <Menu.Item key={3}>🙂</Menu.Item>
-  //     <Menu.Item key={2}>🙁</Menu.Item>
-  //     <Menu.Item key={1}>😖</Menu.Item>
-  //   </Menu>
-  // );
 
   return (
     <div
       style={{
         textAlign: 'right',
-        backgroundColor: isSleeping === true ? '#31263E' : '#F7F4F3',
+        backgroundColor: isSleeping ? '#31263E' : '#F7F4F3',
       }}
     >
       <Button type="primary" onClick={showModal} size={'large'} shape={'round'}>
-        {buttonText}
+        {isSleeping ? 'Stop Sleep' : 'Start Sleep'}
       </Button>
       <Modal
-        title={buttonText}
+        title={isSleeping ? 'Stop Sleep' : 'Start Sleep'}
         visible={visible}
-        onOk={handleOk}
-        confirmLoading={confirmLoading}
+        onOk={() => {
+          form
+            .validateFields()
+            .then((vals) => {
+              handleOk(vals);
+              form.resetFields();
+            })
+            .catch((info) => console.log('Validation Failed: ', info));
+        }}
+        confirmLoading={isLoading}
         onCancel={handleCancel}
       >
-        <Space direction="vertical">
-          <Space direction="horizontal">
-            Today's Date
-            <DatePicker defaultValue={moment()} />
-          </Space>
-
-          <Space direction="horizontal">
-            {buttonText}Time
-            <TimePicker
-              autoFocus={true}
-              format="HH:mm"
-              defaultValue={moment()}
-              onSelect={(value) => {
-                const timeString = moment(value).format('HH:mm');
-                setSelectedTime(timeString);
-                console.log(timeString);
-              }}
-              onChange={success}
-              minuteStep={5}
-            />
-          </Space>
-
-          <Space direction="horizontal">
-            Select Mood
-            <Radio.Group onChange={onMoodChange}>
+        <Form form={form} name="form_in_modal">
+          {!isSleeping && (
+            <Form.Item
+              name="sleepGoal"
+              label="sleepGoal"
+              rules={[{ required: true }]}
+            >
+              <InputNumber min={1} max={24} />
+            </Form.Item>
+          )}
+          <Form.Item
+            name={isSleeping ? 'moodWake' : 'moodStart'}
+            label="Mood"
+            rules={[{ required: true }]}
+          >
+            <Radio.Group>
               <Radio value={5}>😇</Radio>
               <Radio value={4}>😀</Radio>
               <Radio value={3}>🙂</Radio>
               <Radio value={2}>🙁</Radio>
               <Radio value={1}>😖</Radio>
             </Radio.Group>
-          </Space>
-
-          <Input placeholder="Additional notes" />
-        </Space>
+          </Form.Item>
+          <Form.Item
+            name={isSleeping ? 'notesWake' : 'notesSleep'}
+            label="Additional Notes"
+          >
+            <Input />
+          </Form.Item>
+        </Form>
       </Modal>
     </div>
   );
