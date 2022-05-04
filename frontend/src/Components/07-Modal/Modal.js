@@ -16,7 +16,7 @@ export default function SleepModal({ id }) {
 
   useEffect(() => {
     // restore active sleep session if user logs out
-    if (currSleep && currSleep.creator === id) {
+    if (currSleep) {
       if (currSleep.sleepStart && !currSleep.sleepEnd) {
         setData((prev) => Object.assign(prev, currSleep));
         setIsSleeping(true);
