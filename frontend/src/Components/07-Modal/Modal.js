@@ -6,7 +6,7 @@ import { createSleep, updateSleep, getSleepData } from '../../reducers/Sleep';
 
 export default function SleepModal() {
   const dispatch = useDispatch();
-  // [form] allows validation and other things like resetting fields to default
+  // [form] allows <Form /> container validation and other things like resetting fields to default
   const [form] = Form.useForm();
   const id =
     JSON.parse(localStorage.getItem('profile')).data.result._id ||
@@ -23,17 +23,13 @@ export default function SleepModal() {
 
   useEffect(() => {
     // restore active sleep session if user logs out
-    if (currSleep) {
+    if (currSleep && currSleep.creator === id) {
       if (currSleep.sleepStart && !currSleep.sleepEnd) {
         setData((prev) => Object.assign(prev, currSleep));
         setIsSleeping(true);
       }
     }
-    // ensure !isSleeping when switching from user with active sleep session
-    else {
-      setIsSleeping(false);
-    }
-  }, [currSleep]);
+  }, [currSleep, id]);
 
   const initialState = {
     creator: id,
