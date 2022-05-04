@@ -21,9 +21,12 @@ export const sleepSlice = createSlice({
     remove: (state, action) => {
       state.data = state.data.filter((sleep) => sleep._id !== action.payload);
     },
+    logOut: (state) => {
+      state.data = [];
+    },
   },
 });
 
-export const { get, create, update, remove } = sleepSlice.actions;
+export const { get, create, update, remove, logOut } = sleepSlice.actions;
 
 export default sleepSlice.reducer;
