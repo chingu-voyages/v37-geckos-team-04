@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Layout, Menu, Input } from 'antd';
 import {
   DesktopOutlined,
@@ -19,6 +19,8 @@ import Modal from '../07-Modal/Modal';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logOutSuccess } from '../../reducers/userSlice';
+import { logOut } from '../../reducers/sleepSlice';
+import { getSleepData } from '../../reducers/Sleep';
 
 const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -29,8 +31,17 @@ export default function Dashboard() {
   // const [visible, setVisible] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
 
+  const id =
+    JSON.parse(localStorage.getItem('profile')).data.result._id ||
+    JSON.parse(localStorage.getItem('profile')).data.result.googleId;
+
+  useEffect(() => {
+    dispatch(getSleepData(id));
+  }, [id, dispatch]);
+
   const logOutUser = () => {
     dispatch(logOutSuccess());
+    dispatch(logOut());
     navigate('/');
   };
 
@@ -61,7 +72,7 @@ export default function Dashboard() {
         </Menu>
       </Sider>
       <Layout className="site-layout">
-        <Modal />
+        <Modal id={id} />
         <Content style={{ margin: '25px 35px' }}>
           <Outlet />
         </Content>

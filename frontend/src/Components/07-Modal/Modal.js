@@ -2,19 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Button, Modal, message, Input, InputNumber, Radio, Form } from 'antd';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { createSleep, updateSleep, getSleepData } from '../../reducers/Sleep';
+import { createSleep, updateSleep } from '../../reducers/Sleep';
 
-export default function SleepModal() {
+export default function SleepModal({ id }) {
   const dispatch = useDispatch();
   // [form] allows <Form /> container validation and other things like resetting fields to default
   const [form] = Form.useForm();
-  const id =
-    JSON.parse(localStorage.getItem('profile')).data.result._id ||
-    JSON.parse(localStorage.getItem('profile')).data.result.googleId;
-
-  useEffect(() => {
-    dispatch(getSleepData(id));
-  }, [id, dispatch]);
 
   // mongo adds data like push() => currSleep = latest sleep session
   const currSleep = useSelector(
