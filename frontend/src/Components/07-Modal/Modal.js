@@ -145,11 +145,11 @@ export default function SleepModal({ id }) {
             rules={[{ required: true }]}
           >
             <Radio.Group>
-              <Radio value={5}>😇</Radio>
-              <Radio value={4}>😀</Radio>
-              <Radio value={3}>🙂</Radio>
-              <Radio value={2}>🙁</Radio>
-              <Radio value={1}>😖</Radio>
+              <Radio value={4}>😇</Radio>
+              <Radio value={3}>😀</Radio>
+              <Radio value={2}>🙂</Radio>
+              <Radio value={1}>🙁</Radio>
+              <Radio value={0}>😖</Radio>
             </Radio.Group>
           </Form.Item>
           <Form.Item
