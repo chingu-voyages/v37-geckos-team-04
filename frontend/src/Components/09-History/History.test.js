@@ -8,7 +8,7 @@ import userEvent from '@testing-library/user-event';
 import History from './History';
 import mockSleepData from './mockSleepData';
 // import mockUserData from './mockUserData';
-import { waitFor } from '@testing-library/react';
+import { waitFor, within } from '@testing-library/react';
 
 // export const handlers = [
 //   rest.get('/history', (req, res, ctx) => {
@@ -38,25 +38,38 @@ const setup = () => {
   });
 };
 
-describe('test history table', () => {
-  test('render history data', async () => {
+describe('test history', () => {
+  test('table renders history data', () => {
     setup();
 
-    const date = screen.getByRole('cell', { name: 'Sat Jan 01 2022' });
-    screen.debug(date);
+    // confirm all column types
+    const tableHeaders = document.querySelector('.ant-table-thead');
+    expect(tableHeaders).toBeInTheDocument();
+
+    // test first sleep instance
+    const container = document.querySelector('.ant-table-row-level-0');
+
+    const date = within(container).getByRole('cell', { name: /sat jan 01/i });
+    expect(date).toHaveTextContent(/Sat Jan 01 2022/i);
+
+    const moodStart = within(container).getByRole('cell', { name: '😖' });
+    expect(moodStart).toHaveTextContent('😖');
+
+    const editButton = within(container).getByRole('cell', { name: /edit/i });
+    expect(editButton).toBeInTheDocument();
   });
 
-  test('update history data', async () => {
+  // This only tests the presence of the modal, not its functionality
+  test('edit modal appears', async () => {
     setup();
 
     const edit = screen.getAllByRole('cell', { name: /edit/i })[0];
 
     userEvent.click(edit);
-
+    // console.log(document.querySelector('ant-modal'));
     // queryByText to find modal; antd modals are rendered outside root div
-    const modal = await waitFor(() => screen.queryByText(/editing sleep/i));
-
-    // const close = screen.getByRole('button', { name: /close/i });
-    // screen.debug(close);
+    const modal = screen.queryByText(/editing sleep/i);
+    console.log(modal);
+    const close = screen.queryByText(/close/i);
   });
 });
