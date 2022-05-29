@@ -15,13 +15,11 @@ export const userSlice = createSlice({
       state.isError = !action.payload ? action.payload : action.payload.message;
     },
     isAuthenticated: (state, action) => {
-      console.log('signed up/logged in!');
       // Local storage is to maintain user's session and check if the token is saved in there
       localStorage.setItem('profile', JSON.stringify({ ...action.payload }));
       state.authData = { ...action.payload };
     },
     logOutSuccess: (state) => {
-      console.log('logged out!');
       state.authData = null;
       localStorage.clear();
     },

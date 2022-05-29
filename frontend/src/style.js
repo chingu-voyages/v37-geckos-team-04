@@ -2,7 +2,8 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-    body {
+    html, body {
+        scroll-behavior: smooth;
         margin: 0;
         padding: 0;
         position: relative;
