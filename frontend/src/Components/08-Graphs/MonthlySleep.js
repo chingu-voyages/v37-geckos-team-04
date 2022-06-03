@@ -1,22 +1,46 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import GraphTemplate from './GraphTemplate';
 import { MonthlySleepCont } from './style';
 
 export default function MonthlySleep() {
-  // data should be fetched from the user's sleep data from the past month
-  // 'uv' should be fetched from the backend, just for those past 30 days
-  // 'pv' isn't necessary for our needs here
+  const data = useSelector((state) => state.sleepData.data);
 
-  const data = [
-    { name: 'Sundays', uv: 8.7, pv: 0, amt: 24 },
-    { name: 'Mondays', uv: 7.4, pv: 0, amt: 24 },
-    { name: 'Tuesdays', uv: 6.9, pv: 0, amt: 24 },
-    { name: 'Wednesdays', uv: 7.1, pv: 0, amt: 24 },
-    { name: 'Thursdays', uv: 7.3, pv: 0, amt: 24 },
-    { name: 'Fridays', uv: 6.2, pv: 0, amt: 24 },
-    { name: 'Saturdays', uv: 9.4, pv: 0, amt: 24 },
-    // {name: `Week 1`, uv: }
-  ];
+  // group all sleep data by month
+  const formatData = {};
+  data.reduce((accu, curr) => {
+    const date = new Date(curr.date);
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    const key = month + '/' + year;
+
+    if (!accu[key]) {
+      accu[key] = [];
+    }
+    accu[key].push(curr);
+    return accu;
+  }, formatData);
+
+  // format data for graph
+  // other calculations could be added like average sleep time which could be passed to tooltip
+  const graphData = [];
+  for (const month in formatData) {
+    let meanDuration = 0;
+    const date = new Date(formatData[month][0].date);
+    const key = date.getMonth() + 1 + '/' + date.getFullYear();
+
+    formatData[month].map((sleep) => {
+      const duration =
+        Math.abs(new Date(sleep.sleepStart) - new Date(sleep.sleepEnd)) /
+        3600000;
+      meanDuration += duration;
+    });
+
+    meanDuration = (meanDuration / formatData[month].length).toFixed(2);
+
+    graphData.push({ name: key, uv: meanDuration });
+  }
 
   const CustomToolTip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -28,7 +52,8 @@ export default function MonthlySleep() {
           </div>
         </div>
       );
-    } else return null;
+    }
+    return null;
   };
 
   return (
@@ -37,7 +62,7 @@ export default function MonthlySleep() {
         // width={750}
         height={400}
         title={'Monthly average daily sleep duration'}
-        data={data}
+        data={graphData}
         yAxis={'Hours on average'}
         customTooltip={CustomToolTip}
       />
