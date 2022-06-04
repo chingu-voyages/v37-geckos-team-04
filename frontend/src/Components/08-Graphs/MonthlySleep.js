@@ -30,7 +30,7 @@ export default function MonthlySleep() {
     const date = new Date(formatData[month][0].date);
     const key = date.getMonth() + 1 + '/' + date.getFullYear();
 
-    formatData[month].map((sleep) => {
+    formatData[month].forEach((sleep) => {
       const duration =
         Math.abs(new Date(sleep.sleepStart) - new Date(sleep.sleepEnd)) /
         3600000;
