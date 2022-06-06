@@ -9,7 +9,7 @@ const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 export default function WeeklySleep() {
   const data = useSelector((state) => state.sleepData.data);
 
-  const dataArr = [];
+  const graphData = [];
 
   // copy all sleep instances and sort oldest to newest
   let newData = data.slice();
@@ -18,15 +18,16 @@ export default function WeeklySleep() {
   // get last 7 sleep instances (may be gaps in between days if user misses recording)
   newData = newData.slice(-7);
   // add *name* for x-axis label and *uv* for sleepDuration in hours
-  newData.forEach((sleep, i) => {
+  newData.forEach((sleep) => {
     const update = {};
     Object.assign(update, sleep);
     update.name = new Date(sleep.date).getDay();
-    const duration = Math.abs(
-      new Date(sleep.sleepStart) - new Date(sleep.sleepEnd)
-    );
+    // prettier-ignore
+    const duration = Math.abs(new Date(sleep.sleepStart) - new Date(sleep.sleepEnd));
     update.uv = (duration / 3600000).toFixed(2);
-    dataArr.push(update);
+    update.sleepStart = new Date(update.sleepStart).toLocaleTimeString();
+    update.sleepEnd = new Date(update.sleepEnd).toLocaleTimeString();
+    graphData.push(update);
   });
 
   const CustomXAxisTick = (payload) => {
@@ -38,8 +39,11 @@ export default function WeeklySleep() {
       return (
         <div className="custom-tooltip">
           <div className="label">
-            {new Date(payload[0].payload.date).toDateString()} <br />
-            {<b>{payload[0].payload.sleepDuration}</b>}
+            {<b>{new Date(payload[0].payload.date).toDateString()}</b>} <br />
+            <b>Sleep Duration:</b> {payload[0].payload.sleepDuration} hours{' '}
+            <br />
+            <b>Sleep Time:</b> {payload[0].payload.sleepStart} <br />
+            <b>Wake Time:</b> {payload[0].payload.sleepEnd}
           </div>
         </div>
       );
@@ -52,7 +56,7 @@ export default function WeeklySleep() {
       <GraphTemplate
         height={400}
         title={'Hours of sleep per day for the last seven days'}
-        data={dataArr}
+        data={graphData}
         yAxis={'Hours'}
         yDomain={[0, (dataMax) => Math.ceil(dataMax * 1.5)]}
         customTooltip={CustomToolTip}
