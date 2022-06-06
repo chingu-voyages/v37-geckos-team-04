@@ -6,7 +6,7 @@ Irregular sleeping patterns are a common problem. Research has shown that sleepi
 
 Our goal behind this project is to emulate the teamwork in developing professional real-world apps.
 
-[LIVE LINK](https://angry-euler-683130.netlify.app/) to the app.
+[LIVE LINK](https://sleeptracker-chingu.netlify.app/) to the app.
 
 ## Features
 
@@ -37,7 +37,7 @@ Our goal behind this project is to emulate the teamwork in developing profession
 
 ## Running the Project
 
-[Live Version](https://angry-euler-683130.netlify.app/)
+[Live Version](https://sleeptracker-chingu.netlify.app/)
 
 ### Running this project locally
 
