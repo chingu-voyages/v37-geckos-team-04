@@ -13,8 +13,15 @@ import {
 import { GraphTemplateCont } from './style';
 
 export default function GraphTemplate(props) {
-  // const { width, height, title, data, yAxis, customTooltip } = props;
-  const { height, title, data, yAxis, customTooltip } = props;
+  const {
+    height,
+    title,
+    data,
+    yAxis,
+    customTooltip,
+    yDomain,
+    CustomXAxisTick,
+  } = props;
 
   return (
     <GraphTemplateCont>
@@ -22,8 +29,8 @@ export default function GraphTemplate(props) {
       <ResponsiveContainer width="100%" height={height}>
         <ComposedChart data={data}>
           <CartesianGrid stroke="#f5f5f5" />
-          <XAxis dataKey="name" scale="band" />
-          <YAxis label={{ value: yAxis, angle: -90 }} />
+          <XAxis dataKey="name" tickFormatter={CustomXAxisTick} interval={0} />
+          <YAxis label={{ value: yAxis, angle: -90 }} domain={yDomain} />
           <Tooltip content={customTooltip} />
           <Bar dataKey="uv" barSize={70} fill="#cdcdcd" />
           <Line type="monotone" dataKey="uv" stroke="#413ea0" strokeWidth={2} />
