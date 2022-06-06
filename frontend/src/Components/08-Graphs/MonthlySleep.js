@@ -3,25 +3,8 @@ import { useSelector } from 'react-redux';
 import GraphTemplate from './GraphTemplate';
 import { MonthlySleepCont } from './style';
 
-import mockSleepData from '../09-History/mockSleepData';
-
-const months = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sept',
-  'Oct',
-  'Nov',
-];
-
 export default function MonthlySleep() {
-  // const data = useSelector((state) => state.sleepData.data);
-  const data = mockSleepData;
+  const data = useSelector((state) => state.sleepData.data);
   // group all sleep data by month
   const formatData = {};
   data.reduce((accu, curr) => {
@@ -39,14 +22,11 @@ export default function MonthlySleep() {
   }, formatData);
 
   // format data for graph
-  // other calculations could be added like average sleep time which could be passed to tooltip
   const graphData = [];
   for (const month in formatData) {
     let meanDuration = 0;
     let meanSleepStart = 0;
-    let meanSleepEnd;
-    let meanMoodStart;
-    let meanMoodEnd;
+    let meanSleepEnd = 0;
 
     const name = new Date(formatData[month][0].date).toLocaleString('default', {
       month: 'short',
@@ -62,27 +42,34 @@ export default function MonthlySleep() {
       sleepStart.setFullYear(2020, 1, 1);
       sleepStart = sleepStart.getTime();
       meanSleepStart += sleepStart;
+
+      let sleepEnd = new Date(sleep.sleepEnd);
+      sleepEnd.setFullYear(2020, 1, 1);
+      sleepEnd = sleepEnd.getTime();
+      meanSleepEnd += sleepEnd;
     });
 
     meanDuration = (meanDuration / formatData[month].length).toFixed(2);
-    meanSleepStart = new Date(
-      meanSleepStart / formatData[month].length
-    ).toLocaleTimeString();
+    // prettier-ignore
+    meanSleepStart = new Date(meanSleepStart / formatData[month].length).toLocaleTimeString();
+    // prettier-ignore
+    meanSleepEnd = new Date(meanSleepEnd / formatData[month].length).toLocaleTimeString();
 
-    graphData.push({ name, uv: meanDuration, meanSleepStart });
+    graphData.push({ name, uv: meanDuration, meanSleepStart, meanSleepEnd });
   }
 
   const CustomToolTip = ({ active, payload, label }) => {
-    console.log(payload);
     if (active && payload && payload.length) {
       return (
         <div className="custom-tooltip">
           <div className="label">
             <b>{label}</b>
             <br />
-            <b>Average hours of sleep:</b> {payload[0].value} hours
+            <b>Average Sleep Duration:</b> {payload[0].value} hours
             <br />
-            <b>Average sleep time:</b> {payload[0].payload.meanSleepStart}
+            <b>Average Sleep Time:</b> {payload[0].payload.meanSleepStart}
+            <br />
+            <b>Average Wake Time:</b> {payload[0].payload.meanSleepEnd}
           </div>
         </div>
       );
@@ -93,11 +80,10 @@ export default function MonthlySleep() {
   return (
     <MonthlySleepCont>
       <GraphTemplate
-        // width={750}
         height={400}
-        title={'Monthly averages'}
+        title={'Monthly Sleep Duration Average'}
         data={graphData}
-        yAxis={'Hours on average'}
+        yAxis={'Hours on Average'}
         customTooltip={CustomToolTip}
       />
     </MonthlySleepCont>
