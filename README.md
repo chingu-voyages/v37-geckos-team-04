@@ -43,8 +43,9 @@ Our goal behind this project is to emulate the teamwork in developing profession
 
 1. Clone this repo locally
 2. Go to the `server` and `frontend` directories and install the dependencies (`npm install`).
-3. Run both `server` and `frontend` with `npm start`.
-4. Enjoy!
+3. Change the API in `frontend/src/api/Api` to connect to localhost.
+4. Run both `server` and `frontend` with `npm start`.
+5. Enjoy!
 
 ## Future Improvements
 
