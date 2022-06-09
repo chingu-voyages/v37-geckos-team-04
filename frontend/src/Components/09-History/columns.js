@@ -46,6 +46,9 @@ const columns = [
   {
     dataIndex: 'Edit',
   },
+  {
+    dataIndex: 'Delete',
+  },
 ];
 
 export default columns;

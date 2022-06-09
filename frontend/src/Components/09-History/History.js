@@ -2,7 +2,7 @@ import { Form, Table, Typography } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateSleep } from '../../reducers/Sleep.js';
+import { updateSleep, removeSleep } from '../../reducers/Sleep.js';
 import columns from './columns.js';
 import EditModal from './EditModal.js';
 
@@ -29,6 +29,16 @@ export default function History() {
         return (
           <Typography.Link disabled={editModal} onClick={() => edit(record)}>
             Edit
+          </Typography.Link>
+        );
+      };
+    }
+    if (col.dataIndex === 'Delete') {
+      col.render = (_, record) => {
+        if (!record) return null;
+        return (
+          <Typography.Link onClick={() => dispatch(removeSleep(record._id))}>
+            Delete
           </Typography.Link>
         );
       };
