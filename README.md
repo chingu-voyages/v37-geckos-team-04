@@ -1,4 +1,4 @@
-# SleepTracker
+# SleepTracker [![Netlify Status](https://api.netlify.com/api/v1/badges/c86d0bab-7025-4f3a-bc1d-1ae16a329884/deploy-status)](https://app.netlify.com/sites/sleeptracker-chingu/deploys)
 
 Irregular sleeping patterns are a common problem. Research has shown that sleeping and getting up at a certain time is a good sleeping practice and can improve mood quality. **SleepTracker** allows you to set a sleep goal and track your sleeping patterns.
 
