@@ -1,10 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useOutletContext } from 'react-router-dom';
 import GraphTemplate from './GraphTemplate';
 import { MonthlySleepCont } from './style';
 
 export default function MonthlySleep() {
-  const data = useSelector((state) => state.sleepData.data);
+  const data = useOutletContext();
   // group all sleep data by month
   const formatData = {};
   data.reduce((accu, curr) => {

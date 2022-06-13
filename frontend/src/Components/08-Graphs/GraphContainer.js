@@ -13,19 +13,19 @@ export default function GraphContainer() {
         <Row gutter={[5, 5]}>
           <Col flex="auto">
             <Card style={{ minHeight: '30vh' }}>
-              <WeeklySleep />
+              <WeeklySleep data={data} />
             </Card>
           </Col>
           <Col flex="auto">
             <Card style={{ minHeight: '30vh' }}>
-              <MonthlySleep />
+              <MonthlySleep data={data} />
             </Card>
           </Col>
         </Row>
         <Row gutter={15} style={{ marginTop: '25px' }}>
           <Col flex="auto">
             <Card style={{ minHeight: '40vh' }}>
-              <DayOfTheWeek />
+              <DayOfTheWeek data={data} />
             </Card>
           </Col>
         </Row>
