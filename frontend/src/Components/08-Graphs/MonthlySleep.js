@@ -30,7 +30,6 @@ export default function MonthlySleep() {
 
     const name = new Date(formatData[month][0].date).toLocaleString('default', {
       month: 'short',
-      year: 'numeric',
     });
 
     formatData[month].forEach((sleep) => {
