@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useOutletContext } from 'react-router-dom';
 
 import GraphTemplate from './GraphTemplate';
 import { WeeklySleepCont } from './style';
@@ -7,7 +7,7 @@ import { WeeklySleepCont } from './style';
 const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 
 export default function WeeklySleep() {
-  const data = useSelector((state) => state.sleepData.data);
+  const data = useOutletContext();
 
   const graphData = [];
 

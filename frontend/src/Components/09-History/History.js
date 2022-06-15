@@ -1,7 +1,8 @@
 import { Form, Table, Typography } from 'antd';
 import moment from 'moment';
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { updateSleep, removeSleep } from '../../reducers/Sleep.js';
 import columns from './columns.js';
 import EditModal from './EditModal.js';
@@ -10,16 +11,10 @@ const moods = ['😖', '🙁', '🙂', '😀', '😇'];
 
 export default function History() {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.sleepData.data);
-  const [sleepData, setSleepData] = useState(data);
+  const data = useOutletContext();
   const [form] = Form.useForm();
   const [currSleep, setCurrSleep] = useState();
   const [editModal, setEditModal] = useState(false);
-
-  // Fetches if new sleep data
-  useEffect(() => {
-    setSleepData(data);
-  }, [data]);
 
   // Add edit button in **columns** here as it requires local state
   columns.forEach((col) => {
@@ -46,7 +41,7 @@ export default function History() {
   });
 
   const edit = (record) => {
-    const findSleep = sleepData.find((sleep) => sleep._id === record._id);
+    const findSleep = data.find((sleep) => sleep._id === record._id);
 
     const update = Object.assign({}, findSleep);
     update.date = moment(update.date);
@@ -88,7 +83,7 @@ export default function History() {
   };
 
   // format sleepData for table
-  const formatData = sleepData.map((sleep) => {
+  const formatData = data.map((sleep) => {
     if (!sleep.sleepEnd) return null;
     const renderSleep = { ...sleep };
 

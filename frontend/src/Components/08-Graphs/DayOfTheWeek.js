@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useOutletContext } from 'react-router-dom';
 
 import GraphTemplate from './GraphTemplate';
 import { DayOfTheWeekCont } from './style';
@@ -7,7 +7,7 @@ import { DayOfTheWeekCont } from './style';
 const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 
 export default function DayOfTheWeek() {
-  const data = useSelector((state) => state.sleepData.data);
+  const data = useOutletContext();
 
   const formatData = {};
   data.reduce((acc, curr) => {
