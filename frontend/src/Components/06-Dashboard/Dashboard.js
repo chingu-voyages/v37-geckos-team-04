@@ -71,11 +71,14 @@ export default function Dashboard() {
           <Menu.Item key="history" icon={<HistoryOutlined />}>
             <Link to="history">History</Link>
           </Menu.Item>
-          <Menu.Item key="mock data" icon={<FormOutlined />}>
+          <Menu.Item
+            key="mock data"
+            icon={<FormOutlined />}
+            onClick={() => setIsMock((prev) => !prev)}
+          >
             <Button
               style={{ padding: 0, color: 'rgba(255, 255, 255, 0.65)' }}
               type="text"
-              onClick={() => setIsMock((prev) => !prev)}
             >
               {isMock ? 'Unmock Data' : 'Mock Data'}
             </Button>
