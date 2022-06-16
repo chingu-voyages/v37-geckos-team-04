@@ -54,6 +54,8 @@ export default function Dashboard() {
         collapsible
         collapsed={collapsed}
         onCollapse={(collapsed) => setCollapsed(collapsed)}
+        breakpoint="lg"
+        collapsedWidth="0"
       >
         <Menu theme="dark" defaultSelectedKeys={['graphs']} mode="inline">
           <Menu.Item key="graphs" icon={<PieChartOutlined />}>
