@@ -24,7 +24,7 @@ export default function Navbar() {
       // control navbar slideDown animation onScroll Y
       if (!showMenu && currYPos > scrollPos) {
         navbar.current.style.top = '-60px';
-      } else {
+      } else if (navbar.current.style.top) {
         navbar.current.style.top = '0';
       }
 
