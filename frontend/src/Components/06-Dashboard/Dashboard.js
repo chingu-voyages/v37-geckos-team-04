@@ -46,7 +46,6 @@ export default function Dashboard() {
   };
 
   function getItem(label, key, icon, children) {
-    console.log(label, key, icon, children);
     return {
       label,
       key,
@@ -98,7 +97,7 @@ export default function Dashboard() {
       </SiderContainer>
       <Layout className="site-layout">
         <Modal id={id} />
-        <Content style={{ margin: '25px 35px' }}>
+        <Content style={{ margin: '5px' }}>
           {isMock && <h1>Mocked Data</h1>}
           <Outlet context={isMock ? mockSleepData : sleepData} />
         </Content>
