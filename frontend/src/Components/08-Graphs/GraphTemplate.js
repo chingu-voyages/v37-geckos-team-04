@@ -42,7 +42,9 @@ export default function GraphTemplate(props) {
 
   return (
     <GraphTemplateCont>
-      <h1 className="title">{title}</h1>
+      <h1 className="title" style={{ padding: '1em' }}>
+        {title}
+      </h1>
       <ResponsiveContainer width="100%" height={height}>
         <ComposedChart data={data} margin={margin}>
           <CartesianGrid stroke="#f5f5f5" />
