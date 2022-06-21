@@ -25,7 +25,7 @@ export default function GraphTemplate(props) {
 
   return (
     <GraphTemplateCont>
-      <div className="title">{title}</div>
+      <h1 className="title">{title}</h1>
       <ResponsiveContainer width="100%" height={height}>
         <ComposedChart data={data}>
           <CartesianGrid stroke="#f5f5f5" />
