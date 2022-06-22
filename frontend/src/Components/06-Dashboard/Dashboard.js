@@ -30,6 +30,8 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const [isMock, setIsMock] = useState(false);
   const sleepData = useSelector((state) => state.sleepData.data);
+  const [isMobile, setIsMobile] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
 
   const id =
     JSON.parse(localStorage.getItem('profile')).data.result._id ||
@@ -38,6 +40,14 @@ export default function Dashboard() {
   useEffect(() => {
     dispatch(getSleepData(id));
   }, [dispatch, id]);
+
+  useEffect(() => {
+    const viewportWidth = window.innerWidth;
+
+    if (viewportWidth > 992) {
+      setIsMobile(false);
+    }
+  }, []);
 
   const logOutUser = () => {
     dispatch(logOutSuccess());
@@ -87,14 +97,29 @@ export default function Dashboard() {
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <SiderContainer breakpoint="md" collapsedWidth="0">
-        <Menu
-          items={items}
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['graphs']}
-        />
-      </SiderContainer>
+      {isMobile ? (
+        <SiderContainer collapsible breakpoint="lg" collapsedWidth={0}>
+          <Menu
+            items={items}
+            theme="dark"
+            mode="inline"
+            defaultSelectedKeys={['graphs']}
+          />
+        </SiderContainer>
+      ) : (
+        <SiderContainer
+          collapsible
+          collapsed={collapsed}
+          onClick={() => setCollapsed((prev) => !prev)}
+        >
+          <Menu
+            items={items}
+            theme="dark"
+            mode="inline"
+            defaultSelectedKeys={['graphs']}
+          />
+        </SiderContainer>
+      )}
       <Layout className="site-layout">
         <Modal id={id} />
         <Content style={{ margin: '5px' }}>
