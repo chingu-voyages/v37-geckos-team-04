@@ -8,7 +8,7 @@ const columns = [
     title: 'Sleep Time',
     dataIndex: 'sleepStart',
     editable: true,
-    responsive: ['md'],
+    responsive: ['sm'],
   },
   {
     title: 'Wake Time',
@@ -43,13 +43,13 @@ const columns = [
     title: 'Sleep Notes',
     dataIndex: 'notesSleep',
     editable: true,
-    responsive: ['lg'],
+    responsive: ['xl'],
   },
   {
     title: 'Wake Notes',
     dataIndex: 'notesWake',
     editable: true,
-    responsive: ['lg'],
+    responsive: ['xl'],
   },
   {
     dataIndex: 'Edit',
