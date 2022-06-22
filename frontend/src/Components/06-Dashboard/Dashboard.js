@@ -110,7 +110,7 @@ export default function Dashboard() {
         <SiderContainer
           collapsible
           collapsed={collapsed}
-          onClick={() => setCollapsed((prev) => !prev)}
+          onCollapse={(collapsed) => setCollapsed(collapsed)}
         >
           <Menu
             items={items}
