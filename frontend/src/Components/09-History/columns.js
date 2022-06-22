@@ -21,18 +21,21 @@ const columns = [
     dataIndex: 'moodStart',
     editable: true,
     responsive: ['lg'],
+    align: 'center',
   },
   {
     title: 'Wake Mood',
     dataIndex: 'moodWake',
     editable: true,
     responsive: ['lg'],
+    align: 'center',
   },
   {
     title: 'Sleep Goal',
     dataIndex: 'sleepGoal',
     editable: true,
     responsive: ['lg'],
+    align: 'center',
   },
   {
     title: 'Sleep Duration',
