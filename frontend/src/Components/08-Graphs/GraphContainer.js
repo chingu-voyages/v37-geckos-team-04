@@ -8,7 +8,7 @@ import DayOfTheWeek from './DayOfTheWeek';
 export default function GraphContainer() {
   const data = useOutletContext();
   return (
-    <div>
+    <div style={{ padding: 5 }}>
       <Row gutter={[5, 5]}>
         <Col flex="auto">
           <Card>
