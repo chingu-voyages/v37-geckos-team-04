@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Menu, Input, Button } from 'antd';
+import { Layout, Menu } from 'antd';
 import {
-  DesktopOutlined,
   PieChartOutlined,
-  DashboardOutlined,
   HistoryOutlined,
   // EyeOutlined,
   // EyeInvisibleOutlined,
@@ -12,6 +10,7 @@ import {
 } from '@ant-design/icons';
 import { Link, Outlet } from 'react-router-dom';
 
+import { SiderContainer } from './style';
 import Modal from '../07-Modal/Modal';
 // import History from '../09-History/History';
 // import Temp from '../08-Graphs/Temp';
@@ -24,15 +23,15 @@ import { logOut } from '../../reducers/sleepSlice';
 import { getSleepData } from '../../reducers/Sleep';
 import mockSleepData from '../../__mocks__/mockSleepData';
 
-const { Content, Sider } = Layout;
-const { SubMenu } = Menu;
+const { Content } = Layout;
 
 export default function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [collapsed, setCollapsed] = useState(false);
   const [isMock, setIsMock] = useState(false);
   const sleepData = useSelector((state) => state.sleepData.data);
+  const [isMobile, setIsMobile] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
 
   const id =
     JSON.parse(localStorage.getItem('profile')).data.result._id ||
@@ -42,50 +41,88 @@ export default function Dashboard() {
     dispatch(getSleepData(id));
   }, [dispatch, id]);
 
+  useEffect(() => {
+    const viewportWidth = window.innerWidth;
+
+    if (viewportWidth > 992) {
+      setIsMobile(false);
+    }
+  }, []);
+
   const logOutUser = () => {
     dispatch(logOutSuccess());
     dispatch(logOut());
     navigate('/');
   };
 
+  function getItem(label, key, icon, children) {
+    return {
+      label,
+      key,
+      icon,
+      children,
+    };
+  }
+
+  const items = [
+    getItem(
+      'Dashboard',
+      'graphs',
+      <Link to="graphs">
+        <PieChartOutlined />
+      </Link>
+    ),
+    getItem(
+      'History',
+      'history',
+      <Link to="history">
+        <HistoryOutlined />
+      </Link>
+    ),
+    getItem(
+      isMock ? 'Unmock Data' : 'Mock Data',
+      'mock data',
+      <Link to="#" onClick={() => setIsMock((prev) => !prev)}>
+        <FormOutlined />
+      </Link>
+    ),
+    getItem(
+      'Logout',
+      'logout',
+      <Link to="/" onClick={logOutUser}>
+        <ArrowRightOutlined />
+      </Link>
+    ),
+  ];
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(collapsed) => setCollapsed(collapsed)}
-      >
-        <Menu theme="dark" defaultSelectedKeys={['graphs']} mode="inline">
-          <Menu.Item key="graphs" icon={<PieChartOutlined />}>
-            <Link to="graphs">Dashboard</Link>
-          </Menu.Item>
-          <SubMenu key="sub1" icon={<DesktopOutlined />} title="Preferences">
-            <Menu.Item key="2" icon={<DashboardOutlined />}>
-              SleepGoal <Input min={4} max={12} defaultValue={8}></Input>
-            </Menu.Item>
-            {/* <Menu.Item key="3" icon={<EyeInvisibleOutlined />}>Bed-Time</Menu.Item>
-              <Menu.Item key="4" icon={<EyeOutlined />}>Wake-Time</Menu.Item> */}
-          </SubMenu>
-          <Menu.Item key="history" icon={<HistoryOutlined />}>
-            <Link to="history">History</Link>
-          </Menu.Item>
-          <Menu.Item key="mock data" icon={<FormOutlined />}>
-            <Button
-              style={{ padding: 0, color: 'rgba(255, 255, 255, 0.65)' }}
-              type="text"
-              onClick={() => setIsMock((prev) => !prev)}
-            >
-              {isMock ? 'Unmock Data' : 'Mock Data'}
-            </Button>
-          </Menu.Item>
-          <Menu.Item key="6" icon={<ArrowRightOutlined />} onClick={logOutUser}>
-            Log Out
-          </Menu.Item>
-        </Menu>
-      </Sider>
+      {isMobile ? (
+        <SiderContainer collapsible breakpoint="lg" collapsedWidth={0}>
+          <Menu
+            items={items}
+            theme="dark"
+            mode="inline"
+            defaultSelectedKeys={['graphs']}
+          />
+        </SiderContainer>
+      ) : (
+        <SiderContainer
+          collapsible
+          collapsed={collapsed}
+          onCollapse={(collapsed) => setCollapsed(collapsed)}
+        >
+          <Menu
+            items={items}
+            theme="dark"
+            mode="inline"
+            defaultSelectedKeys={['graphs']}
+          />
+        </SiderContainer>
+      )}
       <Layout className="site-layout">
         <Modal id={id} />
-        <Content style={{ margin: '25px 35px' }}>
+        <Content style={{ margin: '5px' }}>
           {isMock && <h1>Mocked Data</h1>}
           <Outlet context={isMock ? mockSleepData : sleepData} />
         </Content>

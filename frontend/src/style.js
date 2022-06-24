@@ -15,4 +15,8 @@ export const GlobalStyle = createGlobalStyle`
         flex-direction: column; */
         /* align-items: stretch; */
     }
+
+    .ant-card-body{
+        padding: 8px;
+    }
 `;
