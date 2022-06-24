@@ -135,7 +135,7 @@ export const Features = styled(Section)`
   }
 
   img {
-    max-width: 400px;
+    max-width: 100%;
     min-height: 25vh;
     -webkit-box-shadow: -1px 0px 11px 1px rgba(0, 0, 0, 0.51);
     box-shadow: -1px 0px 11px 1px rgba(0, 0, 0, 0.51);

@@ -88,10 +88,12 @@ export default function History() {
     const renderSleep = { ...sleep };
 
     renderSleep.key = renderSleep._id.toString();
-    renderSleep.date = new Date(renderSleep.date).toDateString();
     // prettier-ignore
-    renderSleep.sleepStart = new Date(renderSleep.sleepStart).toLocaleTimeString();
-    renderSleep.sleepEnd = new Date(renderSleep.sleepEnd).toLocaleTimeString();
+    renderSleep.date = new Date(renderSleep.date).toLocaleString('default', { day: 'numeric', month: 'short', weekday: 'short' });
+    // prettier-ignore
+    renderSleep.sleepStart = new Date(renderSleep.sleepStart).toLocaleTimeString('default', { hour: 'numeric', minute: 'numeric' });
+    // prettier-ignore
+    renderSleep.sleepEnd = new Date(renderSleep.sleepEnd).toLocaleTimeString('default', { hour: 'numeric', minute: 'numeric' });
     renderSleep.moodStart = moods[renderSleep.moodStart];
     renderSleep.moodWake = moods[renderSleep.moodWake];
 
