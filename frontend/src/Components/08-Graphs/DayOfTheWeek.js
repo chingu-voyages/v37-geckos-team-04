@@ -82,7 +82,7 @@ export default function DayOfTheWeek() {
         data={graphData}
         yAxis={'Hours'}
         customTooltip={CustomToolTip}
-        yDomain={[0, (dataMax) => Math.ceil(dataMax * 2.5)]}
+        // yDomain={[0, (dataMax) => Math.ceil(dataMax * 1.25)]}
       />
     </DayOfTheWeekCont>
   );
