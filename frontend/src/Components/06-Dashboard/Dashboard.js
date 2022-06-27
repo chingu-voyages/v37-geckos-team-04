@@ -31,7 +31,7 @@ export default function Dashboard() {
   const [isMock, setIsMock] = useState(false);
   const sleepData = useSelector((state) => state.sleepData.data);
   // prettier-ignore
-  const user = useSelector((state) => state.user.authData.data.result.firstName);
+  const user = JSON.parse(localStorage.getItem('profile')).data.result.firstName;
   const [isMobile, setIsMobile] = useState(true);
   const [collapsed, setCollapsed] = useState(false);
 
