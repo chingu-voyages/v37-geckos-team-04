@@ -77,7 +77,6 @@ export default function DayOfTheWeek() {
   return (
     <DayOfTheWeekCont>
       <GraphTemplate
-        // width={750}
         height={400}
         title={'Daily Sleep Duration Average'}
         data={graphData}
