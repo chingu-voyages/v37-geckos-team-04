@@ -10,7 +10,7 @@ import {
 } from '@ant-design/icons';
 import { Link, Outlet } from 'react-router-dom';
 
-import { SiderContainer } from './style';
+import { SiderContainer, Header } from './style';
 import Modal from '../07-Modal/Modal';
 // import History from '../09-History/History';
 // import Temp from '../08-Graphs/Temp';
@@ -30,6 +30,8 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const [isMock, setIsMock] = useState(false);
   const sleepData = useSelector((state) => state.sleepData.data);
+  // prettier-ignore
+  const user = JSON.parse(localStorage.getItem('profile')).data.result.firstName;
   const [isMobile, setIsMobile] = useState(true);
   const [collapsed, setCollapsed] = useState(false);
 
@@ -121,7 +123,10 @@ export default function Dashboard() {
         </SiderContainer>
       )}
       <Layout className="site-layout">
-        <Modal id={id} />
+        <Header>
+          <h1>Welcome to Your SleepTracker, {user}</h1>
+          <Modal id={id} />
+        </Header>
         <Content style={{ margin: '5px' }}>
           {isMock && <h1>Mocked Data</h1>}
           <Outlet context={isMock ? mockSleepData : sleepData} />

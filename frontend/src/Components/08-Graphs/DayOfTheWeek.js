@@ -77,13 +77,12 @@ export default function DayOfTheWeek() {
   return (
     <DayOfTheWeekCont>
       <GraphTemplate
-        // width={750}
         height={400}
-        title={'Which day of the week you get the most sleep on average'}
+        title={'Daily Sleep Duration Average'}
         data={graphData}
-        yAxis={'Hours on Average'}
+        yAxis={'Hours'}
         customTooltip={CustomToolTip}
-        yDomain={[0, (dataMax) => Math.ceil(dataMax * 2.5)]}
+        // yDomain={[0, (dataMax) => Math.ceil(dataMax * 1.25)]}
       />
     </DayOfTheWeekCont>
   );

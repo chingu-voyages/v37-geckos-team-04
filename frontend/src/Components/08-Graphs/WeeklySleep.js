@@ -55,7 +55,7 @@ export default function WeeklySleep() {
     <WeeklySleepCont>
       <GraphTemplate
         height={400}
-        title={'Hours of sleep per day for the last seven days'}
+        title={'Last 7 Days...'}
         data={graphData}
         yAxis={'Hours'}
         yDomain={[0, (dataMax) => Math.ceil(dataMax * 1.5)]}
