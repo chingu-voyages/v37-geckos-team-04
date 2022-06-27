@@ -105,12 +105,7 @@ export default function SleepModal({ id }) {
   };
 
   return (
-    <div
-      style={{
-        textAlign: 'right',
-        backgroundColor: isSleeping ? '#31263E' : '#F7F4F3',
-      }}
-    >
+    <div>
       <Button type="primary" onClick={showModal} size={'large'} shape={'round'}>
         {isSleeping ? 'Stop Sleep' : 'Start Sleep'}
       </Button>
