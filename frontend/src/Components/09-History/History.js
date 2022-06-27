@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { updateSleep, removeSleep } from '../../reducers/Sleep.js';
 import columns from './columns.js';
 import EditModal from './EditModal.js';
+import './style.css';
 
 const moods = ['😖', '🙁', '🙂', '😀', '😇'];
 
@@ -101,8 +102,8 @@ export default function History() {
   });
 
   return (
-    <div>
-      <Table columns={columns} dataSource={formatData} />
+    <div className="container">
+      <Table bordered columns={columns} dataSource={formatData} />
       <EditModal
         editModal={editModal}
         form={form}
