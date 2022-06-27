@@ -82,7 +82,7 @@ export default function MonthlySleep() {
         height={400}
         title={'Monthly Sleep Duration Average'}
         data={graphData}
-        yAxis={'Hours on Average'}
+        yAxis={'Hours'}
         customTooltip={CustomToolTip}
       />
     </MonthlySleepCont>
