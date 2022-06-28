@@ -1,14 +1,11 @@
 import React from 'react';
-import { useOutletContext } from 'react-router-dom';
 
 import GraphTemplate from './GraphTemplate';
 import { DayOfTheWeekCont } from './style';
 
 const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 
-export default function DayOfTheWeek() {
-  const data = useOutletContext();
-
+export default function DayOfTheWeek({ data }) {
   const formatData = {};
   data.reduce((acc, curr) => {
     const date = new Date(curr.date);
