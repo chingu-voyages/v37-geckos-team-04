@@ -1,10 +1,9 @@
 import React from 'react';
-import { useOutletContext } from 'react-router-dom';
+
 import GraphTemplate from './GraphTemplate';
 import { MonthlySleepCont } from './style';
 
-export default function MonthlySleep() {
-  const data = useOutletContext();
+export default function MonthlySleep({ data }) {
   // group all sleep data by month
   const formatData = {};
   data.reduce((accu, curr) => {

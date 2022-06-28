@@ -4,7 +4,7 @@ import { Button, Modal, message, Input, InputNumber, Radio, Form } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSleep, updateSleep } from '../../reducers/Sleep';
 
-export default function SleepModal({ id }) {
+export default function SleepModal({ id, isMock }) {
   const dispatch = useDispatch();
   // [form] allows <Form /> container validation and other things like resetting fields to default
   const [form] = Form.useForm();
@@ -106,7 +106,13 @@ export default function SleepModal({ id }) {
 
   return (
     <div>
-      <Button type="primary" onClick={showModal} size={'large'} shape={'round'}>
+      <Button
+        disabled={isMock}
+        type="primary"
+        onClick={showModal}
+        size={'large'}
+        shape={'round'}
+      >
         {isSleeping ? 'Stop Sleep' : 'Start Sleep'}
       </Button>
       <Modal

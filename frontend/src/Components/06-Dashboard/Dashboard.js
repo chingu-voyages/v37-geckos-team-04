@@ -125,11 +125,13 @@ export default function Dashboard() {
       <Layout className="site-layout">
         <Header>
           <h1>Welcome to Your SleepTracker, {user}</h1>
-          <Modal id={id} />
+          <Modal id={id} isMock={isMock} />
         </Header>
         <Content style={{ margin: '5px' }}>
           {isMock && <h1>Mocked Data</h1>}
-          <Outlet context={isMock ? mockSleepData : sleepData} />
+          <Outlet
+            context={{ data: isMock ? mockSleepData : sleepData, isMock }}
+          />
         </Content>
       </Layout>
     </Layout>

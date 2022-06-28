@@ -12,7 +12,8 @@ const moods = ['😖', '🙁', '🙂', '😀', '😇'];
 
 export default function History() {
   const dispatch = useDispatch();
-  const data = useOutletContext();
+  const data = useOutletContext().data;
+  const isMock = useOutletContext().isMock;
   const [form] = Form.useForm();
   const [currSleep, setCurrSleep] = useState();
   const [editModal, setEditModal] = useState(false);
@@ -23,7 +24,7 @@ export default function History() {
       col.render = (_, record) => {
         if (!record) return null;
         return (
-          <Typography.Link disabled={editModal} onClick={() => edit(record)}>
+          <Typography.Link disabled={isMock} onClick={() => edit(record)}>
             Edit
           </Typography.Link>
         );
@@ -33,7 +34,10 @@ export default function History() {
       col.render = (_, record) => {
         if (!record) return null;
         return (
-          <Typography.Link onClick={() => dispatch(removeSleep(record._id))}>
+          <Typography.Link
+            disabled={isMock}
+            onClick={() => dispatch(removeSleep(record._id))}
+          >
             Delete
           </Typography.Link>
         );
