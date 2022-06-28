@@ -6,7 +6,8 @@ import MonthlySleep from './MonthlySleep';
 import DayOfTheWeek from './DayOfTheWeek';
 
 export default function GraphContainer() {
-  const data = useOutletContext();
+  const data = useOutletContext().data;
+
   return (
     <div style={{ padding: 5 }}>
       <Row gutter={[5, 5]}>

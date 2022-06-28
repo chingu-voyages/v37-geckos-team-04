@@ -1,14 +1,11 @@
 import React from 'react';
-import { useOutletContext } from 'react-router-dom';
 
 import GraphTemplate from './GraphTemplate';
 import { WeeklySleepCont } from './style';
 
 const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 
-export default function WeeklySleep() {
-  const data = useOutletContext();
-
+export default function WeeklySleep({ data }) {
   const graphData = [];
 
   // copy all sleep instances and sort oldest to newest
