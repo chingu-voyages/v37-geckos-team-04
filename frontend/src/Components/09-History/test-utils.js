@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 
 // import userReducer from '../../reducers/userSlice';
 import sleepReducer from '../../reducers/sleepSlice';
-// import mockSleepData from './mockSleepData';
+import mockSleepData from './mockSleepData';
 
 function render(
   ui,
@@ -20,7 +20,11 @@ function render(
   } = {}
 ) {
   function Wrapper({ children }) {
-    return <Provider store={store}>{children}</Provider>;
+    return (
+      <Provider store={store} value={mockSleepData}>
+        {children}
+      </Provider>
+    );
   }
   return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
 }
